@@ -12,6 +12,7 @@ const Header = () => {
                 // width={30} height={30}
                 src={logo} alt="logo"/>
                 <h1>Wallet</h1>
+                kalklka
                 
             </div>
             <div>
