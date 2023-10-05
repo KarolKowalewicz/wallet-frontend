@@ -22,20 +22,8 @@ html {
 }
 
 .container {
-    width: 100%;
-    margin: 0 auto;
-  
-    @media screen and (min-width: 320px) {
-      width: 320px;
-    }
-  
-    @media screen and (min-width: 768px) {
-      width: 768px;
-    }
-  
-    @media screen and (min-width: 1280px) {
-      width: 1280px;
-    }
+  padding: 0 15px;
+  margin: auto;
   }
   
   .hidden {
