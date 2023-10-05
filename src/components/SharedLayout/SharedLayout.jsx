@@ -29,4 +29,8 @@ const SharedLayout = () => {
   );
 };
 
+<<<<<<< HEAD
 export default SharedLayout;
+=======
+export default SharedLayout;
+>>>>>>> develop
