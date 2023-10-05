@@ -1,0 +1,135 @@
+.formBox{
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    border: solid black 1px;
+    padding-top: 32px;
+    padding-bottom: 36px;
+    
+
+    @media screen and (min-width: 768px) {
+        width: 533px;
+        padding-top: 40px;
+        padding-bottom: 66px;
+        margin-top: 360px;
+        margin-bottom: 36px;
+        border-radius: 20px;         
+        
+      }
+
+    @media screen and (min-width: 1280px) {
+        position: fixed;
+        right: 91px;
+        bottom: 52px;
+        margin: 0 0 0 0px;
+
+    }
+    
+  
+  }
+  .logoSection{
+    display:flex;
+    gap: 15px;
+    margin: 0 auto;
+    width: 120px;
+    align-items: center;
+    margin-bottom: 60px;
+
+    @media screen and (min-width: 768px) {
+        gap: 20px;  
+        
+      }
+  }
+
+  .logoImg{
+    width: 30px;
+    height: 30px;
+
+    @media screen and (min-width: 768px) {
+        width: 40px;
+        height: 40px;    
+        
+      }
+
+  }
+  .logoTitle{
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 700;
+
+    @media screen and (min-width: 768px) {
+        font-size: 30px;
+      }
+  }
+  .form {      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 auto;
+      gap:40px;
+      width: 320;
+
+      @media screen and (min-width: 768px) {
+        
+      }
+  
+    }
+
+    .input{
+        width: 270px;
+        padding-block: 8px;
+        outline-color: transparent;
+        border-style: none;
+        border-bottom: 1px solid rgb(216, 216, 216);
+
+        @media screen and (min-width: 768px) {
+            width: 410px;
+            
+          }
+    }
+    
+    /* .label {
+      width: 280px;
+      outline-color: transparent;
+    } */
+  
+    .formButton {
+      background-color: white;
+      color: #4A56E2;
+      border-radius: 20px;
+      border: solid 1px #4A56E2;
+      cursor: pointer;
+      padding-block: 13px;
+      width: 274px;
+
+      @media screen and (min-width: 768px) {
+        width: 300px;
+        height: 50px;
+      }
+      
+      &:hover{
+          background-color:#24CCA7;
+          color:white;
+          border:#24CCA7;
+          box-shadow: 0px 4px 4px 0px rgba(178,178,178,0.75);
+-webkit-box-shadow: 0px 4px 4px 0px rgba(178,178,178,0.75);
+-moz-box-shadow: 0px 4px 4px 0px rgba(178,178,178,0.75);
+      }
+
+      
+    }
+
+    .buttonSection{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+    .test{
+        background-color: brown;
+        height: 100vh;
+        width: 100vw;
+    }
