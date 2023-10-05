@@ -4,8 +4,8 @@ import { RegisterForm } from "./components/RegisterForm/RegisterForm";
 function App() {
   return (
     <div>
-        {/* <p>tu będzie dopiero meksyk...</p>
-        <Header></Header> */}
+        <p>tu będzie dopiero meksyk...</p>
+        <Header></Header>
         <RegisterForm />
     </div>
   );
