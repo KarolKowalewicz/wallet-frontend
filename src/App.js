@@ -3,19 +3,17 @@ import Header from "./components/Header/Header";
 import { RegisterForm } from "./components/RegisterForm/RegisterForm";
 
 import LoginForm from "./components/LoginForm/LoginForm";
-
+import NavBar from "./components/NavBar/NavBar"
 
 function App() {
   return (
     <div>
+      <p>tu będzie dopiero meksyk.x.x.x</p>
+      <Header></Header>
+      <RegisterForm />
 
-        <p>tu będzie dopiero meksyk...</p>
-        <Header></Header>
-        <RegisterForm />
-
-        <LoginForm>
-        </LoginForm>
-
+      <LoginForm></LoginForm>
+      <NavBar />  
     </div>
   );
 }
