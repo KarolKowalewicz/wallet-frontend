@@ -1,0 +1,113 @@
+
+
+.table {
+    // background-color: aquamarine;
+    background-image: url('./../../img/Vector\ 7.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom; 
+
+
+    background-color: #4A56E2;
+    color: #fff;
+    border-radius: 30px;
+    // border-collapse: collapse;
+
+
+    height: 174px;
+    width: 280px;
+
+    &__title {
+        // background-color: antiquewhite;
+
+        background-image: url('./../../img/rectangle\ 6.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        height: 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__ul {
+            // background-color: burlywood;
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            display: flex;
+            // gap: 20px;
+            // justify-content: space-between;
+            // justify-content: space-evenly;
+            justify-content: space-around;
+
+            font-size: 18px;
+            font-weight: 700;
+
+            &__li {
+
+            }
+        }
+    }
+
+    &__values {
+        &__ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+
+            font-size: 16px;
+            font-weight: 400;
+
+            &__li {
+
+            }
+        }
+    }
+
+
+
+
+}
+
+
+// .table {
+//     // background-color: aquamarine;
+//     background-color: #4A56E2;
+//     color: #fff;
+//     border-radius: 30px;
+//     // border-collapse: collapse;
+
+
+//     height: 174px;
+//     width: 280px;
+
+
+//     &__thead {
+//         // background-color: rgba(240, 255, 255,);
+
+//         background-image: url('./../../img/rectangle\ 6.png');
+//         height: 50px;
+//         border-radius: 50px;
+        
+        
+//     }
+//     &__thead th {
+//         // padding-left: 20px;
+//     }
+
+//     &__tbody {
+//         // background-color: burlywood;
+//         background-image: url('./../../img/Vector\ 7.png');
+//         background-repeat: no-repeat;
+//         background-position: center bottom;   
+
+//     }
+
+//     &__tbody td {
+//         padding: 0 0 0 20px;
+         
+//     }
+
+// }
