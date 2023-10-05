@@ -1,10 +1,21 @@
+
+import Header from "./components/Header/Header";
+import { RegisterForm } from "./components/RegisterForm/RegisterForm";
+
 import LoginForm from "./components/LoginForm/LoginForm";
+
 
 function App() {
   return (
     <div>
+
+        <p>tu będzie dopiero meksyk...</p>
+        <Header></Header>
+        <RegisterForm />
+
         <LoginForm>
         </LoginForm>
+
     </div>
   );
 }
