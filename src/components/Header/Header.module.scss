@@ -1,0 +1,45 @@
+
+// import globalsy!!!
+
+.header {
+    // heigth mobile 60 tablet 80
+    background-color: cadetblue;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+
+
+    &__logo {
+        background-color: antiquewhite;
+        height: 40px;
+    }
+
+    &__nav {
+        height: 30px;
+        background-color: aquamarine;
+        display: flex;
+        
+
+        &__name {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+
+        }
+
+        &__exit {
+            border-left: 1px solid;
+            display: flex;
+            align-items: center;
+
+            &__icon {
+                background-color: bisque;
+                margin: 0 10px;
+                width: 20px;
+            }
+        }
+    }
+
+}
