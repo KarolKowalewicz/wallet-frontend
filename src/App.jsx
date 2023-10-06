@@ -3,13 +3,14 @@ import { Route, Routes, Navigate } from "react-router";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import HomePage from "./pages/HomePage/HomePage";
 import Register from "./pages/Register/Register";
+
 // const Home = lazy(() => import("./path/to/home/component"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
 const Login = lazy(() => import("./pages/Login"));
 // const Register = lazy(() => import("./pages/Register/Register"));
 
 function App() {
-  const isUserLoggedIn = true;
+  const isUserLoggedIn = false;
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
