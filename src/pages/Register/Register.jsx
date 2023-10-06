@@ -1,10 +1,10 @@
 import React from 'react';
 import css from './Register.module.css'
 import { Fragment } from 'react';
-import { RegisterForm } from '../../components/RegisterForm/RegisterForm';
+import  RegisterForm  from '../../components/RegisterForm/RegisterForm';
 
 
-export const Register = () => {
+const Register = () => {
   return (
     <Fragment className={css.registerPage}>
         <RegisterForm />
@@ -12,5 +12,5 @@ export const Register = () => {
   )
 }
 
-
+export default Register
 
