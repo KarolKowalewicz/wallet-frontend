@@ -1,7 +1,54 @@
+import React from "react";
+// import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+// import { login } from "../redux/sessionSlice";
+
 import styles from "./LoginForm.module.scss";
 import logo from "./../../img/logowallet.png";
 
+
 const LoginForm = () => {
+  // const history = useHistory();
+  // const dispatch = useDispatch();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      password: Yup.string()
+        .min(6, "Password must be at least 6 characters")
+        .max(12, "Password must be less than 13 characters")
+        .required("Password is required"),
+    }),
+    // onSubmit: (values) => {
+    //   // Simulate API call for login (replace with actual API call)
+    //   // For example, you can use Axios or fetch here
+    //   // If successful, you will get a token and user object from the server
+
+    //   // Simulated successful login response
+    //   const response = {
+    //     token: "yourAuthTokenHere",
+    //     user: {
+    //       id: 1,
+    //       username: "exampleuser",
+    //     },
+    //   };
+
+    //   // Dispatch the login action with the token and user data
+    //   dispatch(login(response.token, response.user));
+
+    //   // Redirect to a protected route after successful login
+    //   history.push("/dashboard");
+    // },
+  });
+
   return (
     <div className={styles.container}>
       <div className={styles.login}>
@@ -41,8 +88,13 @@ const LoginForm = () => {
                 <input
                   className={styles.login__input}
                   type="text"
+                  name='email'
                   placeholder="E-mail"
+                  {...formik.getFieldProps("email")}
                 />
+                {formik.touched.email && formik.errors.email ? (
+                  <div className={styles.error}>{formik.errors.email}</div>
+                ) : null}
               </label>
             </div>
             <div>
@@ -75,8 +127,13 @@ const LoginForm = () => {
                 <input
                   className={styles.login__input}
                   type="password"
+                  name='name'
                   placeholder="Password"
+                  {...formik.getFieldProps("password")}
                 />
+                {formik.touched.password && formik.errors.password ? (
+                  <div className={styles.error}>{formik.errors.password}</div>
+                ) : null}
               </label>
             </div>
             <div className={styles.login__buttons}>
@@ -84,7 +141,9 @@ const LoginForm = () => {
                 <button className={styles.login__button} type="submit">Log in</button>
               </div>
               <div className={styles.login__btn}>
-                <button className={styles.login__button} type="submit">Register</button>
+                <Link to="/register" className={styles.login__link}>
+                  Register
+                </Link>
               </div>
             </div>
           </form>
