@@ -3,22 +3,35 @@
 
 .header {
     // heigth mobile 60 tablet 80
-    background-color: cadetblue;
+    // background-color: cadetblue;
     padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 60px;
 
+    color: #BDBDBD;
+
 
     &__logo {
-        background-color: antiquewhite;
-        height: 40px;
+        // background-color: antiquewhite;
+        display: flex;
+        align-items: center;
+
+        gap: 10px;
+        
+        &__svg {
+            height: 30px;
+        }
+        &__txt {
+            font-size: 22px;
+            color: black;
+        }
     }
 
     &__nav {
         height: 30px;
-        background-color: aquamarine;
+        // background-color: aquamarine;
         display: flex;
         
 
@@ -30,14 +43,28 @@
         }
 
         &__exit {
-            border-left: 1px solid;
             display: flex;
             align-items: center;
 
+            // od tablet 
+            // border-left: 1px solid;
+
+
             &__icon {
-                background-color: bisque;
-                margin: 0 10px;
-                width: 20px;
+                // background-color: bisque;
+                height: 18px;
+
+                // od tablet 
+                // margin: 0 10px;
+
+
+            }
+            &__txt {
+                display: none;
+
+                // od tablet 
+                
+                // display: block;
             }
         }
     }

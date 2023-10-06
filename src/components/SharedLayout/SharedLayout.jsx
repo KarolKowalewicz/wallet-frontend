@@ -12,14 +12,14 @@ const SharedLayout = () => {
       <Header />
       <main>
         <nav>
-          <ul>
+          {/* <ul>
             <NavLink className={activePage} to="/home">
               Home
             </NavLink>
             <NavLink className={activePage} to="/diagram">
               Statistics
             </NavLink>
-          </ul>
+          </ul> */}
         </nav>
         <Suspense fallback={<p>Loading component...</p>}>
           <Outlet />
@@ -29,4 +29,8 @@ const SharedLayout = () => {
   );
 };
 
+<<<<<<< HEAD
 export default SharedLayout;
+=======
+export default SharedLayout;
+>>>>>>> develop

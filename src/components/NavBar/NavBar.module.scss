@@ -1,0 +1,12 @@
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
+  padding: 10px;
+  gap: 32px;
+
+  li {
+    margin-right: 10px;
+    display: inline-block;
+  }
+}
