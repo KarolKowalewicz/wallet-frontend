@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { Route, Routes, Navigate } from "react-router";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
+import HomePage from "./pages/HomePage/HomePage";
 
 // const Home = lazy(() => import("./path/to/home/component"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
@@ -16,7 +17,8 @@ function App() {
           index
           element={
             isUserLoggedIn ? (
-              <p>Home page component...</p>
+              // <p>Home page component...</p>
+              <HomePage />
             ) : (
               <Navigate to="/login" />
             )

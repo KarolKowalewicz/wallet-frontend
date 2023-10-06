@@ -1,8 +1,10 @@
 
-// import logo from './../../img/logowallet.png'
-import logoText from './../../img/logowallettext.png'
-import { ReactComponent as ExitDoor } from './../../img/exitdoor.svg';
 import styles from './Header.module.scss';
+import { ReactComponent as Logo } from './../../img/logowallet.svg';
+import { ReactComponent as ExitDoor } from './../../img/exitdoor.svg';
+
+// import logo from './../../img/logowallet.png'
+// import logoText from './../../img/logowallettext.png'
 
 
 
@@ -10,9 +12,8 @@ const Header = () => {
     return(
         <div className={styles.header}>
             <div className={styles.header__logo}>
-                <img 
-                // width={30} height={30}
-                src={logoText} alt="logo"/>
+                <Logo className={styles.header__logo__svg}/>
+                <h1 className={styles.header__logo__txt}>Wallet</h1>                
             </div>
             <div className={styles.header__nav}>
                 <div className={styles.header__nav__name}>
@@ -20,7 +21,7 @@ const Header = () => {
                     </div>
                 <div className={styles.header__nav__exit}>
                     <ExitDoor className={styles.header__nav__exit__icon} />
-                    <p>Exit</p>
+                    <p className={styles.header__nav__exit__txt}>Exit</p>
                 </div>
             </div>
         </div>
@@ -48,6 +49,8 @@ export default Header
                 // <h1>Wallet</h1>
 
 
-
+{/* <img 
+                // width={30} height={30}
+                src={logoText} alt="logo"/> */}
 
 
