@@ -1,3 +1,6 @@
+@import "./../../../public/modern-normalize.scss";
+@import "../../../stylesheet/vars.scss";
+
 .formBox{
     width: 320px;
     display: flex;
@@ -59,14 +62,17 @@
 
 }
 
-.logoTitle {
-  font-family: Poppins;
+.logoTitle {  
   font-size: 24px;
   font-weight: 700;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     @media screen and (min-width: 768px) {
         font-size: 30px;
       }
+    @media screen and (min-width: 768px) {
+      font-weight: 700;
+    }
 }
 
 .form { 
@@ -82,7 +88,7 @@
 .svg {
   width: 24px;
   height: 24px;
-  fill: #bdbdbd;
+  fill: rgb(224, 224, 224)
 
 }
 
@@ -94,17 +100,13 @@
 
 .input{
   padding-block: 8px;
-  outline-color: transparent;
   border-style: none;
-  
-  
+  outline: none;  
 
   &::placeholder{
     color: #bdbdbd;
       font-size: 18px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
+      font-weight: 400;      
   }
 
   @media screen and (min-width: 768px) {
@@ -123,6 +125,8 @@
   padding-block: 13px;
   width: 274px;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
 
     @media screen and (min-width: 768px) {
       width: 300px;
@@ -148,4 +152,12 @@
   margin: 0 auto;
   margin-top: 20px;
 }
-    
+.error {
+  display: flex;
+  position: fixed;
+  z-index: 6;
+  background-color: rgb(255, 248, 225);
+  border-radius: 8px;
+  padding: 6px;
+  right: 129px;
+}
