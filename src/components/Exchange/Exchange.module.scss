@@ -1,62 +1,69 @@
 
 
 .table {
-    // background-color: aquamarine;
     background-image: url('./../../img/Vector\ 7.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center bottom; 
 
 
+    //globals
     background-color: #4A56E2;
     color: #fff;
     border-radius: 30px;
-    // border-collapse: collapse;
 
 
     height: 174px;
     width: 280px;
 
-    &__title {
-        // background-color: antiquewhite;
 
+    overflow: scroll;
+
+
+    &__title {
         background-image: url('./../../img/rectangle\ 6.png');
         background-repeat: no-repeat;
         background-size: cover;
 
         height: 50px;
+        // width: 100%;
 
         display: flex;
         align-items: center;
-        justify-content: center;
+        text-align: center;
+        
 
         &__ul {
-            // background-color: burlywood;
             list-style: none;
             padding: 0;
             width: 100%;
-            display: flex;
-            // gap: 20px;
-            // justify-content: space-between;
-            // justify-content: space-evenly;
-            justify-content: space-around;
 
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            //globalsy
             font-size: 18px;
             font-weight: 700;
 
             &__li {
+                // ewentualnie usunąć
 
             }
         }
     }
 
     &__values {
+        // nadać wysokośc - do ustawienia title na stałe
+        text-align: center;
+
         &__ul {
             list-style: none;
             padding: 0;
-            display: flex;
-            justify-content: space-around;
 
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            //globalsy
             font-size: 16px;
             font-weight: 400;
 
@@ -65,49 +72,5 @@
             }
         }
     }
-
-
-
-
 }
 
-
-// .table {
-//     // background-color: aquamarine;
-//     background-color: #4A56E2;
-//     color: #fff;
-//     border-radius: 30px;
-//     // border-collapse: collapse;
-
-
-//     height: 174px;
-//     width: 280px;
-
-
-//     &__thead {
-//         // background-color: rgba(240, 255, 255,);
-
-//         background-image: url('./../../img/rectangle\ 6.png');
-//         height: 50px;
-//         border-radius: 50px;
-        
-        
-//     }
-//     &__thead th {
-//         // padding-left: 20px;
-//     }
-
-//     &__tbody {
-//         // background-color: burlywood;
-//         background-image: url('./../../img/Vector\ 7.png');
-//         background-repeat: no-repeat;
-//         background-position: center bottom;   
-
-//     }
-
-//     &__tbody td {
-//         padding: 0 0 0 20px;
-         
-//     }
-
-// }
