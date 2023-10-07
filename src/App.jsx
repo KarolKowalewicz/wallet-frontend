@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from "react-router";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import HomePage from "./pages/HomePage/HomePage";
 import Register from "./pages/Register/Register";
-
+import Statistic from "./pages/Statistic";
 // const Home = lazy(() => import("./path/to/home/component"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
 const Login = lazy(() => import("./pages/Login"));
@@ -40,6 +40,7 @@ function App() {
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/statistic" element={<Statistic />} />
     </Routes>
   );
 }
