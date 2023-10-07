@@ -1,0 +1,103 @@
+@import "./../../../public/modern-normalize.scss";
+@import "../../../stylesheet/vars.scss";
+
+.registerPage {
+    background-color: #E7EAF2;
+    height: 100%;
+    width: 100%;
+    position: absolute; 
+    align-content: center;
+   
+}
+
+.registerPage__title {
+    display: none;
+    width: 187px;
+    height: 45px;
+    
+    @media screen and (min-width: 768px) {
+        font-size: 30px;
+        font-weight: 400;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        top: 163px;
+        right: 153px; 
+        z-index: 4;  
+      }
+
+    @media screen and (min-width: 1280px) {
+        top: 598px;
+        left: 200px; 
+      }    
+}
+
+.registerPage__ellipse{
+    display: none;
+
+    @media screen and (min-width: 321px) and (max-width: 1279px) {
+        display: block;
+        position: fixed;
+        width: 370px;
+        height: 380px;
+        z-index: 0;
+        top: 0px;
+        right: 0px;   
+      }
+    
+    
+}
+
+.registerPage__lowerEllipse {
+    display: none;
+
+    @media screen and (min-width: 321px) {
+        display: block;
+        position: fixed;
+        width: 500px;
+        height: 325px;
+        z-index: 0;
+        bottom: 0px;
+        left: 0px;   
+      }
+}
+
+.registerPage__frame{
+    display: none;
+
+    @media screen and (min-width: 768px){
+        display: flex;
+        width: 248px;
+        height: 250px;
+        position: fixed;
+        z-index: 0;
+        top: 60px;
+        left:129px;
+    }
+
+    @media screen and (min-width: 1280px){
+        width: 410px;
+        height: 413px;
+        z-index: 1;
+        top: 153px;
+        left:66px;
+    }
+    
+}
+.registerPage__backdrop {
+    display: none;
+
+    @media screen and (min-width: 1280px) {
+        display: flex;
+        background-image: url('../../img/backdrop.png');
+        background-size: cover;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        width: 720px;
+        height: 100%;
+        z-index: 1;
+    }
+    
+}
+
