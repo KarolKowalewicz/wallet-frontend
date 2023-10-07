@@ -33,6 +33,16 @@ const authSlice = createSlice({
       }
     );
     builder.addMatcher(
+      authApiSlice.endpoints.register.matchFulfilled,
+      (state, action) => {
+        const { name, email, token } = action.payload.user;
+        state.name = name;
+        state.email = email;
+        state.token = token;
+        localStorage.setItem("token", token);
+      }
+    );
+    builder.addMatcher(
       authApiSlice.endpoints.logout.matchFulfilled,
       (state, _action) => {
         state.name = null;
