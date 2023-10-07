@@ -135,7 +135,8 @@ const LoginForm = () => {
                   type="submit"
                   disabled={isLoading}
                 >
-                  Log in
+                  {/* TODO: maybe add some loading spinner instead of plain text */}
+                  {isLoading ? "Loading..." : "Login"}
                 </button>
               </div>
               <div className={styles.login__btn}>
