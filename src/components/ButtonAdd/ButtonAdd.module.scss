@@ -1,0 +1,49 @@
+
+.btnDiv {
+    background-color: chocolate;
+    // display: flex;
+    // justify-content: end;
+
+}
+.btn {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    // box-shadow: 10px 10px ;
+
+    // width: 74px;
+
+
+}
+
+.btn:hover {
+    // width: 70px;
+    box-shadow: 10px 10px ;
+    transform: rotate(45deg);
+}
+
+
+// .button {
+//     width: 44px;
+//     height: 44px;
+
+//     background-color: #24CCA7;
+
+//     border-radius: 50%;
+//     border: none;
+
+//     color: #fff;
+//     font-size: 36px;
+// }
+
+// .btn {
+//     width: 44px;
+//     height: 44px;
+// }
+
+// .btn2 {
+//     width: 44px ;
+//     height: 44px;
+//     border: none;
+//     // border-radius: 50%;
+// }
+

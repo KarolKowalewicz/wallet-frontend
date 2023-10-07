@@ -1,7 +1,7 @@
 import css from './RegisterForm.module.scss';
 import logo from '../../img/logowallet.png';
 
-export const RegisterForm = () => {
+const RegisterForm = () => {
     return (
         <div className={css.formBox}>
             <div className={css.logoSection}>
@@ -29,3 +29,5 @@ export const RegisterForm = () => {
         </div>
     )
 }
+
+export default RegisterForm

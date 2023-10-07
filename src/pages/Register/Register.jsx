@@ -4,7 +4,8 @@ import { RegisterForm } from '../../components/RegisterForm/RegisterForm';
 import ellipse from '../../img/Ellipse2.png';
 
 
-export const Register = () => {
+
+const Register = () => {
   return (
     <div className={css.registerPage}>
         {/* <div className={css.registerPage__title}>Finance App</div>
@@ -14,5 +15,5 @@ export const Register = () => {
   )
 }
 
-
+export default Register
 

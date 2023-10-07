@@ -1,11 +1,12 @@
 import { lazy } from "react";
 import { Route, Routes, Navigate } from "react-router";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
-import { Register } from "./pages/Register/Register";
-
+import HomePage from "./pages/HomePage/HomePage";
+import Register from "./pages/Register/Register";
+import Statistic from "./pages/Statistic";
 // const Home = lazy(() => import("./path/to/home/component"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
-// const Login = lazy(() => import("./path/to/login/component"));
+const Login = lazy(() => import("./pages/Login"));
 // const Register = lazy(() => import("./pages/Register/Register"));
 
 function App() {
@@ -17,7 +18,10 @@ function App() {
           index
           element={
             isUserLoggedIn ? (
-              <p>Home page component...</p>
+              <div>
+                <p>Home page component...</p>;
+                <HomePage />
+              </div>
             ) : (
               <Navigate to="/login" />
             )
@@ -34,10 +38,49 @@ function App() {
           }
         />
       </Route>
-      <Route path="/login" element={<p>Login component...</p>} />
-      <Route path="/register" element={<Register/>} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/statistic" element={<Statistic />} />
     </Routes>
   );
 }
 
 export default App;
+// function App() {
+//   const isUserLoggedIn = false;
+//   return (
+//     <Routes>
+//       <Route path="/" element={<SharedLayout />}>
+//         <Route
+//           index
+//           element={
+//             isUserLoggedIn ? (
+//               <p>Home page component...</p>
+//             ) : (
+//               <Navigate to="/login" />
+//             )
+//           }
+//         />
+//         <Route
+//           path="diagram"
+//           element={
+//             isUserLoggedIn ? (
+//               <p>Diagram page component...</p>
+//             ) : (
+//               <Navigate to="/login" />
+//             )
+//           }
+//         />
+//       </Route>
+//       <Route path="/login" element={
+//             isUserLoggedIn ? (
+//               <p>Login page component...</p>
+//             ) : (
+//               <Navigate to="/login" />
+//             )} />
+//       <Route path="/register" element={<p>Register component...</p>} />
+//     </Routes>
+//   );
+// }
+
+// export default App;
