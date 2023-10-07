@@ -41,7 +41,7 @@ function NavBar() {
             <NavLink
               to="/statistic"
               activeClassName={styles.activeLink}
-              onClick={() => handleIconClick("statistics")}
+              onClick={() => handleIconClick("statistic")}
             >
               <img
                 src={
