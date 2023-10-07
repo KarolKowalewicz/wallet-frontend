@@ -5,17 +5,20 @@
     justify-content: center;
     margin: 0 auto;
     border: solid black 1px;
-    padding-top: 32px;
-    padding-bottom: 36px;
+    padding-block: 32px 36px;
+    background-color: white;
+    border-radius: 20px;  
+
     
 
     @media screen and (min-width: 768px) {
         width: 533px;
         padding-top: 40px;
         padding-bottom: 66px;
-        margin-top: 360px;
-        margin-bottom: 36px;
-        border-radius: 20px;         
+        position: relative;
+        // margin-top: 360px;
+        // margin-bottom: 36px;
+               
         
       }
 
@@ -103,6 +106,7 @@
       cursor: pointer;
       padding-block: 13px;
       width: 274px;
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
       @media screen and (min-width: 768px) {
         width: 300px;

@@ -1,11 +1,11 @@
-import css from './RegisterForm.module.css';
+import css from './RegisterForm.module.scss';
 import logo from '../../img/logowallet.png';
 
 export const RegisterForm = () => {
     return (
         <div className={css.formBox}>
             <div className={css.logoSection}>
-                <img src={logo} className={css.logoImg} />
+                <img src={logo} className={css.logoImg} alt='wallet' />
                 <span className={css.logoTitle}>Wallet</span>
             </div>
             <form className={css.form}>
