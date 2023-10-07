@@ -10,9 +10,6 @@ import logo from "./../../img/logowallet.png";
 
 
 const LoginForm = () => {
-  // const history = useHistory();
-  // const dispatch = useDispatch();
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -27,26 +24,11 @@ const LoginForm = () => {
         .max(12, "Password must be less than 13 characters")
         .required("Password is required"),
     }),
-    // onSubmit: (values) => {
-    //   // Simulate API call for login (replace with actual API call)
-    //   // For example, you can use Axios or fetch here
-    //   // If successful, you will get a token and user object from the server
 
-    //   // Simulated successful login response
-    //   const response = {
-    //     token: "yourAuthTokenHere",
-    //     user: {
-    //       id: 1,
-    //       username: "exampleuser",
-    //     },
-    //   };
-
-    //   // Dispatch the login action with the token and user data
-    //   dispatch(login(response.token, response.user));
-
-    //   // Redirect to a protected route after successful login
-    //   history.push("/dashboard");
-    // },
+    onSubmit: (values, {resetForm}) => {
+      console.log(values);
+      resetForm();
+    },
   });
 
   return (
@@ -57,7 +39,7 @@ const LoginForm = () => {
           <h1>Wallet</h1>
         </div>
         <div>
-          <form className={styles.login__form}>
+          <form className={styles.login__form} onSubmit={formik.handleSubmit}>
             <div>
               <label className={styles.login__label}>
                 <svg
