@@ -1,10 +1,10 @@
 import css from "./RegisterForm.module.scss";
 import logo from "../../img/logowallet.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import authApiSlice from "../../redux/slices/api/auth/authApiSlice";
-import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as Avatar } from "../../img/avatar.svg";
 import { ReactComponent as Lock } from "../../img/lock.svg";
@@ -33,9 +33,11 @@ const RegisterForm = () => {
     const { email, password, name } = values;
     const result = await register({ email, password, name });
     if ("error" in result) {
+      //TODO: display in toast or something
       console.log(error);
     } else {
-      console.log(result);
+      //TODO: display in toast or something
+      console.log("register successful, you can now login");
       navigate("/login");
     }
   };
@@ -116,10 +118,19 @@ const RegisterForm = () => {
                 />
               </label>
               <div className={css.buttonSection}>
-                <button className={css.formButton} type="submit">
+                <button
+                  className={css.formButton}
+                  type="submit"
+                  disabled={isLoading}
+                >
+                  {/* TODO: maybe add some loading spinner instead of plain text */}
                   {isLoading ? "Loading..." : "REGISTER"}
                 </button>
-                <Link to="/login" className={css.formButton}>
+                <Link
+                  to="/login"
+                  className={css.formButton}
+                  disabled={isLoading}
+                >
                   LOGIN
                 </Link>
               </div>
