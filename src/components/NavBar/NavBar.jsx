@@ -1,25 +1,28 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 
 function NavBar() {
   const [activeIcon, setActiveIcon] = useState("home");
+  const location = useLocation();
 
-  const handleIconClick = (iconName) => {
-    setActiveIcon(iconName);
-  };
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === "/") {
+      setActiveIcon("home");
+    } else if (path === "/statistic") {
+      setActiveIcon("statistics");
+    } else if (path === "/exchange") {
+      setActiveIcon("exchange");
+    }
+  }, [location]);
 
   return (
     <nav>
       <div>
         <ul className={styles["navbar-container"]}>
           <li>
-            <NavLink
-              exact
-              to="/"
-              activeClassName={styles.activeLink}
-              onClick={() => handleIconClick("home")}
-            >
+            <NavLink exact to="/" activeClassName={styles.activeLink}>
               <img
                 src={
                   activeIcon === "home"
@@ -38,11 +41,7 @@ function NavBar() {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/statistic"
-              activeClassName={styles.activeLink}
-              onClick={() => handleIconClick("statistic")}
-            >
+            <NavLink to="/statistic" activeClassName={styles.activeLink}>
               <img
                 src={
                   activeIcon === "statistics"
@@ -61,11 +60,7 @@ function NavBar() {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/exchange"
-              activeClassName={styles.activeLink}
-              onClick={() => handleIconClick("exchange")}
-            >
+            <NavLink to="/exchange" activeClassName={styles.activeLink}>
               <img
                 src={
                   activeIcon === "exchange"
