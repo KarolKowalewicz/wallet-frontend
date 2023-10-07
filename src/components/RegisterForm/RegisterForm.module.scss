@@ -10,6 +10,11 @@
     position: relative;
     z-index: 999; 
 
+    @media screen and (min-width:350px) and (max-width: 767px) {
+      width: 80vw;
+      height: 90vh;
+    }
+    
     @media screen and (min-width: 768px) {
       width: 533px;
       height: 616px;
@@ -64,21 +69,43 @@
       }
 }
 
-.form {      
+.form { 
+     
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
   gap:40px;
-  width: 320; 
+  // width: 320; 
+}
+
+.svg {
+  width: 24px;
+  height: 24px;
+  fill: #bdbdbd;
+
+}
+
+.label{
+  border-bottom: 1px solid rgb(216, 216, 216);
+  display: flex;
+  gap: 20px;
 }
 
 .input{
-  width: 270px;
   padding-block: 8px;
   outline-color: transparent;
   border-style: none;
-  border-bottom: 1px solid rgb(216, 216, 216);
+  
+  
+
+  &::placeholder{
+    color: #bdbdbd;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+  }
 
   @media screen and (min-width: 768px) {
     width: 410px;
