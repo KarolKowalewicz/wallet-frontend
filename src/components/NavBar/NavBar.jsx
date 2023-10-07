@@ -39,7 +39,7 @@ function NavBar() {
           </li>
           <li>
             <NavLink
-              to="/statistics"
+              to="/statistic"
               activeClassName={styles.activeLink}
               onClick={() => handleIconClick("statistics")}
             >
