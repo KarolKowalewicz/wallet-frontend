@@ -14,6 +14,7 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 function App() {
   //checking if user is logged in based on token saved in local storage
   const { data, isLoading } = authApiSlice.useCurrentQuery();
+  const isUserLoggedIn = !!data?.user?.token;
 
   if (isLoading) {
     //TODO: display loading spinner instead of plain text
