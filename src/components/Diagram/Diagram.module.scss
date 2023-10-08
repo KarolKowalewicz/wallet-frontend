@@ -1,3 +1,11 @@
 @import "./../../../public/modern-normalize.scss";
 @import "../../../stylesheet/vars.scss";
 
+.custom {
+    fill: red;
+    font-size: 25px;
+  }
+
+    .victory-pie-label tspan {
+        font-size: 25px;
+    }
