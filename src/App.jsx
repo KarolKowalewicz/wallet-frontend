@@ -2,13 +2,13 @@ import { lazy } from "react";
 import { Route, Routes, Navigate } from "react-router";
 import authApiSlice from "./redux/slices/api/auth/authApiSlice";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Statistic from "./pages/Statistic";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
-// const Login = lazy(() => import("./pages/Login"));
+// const Login = lazy(() => import("./pages/Login/Login"));
 // const Register = lazy(() => import("./pages/Register/Register"));
 
 function App() {
