@@ -36,33 +36,33 @@ const RegisterForm = () => {
         <Form>
           <div className={css.formBox}>
             <div className={css.logoSection}>
-              <img src={logo} className={css.logoImg} alt='wallet' />
-              <span className={css.logoTitle}>Wallet</span>
+              <img src={logo} className={css.logoSection__logoImg} alt='wallet' />
+              <span className={css.logoSection__logoTitle}>Wallet</span>
             </div>
             <div className={css.form}>
-              <label className={css.label}>
-                <Email className={css.svg} />
-                <Field className={css.input} placeholder='E-mail' type='email' name='email' />
+              <label className={css.form__label}>
+                <Email className={css.form__svg} />
+                <Field className={css.form__input} placeholder='E-mail' type='email' name='email' />
                 <ErrorMessage name="email" component="div" className={css.error} />
               </label>
-              <label className={css.label}>
-                <Lock className={css.svg} />
-                <Field className={css.input} placeholder='Password' type='password' name='password' />
+              <label className={css.form__label}>
+                <Lock className={css.form__svg} />
+                <Field className={css.form__input} placeholder='Password' type='password' name='password' />
                 <ErrorMessage name="password" component="div" className={css.error} />
               </label>
-              <label className={css.label}>
-                <Lock className={css.svg} />
-                <Field className={css.input} placeholder='Confirm Password' type='password' name='confirm-password' />
+              <label className={css.form__label}>
+                <Lock className={css.form__svg} />
+                <Field className={css.form__input} placeholder='Confirm Password' type='password' name='confirm-password' />
                 <ErrorMessage name="confirm-password" component="div" className={css.error} />
               </label>
-              <label className={css.label}>
-                <Avatar className={css.svg} />
-                <Field className={css.input} placeholder='First name' type='text' name='name' />
+              <label className={css.form__label}>
+                <Avatar className={css.form__svg} />
+                <Field className={css.form__input} placeholder='First name' type='text' name='name' />
                 <ErrorMessage name="name" component="div" className={css.error} />
               </label>
-              <div className={css.buttonSection}>
-                <button className={css.formButton} type="submit">REGISTER</button>
-                <Link to="/login" className={css.formButton}>LOGIN</Link>
+              <div className={css.form__buttonSection}>
+                <button className={css.form__button} type="submit">REGISTER</button>
+                <Link to="/login" className={css.form__button}>LOGIN</Link>
               </div>
             </div>
           </div>
