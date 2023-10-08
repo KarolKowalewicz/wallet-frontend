@@ -1,29 +1,38 @@
-
+@import './../../../stylesheet/vars.scss';
 
 .balance {
+  // background-color: beige;
+
   border-radius: 30px;
   height: 80px;
   width: 280px;
-  background-color: #fff;
+  // background-color: #fff;
+  background-color: $font-color-light;
+  //kolor zmienna
   display: flex;
   align-items: center;
   
   
 
   &__layout {
+    // background-color: aquamarine;
     margin-left: 30px;
     // height: 40px;
     
   }
 
   &__description {
+    // background-color: bisque;
     margin: 0 auto;
     text-transform: uppercase;
-    color: #A6A6A6;;
+    color: #A6A6A6; // barkuje w zmiennych
+    
     font-size: 12px;
   }
   &__content {
     margin: 0 auto;
+
+    // background-color: azure;
     font-size: 30px;
   }
 }
