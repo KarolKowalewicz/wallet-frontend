@@ -1,25 +1,24 @@
-
 @import './../../../stylesheet/vars.scss';
-//fonty!!!!
 // import globalsy!!!
 
 .header {
-    // heigth mobile 60 tablet 80
-    // background-color: cadetblue;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
+  // heigth mobile 60 tablet 80
+  // background-color: cadetblue;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
 
     // color: #BDBDBD;
     color: $color-logout-button;
+    //kolor zmienna
 
 
-    &__logo {
-        // background-color: antiquewhite;
-        display: flex;
-        align-items: center;
+  &__logo {
+    // background-color: antiquewhite;
+    display: flex;
+    align-items: center;
 
         gap: 10px;
         
@@ -28,51 +27,48 @@
         }
         &__txt {
             font-size: 22px;
-            // color: black;
+            color: black;
             color: $font-color-dark;
+            //kolor zmienna
         }
     }
 
-    &__nav {
-        height: 30px;
-        // background-color: aquamarine;
-        display: flex;
-        
+  &__nav {
+    height: 30px;
+    // background-color: aquamarine;
+    display: flex;
 
-        &__name {
-            display: flex;
-            align-items: center;
-            margin-right: 10px;
-
-        }
-
-        &__exit {
-            display: flex;
-            align-items: center;
-
-            // od tablet 
-            // border-left: 1px solid;
-
-
-            &__icon {
-                cursor: pointer;
-                // background-color: bisque;
-                height: 18px;
-
-                // od tablet 
-                // margin: 0 10px;
-
-
-            }
-            &__txt {
-                cursor: pointer;
-                display: none;
-
-                // od tablet 
-                
-                // display: block;
-            }
-        }
+    &__name {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
     }
 
+    &__exit {
+      display: flex;
+      align-items: center;
+      border: none;
+      background-color: transparent;
+
+      // od tablet
+      // border-left: 1px solid;
+
+      &__icon {
+        cursor: pointer;
+        // background-color: bisque;
+        height: 18px;
+
+        // od tablet
+        // margin: 0 10px;
+      }
+      &__txt {
+        cursor: pointer;
+        display: none;
+
+        // od tablet
+
+        // display: block;
+      }
+    }
+  }
 }

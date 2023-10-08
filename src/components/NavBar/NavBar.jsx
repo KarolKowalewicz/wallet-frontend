@@ -22,7 +22,7 @@ function NavBar() {
       <div>
         <ul className={styles["navbar-container"]}>
           <li>
-            <NavLink exact to="/" activeClassName={styles.activeLink}>
+            <NavLink exact="true" to="/"> {/* activeClassName={styles.activeLink} */} 
               <img
                 src={
                   activeIcon === "home"
@@ -41,7 +41,7 @@ function NavBar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/statistic" activeClassName={styles.activeLink}>
+            <NavLink to="/statistic"> {/* activeClassName={styles.activeLink} */} 
               <img
                 src={
                   activeIcon === "statistics"
@@ -60,7 +60,7 @@ function NavBar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/exchange" activeClassName={styles.activeLink}>
+            <NavLink to="/exchange"> {/* activeClassName={styles.activeLink} */} 
               <img
                 src={
                   activeIcon === "exchange"
