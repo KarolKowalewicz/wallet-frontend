@@ -58,43 +58,14 @@ const RegisterForm = () => {
         <Form>
           <div className={css.formBox}>
             <div className={css.logoSection}>
-<<<<<<< HEAD
-              <img src={logo} className={css.logoSection__logoImg} alt='wallet' />
+              <img src={logo} className={css.logoSection__logoImg} alt="wallet" />
               <span className={css.logoSection__logoTitle}>Wallet</span>
             </div>
             <div className={css.form}>
               <label className={css.form__label}>
                 <Email className={css.form__svg} />
-                <Field className={css.form__input} placeholder='E-mail' type='email' name='email' />
-                <ErrorMessage name="email" component="div" className={css.error} />
-              </label>
-              <label className={css.form__label}>
-                <Lock className={css.form__svg} />
-                <Field className={css.form__input} placeholder='Password' type='password' name='password' />
-                <ErrorMessage name="password" component="div" className={css.error} />
-              </label>
-              <label className={css.form__label}>
-                <Lock className={css.form__svg} />
-                <Field className={css.form__input} placeholder='Confirm Password' type='password' name='confirm-password' />
-                <ErrorMessage name="confirm-password" component="div" className={css.error} />
-              </label>
-              <label className={css.form__label}>
-                <Avatar className={css.form__svg} />
-                <Field className={css.form__input} placeholder='First name' type='text' name='name' />
-                <ErrorMessage name="name" component="div" className={css.error} />
-              </label>
-              <div className={css.form__buttonSection}>
-                <button className={css.form__button} type="submit">REGISTER</button>
-                <Link to="/login" className={css.form__buttonLogin}>LOGIN</Link>
-=======
-              <img src={logo} className={css.logoImg} alt="wallet" />
-              <span className={css.logoTitle}>Wallet</span>
-            </div>
-            <div className={css.form}>
-              <label className={css.label}>
-                <Email className={css.svg} />
                 <Field
-                  className={css.input}
+                  className={css.form__input}
                   placeholder="E-mail"
                   type="email"
                   name="email"
@@ -105,10 +76,10 @@ const RegisterForm = () => {
                   className={css.error}
                 />
               </label>
-              <label className={css.label}>
-                <Lock className={css.svg} />
+              <label className={css.form__label}>
+                <Lock className={css.form__svg} />
                 <Field
-                  className={css.input}
+                  className={css.form__input}
                   placeholder="Password"
                   type="password"
                   name="password"
@@ -119,10 +90,10 @@ const RegisterForm = () => {
                   className={css.error}
                 />
               </label>
-              <label className={css.label}>
-                <Lock className={css.svg} />
+              <label className={css.form__label}>
+                <Lock className={css.form__svg} />
                 <Field
-                  className={css.input}
+                  className={css.form__input}
                   placeholder="Confirm Password"
                   type="password"
                   name="confirm-password"
@@ -133,10 +104,10 @@ const RegisterForm = () => {
                   className={css.error}
                 />
               </label>
-              <label className={css.label}>
-                <Avatar className={css.svg} />
+              <label className={css.form__label}>
+                <Avatar className={css.form__svg} />
                 <Field
-                  className={css.input}
+                  className={css.form__input}
                   placeholder="First name"
                   type="text"
                   name="name"
@@ -147,9 +118,9 @@ const RegisterForm = () => {
                   className={css.error}
                 />
               </label>
-              <div className={css.buttonSection}>
+              <div className={css.form__buttonSection}>
                 <button
-                  className={css.formButton}
+                  className={css.form__button}
                   type="submit"
                   disabled={isLoading}
                 >
@@ -158,12 +129,11 @@ const RegisterForm = () => {
                 </button>
                 <Link
                   to="/login"
-                  className={css.formButton}
+                  className={css.form__buttonLogin}
                   disabled={isLoading}
                 >
                   LOGIN
                 </Link>
->>>>>>> 2feae2abfebb51f85c31c53671ef5de274b40e1d
               </div>
             </div>
           </div>
