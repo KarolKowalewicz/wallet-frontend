@@ -21,6 +21,7 @@
     text-align: center;
     font-size: 30px;
     font-style: normal;
+    font-family: Popins, sans-serif;
     font-weight: 400;
     line-height: normal;
     margin-bottom: 10px;
@@ -73,6 +74,7 @@
     cursor: pointer;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     color: #000;
+    font-family: $font-family-circe;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
