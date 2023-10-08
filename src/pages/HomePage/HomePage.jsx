@@ -1,5 +1,5 @@
-import Balance from "../../components/Balance/Balance"
-import ButtonAdd from "../../components/ButtonAdd/ButtonAdd"
+import Balance from "../../components/Balance/Balance";
+import ButtonAdd from "../../components/ButtonAdd/ButtonAdd";
 import Exchange from "../../components/Exchange/Exchange";
 import NavBar from "../../components/NavBar/NavBar";
 import styles from './HomePage.module.scss';
@@ -23,3 +23,4 @@ const HomePage = () => {
 }
 
 export default HomePage
+
