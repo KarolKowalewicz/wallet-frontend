@@ -39,6 +39,7 @@ const RegisterForm = () => {
       //TODO: display in toast or something
       console.log("register successful, you can now login");
       navigate("/login");
+      navigate(0);
     }
   };
 

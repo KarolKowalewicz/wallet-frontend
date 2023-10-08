@@ -37,6 +37,7 @@ const LoginForm = () => {
         //TODO: display in toast or something
         console.log("logged in successful");
         navigate("/");
+        navigate(0);
       }
     },
   });
