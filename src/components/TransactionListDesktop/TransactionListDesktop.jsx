@@ -5,24 +5,24 @@ import styles from './TransactionListDesktop.module.scss';
 const TransactionListDesktop = () => {
 
     return (
-        <div className={styles.container}>
+        
        <table className={styles.transtable}> 
         <thead  className={styles.transtable__head}>
           <tr className={styles.transtable__headtable}>
             <th className={styles.transtable__headcell}>Date</th>
             <th className={styles.transtable__headcell__type}>Type</th>
             <th className={styles.transtable__headcell}>Category</th>
-            <th className={styles.transtable__headcell}>Comment</th>
+            <th className={styles.transtable__headcell__com}>Comment</th>
             <th className={styles.transtable__headcell__sum}>Sum</th>
             <th className={styles.transtable__headcell}></th>         
           </tr>
         </thead>
-        <tbody>
+        <tbody className={styles.transtable__body}>
         {/*transactions.map((transaction) => */}
             <tr className={styles.transtable__row}>
               <td className={styles.transtable__rowcell}>date</td>
-              <td className={styles.transtable__rowcell}>transaction.type</td>
-              <td className={styles.transtable__rowcell}>transaction.category</td>
+              <td className={styles.transtable__rowcell}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
               <td className={styles.transtable__rowcell}>transaction.comment</td>
               <td className={styles.transtable__rowcell}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
@@ -34,8 +34,8 @@ const TransactionListDesktop = () => {
             </tr>
             <tr className={styles.transtable__row}>
               <td className={styles.transtable__rowcell}>date</td>
-              <td className={styles.transtable__rowcell}>transaction.type</td>
-              <td className={styles.transtable__rowcell}>transaction.category</td>
+              <td className={styles.transtable__rowcell}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
               <td className={styles.transtable__rowcell}>transaction.comment</td>
               <td className={styles.transtable__rowcell}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
@@ -47,8 +47,8 @@ const TransactionListDesktop = () => {
             </tr>
             <tr className={styles.transtable__row}>
               <td className={styles.transtable__rowcell}>date</td>
-              <td className={styles.transtable__rowcell}>transaction.type</td>
-              <td className={styles.transtable__rowcell}>transaction.category</td>
+              <td className={styles.transtable__rowcell}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
               <td className={styles.transtable__rowcell}>transaction.comment</td>
               <td className={styles.transtable__rowcell}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
@@ -62,7 +62,7 @@ const TransactionListDesktop = () => {
         </tbody>                 
        
        </table>
-       </div>
+       
     )
 }
 

@@ -1,15 +1,18 @@
 import React from "react";
-// import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-// import { login } from "../redux/sessionSlice";
+import authApiSlice from "../../redux/slices/api/auth/authApiSlice";
 
 import styles from "./LoginForm.module.scss";
 import logo from "./../../img/logowallet.png";
 
-
 const LoginForm = () => {
+  const navigate = useNavigate();
+
+  const [login, { isLoading, error }] = authApiSlice.useLoginMutation();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -25,9 +28,17 @@ const LoginForm = () => {
         .required("Password is required"),
     }),
 
-    onSubmit: (values, {resetForm}) => {
-      console.log(values);
-      resetForm();
+    onSubmit: async (values) => {
+      const result = await login(values);
+      if ("error" in result) {
+        //TODO: display in toast or something
+        console.log(error);
+      } else {
+        //TODO: display in toast or something
+        console.log("logged in successful");
+        navigate("/");
+        navigate(0);
+      }
     },
   });
 
@@ -70,7 +81,7 @@ const LoginForm = () => {
                 <input
                   className={styles.login__input}
                   type="text"
-                  name='email'
+                  name="email"
                   placeholder="E-mail"
                   {...formik.getFieldProps("email")}
                 />
@@ -109,7 +120,7 @@ const LoginForm = () => {
                 <input
                   className={styles.login__input}
                   type="password"
-                  name='name'
+                  name="name"
                   placeholder="Password"
                   {...formik.getFieldProps("password")}
                 />
@@ -120,10 +131,21 @@ const LoginForm = () => {
             </div>
             <div className={styles.login__buttons}>
               <div className={styles.login__btn}>
-                <button className={styles.login__button} type="submit">Log in</button>
+                <button
+                  className={styles.login__button}
+                  type="submit"
+                  disabled={isLoading}
+                >
+                  {/* TODO: maybe add some loading spinner instead of plain text */}
+                  {isLoading ? "Loading..." : "Login"}
+                </button>
               </div>
               <div className={styles.login__btn}>
-                <Link to="/register" className={styles.login__link}>
+                <Link
+                  to="/register"
+                  className={styles.login__link}
+                  disabled={isLoading}
+                >
                   Register
                 </Link>
               </div>

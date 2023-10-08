@@ -1,37 +1,29 @@
 
 
 .balance {
-  background-color: beige;
-
   border-radius: 30px;
-  
   height: 80px;
   width: 280px;
-
+  background-color: #fff;
   display: flex;
   align-items: center;
   
   
 
   &__layout {
-    background-color: aquamarine;
     margin-left: 30px;
     // height: 40px;
     
   }
 
   &__description {
-    background-color: bisque;
     margin: 0 auto;
-
     text-transform: uppercase;
     color: #A6A6A6;;
     font-size: 12px;
   }
   &__content {
     margin: 0 auto;
-
-    background-color: azure;
     font-size: 30px;
   }
 }
