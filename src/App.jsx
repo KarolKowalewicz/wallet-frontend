@@ -12,14 +12,19 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const Register = lazy(() => import("./pages/Register/Register"));
 
 function App() {
+
+  // const isUserLoggedIn = false;
+
   //checking if user is logged in based on token saved in local storage
   const { data, isLoading } = authApiSlice.useCurrentQuery();
-  const isUserLoggedIn = !!data?.user?.token;
+  // const isUserLoggedIn = !!data?.user?.token;
+    const isUserLoggedIn = true;
 
   if (isLoading) {
     //TODO: display loading spinner instead of plain text
     return <p>Loading...</p>;
   }
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>

@@ -50,18 +50,6 @@ const Exchange = () => {
                 </ul>
             ))}
             </div>
-            <div className={styles.table__values}>
-                <ul className={styles.table__values__ul}>
-                    <li className={styles.table__values__ul__li}>USD</li>
-                    <li className={styles.table__values__ul__li}>27.55</li>
-                    <li className={styles.table__values__ul__li}>27.65</li>
-                </ul>
-                <ul className={styles.table__values__ul}>
-                    <li className={styles.table__values__ul__li}>EUR</li>
-                    <li className={styles.table__values__ul__li}>30.00</li>
-                    <li className={styles.table__values__ul__li}>30.10</li>
-                </ul>
-            </div>
         </div>
     )
 
