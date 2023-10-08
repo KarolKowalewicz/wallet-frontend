@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./StatisticForm.module.scss";
+import Diagram from "../Diagram/Diagram";
+
+
 
 const StatisticForm = () => {
   const [months, setMonths] = useState([]);
@@ -8,8 +11,11 @@ const StatisticForm = () => {
   const [selectedYear, setSelectedYear] = useState("");
 
   useEffect(() => {
+
+
     const currentYear = new Date().getFullYear();
 
+    
 
     const yearOptions = [];
     for (let year = currentYear; year >= currentYear - 10; year--) {
@@ -40,20 +46,7 @@ const StatisticForm = () => {
     <div className={styles.container}>
       <div className={styles.statistic}>
         <h1 className={styles.statistic__name}>Statistics</h1>
-        <div>
-          <div className={styles.statistic__diagram}>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-          </div>
-        </div>
+        <Diagram />
         <div className={styles.statistic__label}>
           <select
             className={styles.statistic__select}
