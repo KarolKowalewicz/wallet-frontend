@@ -1,13 +1,15 @@
 
 .btnDiv {
+
     
     display: flex;
     justify-content: end;
 
+
 }
 .btn {
     cursor: pointer;
-    transition: transform 0.3s ease;
+    // transition: transform 0.3s ease;
     // box-shadow: 10px 10px ;
 
     // width: 74px;
@@ -17,8 +19,8 @@
 
 .btn:hover {
     // width: 70px;
-    box-shadow: 10px 10px ;
-    transform: rotate(45deg);
+    // box-shadow: 10px 10px ;
+    // transform: rotate(45deg);
 }
 
 

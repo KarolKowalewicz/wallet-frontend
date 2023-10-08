@@ -1,72 +1,68 @@
-
 // import globalsy!!!
 
 .header {
-    // heigth mobile 60 tablet 80
-    // background-color: cadetblue;
-    padding: 0 10px;
+  // heigth mobile 60 tablet 80
+  // background-color: cadetblue;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+
+  color: #bdbdbd;
+
+  &__logo {
+    // background-color: antiquewhite;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 60px;
 
-    color: #BDBDBD;
+    gap: 10px;
 
+    &__svg {
+      height: 30px;
+    }
+    &__txt {
+      font-size: 22px;
+      color: black;
+    }
+  }
 
-    &__logo {
-        // background-color: antiquewhite;
-        display: flex;
-        align-items: center;
+  &__nav {
+    height: 30px;
+    // background-color: aquamarine;
+    display: flex;
 
-        gap: 10px;
-        
-        &__svg {
-            height: 30px;
-        }
-        &__txt {
-            font-size: 22px;
-            color: black;
-        }
+    &__name {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
     }
 
-    &__nav {
-        height: 30px;
-        // background-color: aquamarine;
-        display: flex;
-        
+    &__exit {
+      display: flex;
+      align-items: center;
+      border: none;
+      background-color: transparent;
 
-        &__name {
-            display: flex;
-            align-items: center;
-            margin-right: 10px;
+      // od tablet
+      // border-left: 1px solid;
 
-        }
+      &__icon {
+        cursor: pointer;
+        // background-color: bisque;
+        height: 18px;
 
-        &__exit {
-            display: flex;
-            align-items: center;
+        // od tablet
+        // margin: 0 10px;
+      }
+      &__txt {
+        cursor: pointer;
+        display: none;
 
-            // od tablet 
-            // border-left: 1px solid;
+        // od tablet
 
-
-            &__icon {
-                // background-color: bisque;
-                height: 18px;
-
-                // od tablet 
-                // margin: 0 10px;
-
-
-            }
-            &__txt {
-                display: none;
-
-                // od tablet 
-                
-                // display: block;
-            }
-        }
+        // display: block;
+      }
     }
-
+  }
 }
