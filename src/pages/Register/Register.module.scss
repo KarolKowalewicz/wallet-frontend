@@ -3,7 +3,7 @@
 // @import "../../../stylesheet/fonts.scss";
 
 .registerPage {
-    background-color: #E7EAF2;
+    background-color: $background-ccent;
     height: 100vh;
     width: 100vw;
     position: absolute; 
@@ -22,7 +22,7 @@
             justify-content: center;
             bottom: 716px;
             right: 153px; 
-            z-index: 4;  
+            z-index: 2;  
             
           }
     
