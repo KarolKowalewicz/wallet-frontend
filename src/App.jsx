@@ -4,7 +4,7 @@ import authApiSlice from "./redux/slices/api/auth/authApiSlice";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import Login from "./pages/Login";
 import Register from "./pages/Register/Register";
-import Statistic from "./pages/Statistic";
+import StatisticsPage from "./pages/StatisticsPage/StatisticsPage";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
@@ -56,7 +56,7 @@ function App() {
         path="/register"
         element={!data?.user?.token ? <Register /> : <Navigate to="/" />}
       />
-      <Route path="/statistic" element={<Statistic />} />
+      <Route path="/statistic" element={<StatisticsPage />} />
     </Routes>
   );
 }
