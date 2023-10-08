@@ -10,7 +10,7 @@ const Login = lazy(() => import("./pages/Login"));
 // const Register = lazy(() => import("./pages/Register/Register"));
 
 function App() {
-  const isUserLoggedIn = false;
+  const isUserLoggedIn = true;
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
