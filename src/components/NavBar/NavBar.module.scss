@@ -1,4 +1,3 @@
-
 .navbar-container {
   display: flex;
   justify-content: center;
@@ -8,228 +7,101 @@
 
   li {
     margin-right: 10px;
-    display: inline-block;
+   display: flex;
+    align-items: center;
 
     img {
-      width: 38px; /* Rozmiar ikon na małych ekranach */
+      width: 38px; 
       height: 38px;
     }
 
     .text {
-      margin-left: 20px; /* Odstęp między ikoną a tekstem */
+      margin-left: 10px; 
+      font-weight: normal; 
+    }
+
+    &.active {
+      .text {
+        font-weight: bold;
+       }
     }
   }
 
+
+
+
   @media (max-width: 767px) {
-    flex-direction: row; /* Ikonki są ułożone w rzędzie na małych ekranach */
-    align-items: center; /* Wyśrodkowanie ikonek na małych ekranach */
+    flex-direction: row; 
+    align-items: center; 
     li {
-      margin-right: 0; /* Usunięcie marginesu między ikonkami na małych ekranach */
-      margin-bottom: 10px; /* Dodanie odstępu między ikonkami na małych ekranach */
-      display: flex; /* Wszystkie ikony w jednym rzędzie na małych ekranach */
+      margin-right: 0; 
+      margin-bottom: 10px; 
+      display: flex; 
+      align-items: center;
 
       img {
-        width: 38px; /* Rozmiar ikon na małych ekranach */
+        width: 38px; 
         height: 38px;
       }
 
       .text {
-        display: none; /* Ukrycie napisów na małych ekranach */
+        display: none; 
+      }
+      &.active {
+        .text {
+          font-weight: bold; 
+        }
       }
     }
   }
 
   @media (min-width: 768px) and (max-width: 1279px) {
-    flex-direction: column; /* Ikonki są ułożone w kolumnie na tabletach */
-    align-items: left; /* Wyśrodkowanie ikonek na tabletach */
+    flex-direction: column; 
+    align-items: left; 
     li {
-      margin-right: 0; /* Usunięcie marginesu między ikonkami na tabletach */
-      margin-bottom: 10px; /* Dodanie odstępu między ikonkami na tabletach */
-      display: flex; /* Wszystkie ikony w jednym rzędzie na tabletach */
-      justify-content: flex-start; /* Wyjustowanie ikon do lewej krawędzi */
+          display: table-cell;
+    vertical-align: middle
+
 
       img {
-        width: 38px; /* Rozmiar ikon na tabletach */
+        width: 38px; 
         height: 38px;
       }
 
       .text {
-        margin-left: 32px; /* Dodanie odstępu między ikoną a tekstem na tabletach */
+        margin-left: 32px; 
+        font-size: 18px;
+            
+
       }
     }
   }
 
   @media (min-width: 1280px) {
-    flex-direction: column; /* Ikonki są ułożone w kolumnie na PC */
-    align-items: center; /* Wyśrodkowanie ikonek na PC */
+    flex-direction: column; 
+    align-items: left; 
     li {
-      margin-right: 0; /* Usunięcie marginesu między ikonkami na PC */
-      margin-bottom: 10px; /* Dodanie odstępu między ikonkami na PC */
-      display: flex; /* Wszystkie ikony w jednym rzędzie na PC */
-      justify-content: flex-start; /* Wyjustowanie ikon do lewej krawędzi */
+      margin-right: 0; 
+      margin-bottom: 10px; 
+      display: flex; 
+      justify-content: flex-start; 
 
       img {
-        width: 38px; /* Rozmiar ikon na PC */
+        width: 38px; 
         height: 38px;
       }
 
       .text {
-        margin-left: 18px; /* Dodanie odstępu między ikoną a tekstem na PC */
+      
+        margin-left: 18px; 
+         font-weight: normal;
       }
     }
   }
 
   .mobileOnly {
     @media (min-width: 768px) {
-      display: none; // Ukryj trzecią ikonę na tabletach i PC
+      display: none; 
     }
   }
 }
-
-
-
-// .navbar-container {
-//   display: flex;
-//   justify-content: center;
-//   background-color: transparent;
-//   padding: 10px;
-//   gap: 32px;
-
-//   li {
-//     margin-right: 10px;
-//     display: inline-block;
-
-//     img {
-//       width: 38px; /* Rozmiar ikon na małych ekranach */
-//       height: 38px;
-//     }
-
-//     .text {
-//       margin-left: 10px; /* Odstęp między ikoną a tekstem */
-//     }
-//   }
-
-//   @media (max-width: 767px) {
-//     flex-direction: row; /* Ikonki są ułożone w rzędzie na małych ekranach */
-//     align-items: center; /* Wyśrodkowanie ikonek na małych ekranach */
-//     li {
-//       margin-right: 0; /* Usunięcie marginesu między ikonkami na małych ekranach */
-//       margin-bottom: 10px; /* Dodanie odstępu między ikonkami na małych ekranach */
-//       display: flex; /* Wszystkie ikony w jednym rzędzie na małych ekranach */
-
-//       img {
-//         width: 38px; /* Rozmiar ikon na małych ekranach */
-//         height: 38px;
-//       }
-
-//       .text {
-//         display: none; /* Ukrycie napisów na małych ekranach */
-//       }
-//     }
-//   }
-
-//   @media (min-width: 768px) {
-//     flex-direction: column; /* Ikonki są ułożone w kolumnie na większych ekranach */
-//     align-items: center; /* Wyśrodkowanie ikonek na większych ekranach */
-//     li {
-//       margin-bottom: 0; /* Usunięcie odstępu między ikonkami na większych ekranach */
-//       display: block; /* Każda ikona w osobnym wierszu na większych ekranach */
-
-//       img {
-//         width: 18px; /* Rozmiar ikon na dużych ekranach */
-//         height: 18px;
-//       }
-//     }
-//   }
-
-//   .mobileOnly {
-//     @media (min-width: 768px) {
-//       display: none; // Ukryj trzecią ikonę na tabletach i PC
-//     }
-//   }
-// }
-
-
-// // .navbar-container {
-// //   display: flex;
-// //   justify-content: center;
-// //   background-color: transparent;
-// //   padding: 10px;
-// //   gap: 32px;
-
-// //   li {
-// //     margin-right: 10px;
-// //     display: inline-block;
-
-// //     img {
-// //       width: 38px; /* Rozmiar ikon na małych ekranach */
-// //       height: 38px;
-// //     }
-
-// //     .text {
-// //       margin-left: 10px; /* Odstęp między ikoną a tekstem */
-// //     }
-// //   }
-
-// //   @media (min-width: 768px) {
-// //     flex-direction: column; /* Ikonki są ułożone w kolumnie na większych ekranach */
-// //     align-items: center; /* Wyśrodkowanie ikonek na większych ekranach */
-// //     li {
-// //       margin-bottom: 0; /* Usunięcie odstępu między ikonkami na większych ekranach */
-// //       display: block; /* Każda ikona w osobnym wierszu na większych ekranach */
-
-// //       img {
-// //         width: 18px; /* Rozmiar ikon na dużych ekranach */
-// //         height: 18px;
-// //       }
-// //     }
-// //   }
-
-// //   .mobileOnly {
-// //     @media (min-width: 768px) {
-// //       display: none; // Ukryj trzecią ikonę na tabletach i PC
-// //     }
-// //   }
-// // }
-
-// // .navbar-container {
-// //   display: flex;
-// //   justify-content: center;
-// //   background-color: transparent;
-// //   padding: 10px;
-// //   gap: 32px;
-
-// //   li {
-// //     margin-right: 10px;
-// //     display: inline-block;
-// //   }
-
-// //   @media (max-width: 767px) {
-// //     flex-direction: row; /* Ikonki są ułożone w rzędzie na małych ekranach */
-// //     align-items: center; /* Wyśrodkowanie ikonek na małych ekranach */
-// //     li {
-// //       margin-right: 0; /* Usunięcie marginesu między ikonkami na małych ekranach */
-// //       margin-bottom: 10px; /* Dodanie odstępu między ikonkami na małych ekranach */
-// //            display: flex; /* Wszystkie ikony w jednym rzędzie na małych ekranach */
-     
-// //     }
-// //         .text {
-// //       margin-left: 10px; /* Doda odstęp między ikoną a tekstem */
-// //     }
-// //   }
-
-// //   @media (min-width: 768px) {
-// //     flex-direction: column; /* Ikonki są ułożone w kolumnie na większych ekranach */
-// //     align-items: center; /* Wyśrodkowanie ikonek na większych ekranach */
-// //     li {
-// //       margin-bottom: 0; /* Usunięcie odstępu między ikonkami na większych ekranach */
-// //       display: block; /* Każda ikona w osobnym wierszu na większych ekranach */
-// //     }
-// //   }
-
-// //   .mobileOnly {
-// //     @media (min-width: 768px) {
-// //       display: none; // Ukryj trzecią ikonę na tabletach i PC
-// //     }
-// //   }
-// // }
