@@ -21,6 +21,7 @@
     text-align: center;
     font-size: 30px;
     font-style: normal;
+    font-family: Popins, sans-serif;
     font-weight: 400;
     line-height: normal;
     margin-bottom: 10px;
@@ -65,6 +66,7 @@
   }
 
   &__select {
+    appearance: none;
     width: 280px;
     padding: 12px;
     border: 1px solid #000;
@@ -73,10 +75,25 @@
     cursor: pointer;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     color: #000;
+    font-family: $font-family-circe;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-transform: capitalize;
+
+    background-image: url("../../img/Vector\ 19.svg");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+
+    option {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      font-family: $font-family-circe;
+      text-transform: capitalize;
+    }
   }
   &__description {
     display: flex;
@@ -113,7 +130,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 16px 16px 16px;
-    border-bottom: 1px solid #DCDCDF;
+    border-bottom: 1px solid #dcdcdf;
   }
 
   &__itemColor {
@@ -125,16 +142,16 @@
 
   &__itemText {
     font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
   }
 
   &__itemSum {
     font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
   }
 
   &__results {
