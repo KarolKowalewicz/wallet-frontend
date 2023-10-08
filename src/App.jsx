@@ -25,11 +25,8 @@ function App() {
         <Route
           index
           element={
-            data?.user?.token ? (
-              <div>
-                <p>Home page component...</p>;
-                <HomePage />
-              </div>
+            isUserLoggedIn ? (
+             <HomePage />              
             ) : (
               <Navigate to="/login" />
             )

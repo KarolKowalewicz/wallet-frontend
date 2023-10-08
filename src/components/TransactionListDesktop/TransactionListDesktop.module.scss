@@ -1,14 +1,8 @@
-.container {
-    padding: 20px;
-    background: rgba(111, 106, 106, 0.4);
-    backdrop-filter: blur(25px);
-}
-
 .transtable {
     border-collapse: collapse;
     border-spacing: 0;
-    padding: 10px 20px; // need delete
-   
+    
+      
     &__headtable {
         background-color: #FFF;
         font-size: 18px;
@@ -23,11 +17,17 @@
     } 
     &__headcell:first-child {
         padding-left: 20px;
+        padding-right: 65px;
         border-top-left-radius: 30px 30px;
         border-bottom-left-radius: 30px 30px;
     }
     &__headcell__type {
         text-align: center;
+        padding-right: 45px;
+
+    }
+    &__headcell__com {
+        padding-left: 45px;
 
     }
         
@@ -40,9 +40,12 @@
         border-bottom-right-radius: 30px 30px;
         text-align: right; 
     }
+&__body {
+    overflow: scroll;
+}    
 
 &__row {
-    background-color: transparent;   
+    background-color: transparent;     
 }
 &__row:not(:last-child) {
     border-bottom: 1px solid #DCDCDF;
