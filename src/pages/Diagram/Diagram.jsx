@@ -1,13 +1,13 @@
 import React from "react";
 import { Fragment } from "react";
-import  Diagram  from "../../components/Diagram/Diagram";
+import DiagramForm from "../../components/Diagram/Diagram";
 
-const DiagramForm = () => {
+const Diagram = () => {
   return (
     <Fragment>
-    <Diagram />
+      <DiagramForm />
     </Fragment>
   );
 };
 
-export default DiagramForm;
+export default Diagram;
