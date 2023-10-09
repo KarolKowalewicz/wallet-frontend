@@ -1,4 +1,4 @@
-// @import './../../../stylesheet/fonts.scss';
+@import './../../../stylesheet/fonts.scss';
 @import './../../../stylesheet/vars.scss';
 
 
@@ -8,47 +8,41 @@
     background-size: contain;
     background-position: center bottom; 
 
-
-    // background-color: #4A56E2;
     background-color: $color-brand-primary;
-    // color: #fff;
     color: $background-light;
-    border-radius: 30px;
+    font-family: $font-family-circe;
 
+
+    border-radius: 30px;
 
     height: 174px;  /// mozna zaakoment dziala bez
     width: 280px;
 
-
     overflow: hidden;
-
 
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 124px;
 
-    /// grid dla tableta i desktop
-  
+    @include tablet {
+        width: 336px;
+        height: 182px;
+        grid-template-rows: 50px 132px;
+        border-radius: 40px;
 
-    //    ///  to trzeba poprawić
-    //    /// 
-    // &::-webkit-scrollbar {
-    //     width: 0.1em; /* Szerokość paska przewijania */
-    //   }
+    }
+    @include desktop {
+        width: 393px;
+        height: 331px;
+        grid-template-rows: 60px 271px;
+        border-radius: 40px;
 
-
-    // display: grid;
-    // grid-template-columns: 1fr;
-    // grid-template-rows: 50px 124px;
-
+    }
 
     &__title {
         background-image: url('./../../img/rectangle\ 6.png');
         background-repeat: no-repeat;
         background-size: cover;
-
-        // height: 50px;
-        // width: 100%;
 
         display: flex;
         align-items: center;
@@ -64,33 +58,30 @@
             padding: 0;
             width: 100%;
 
-            // display: grid;
-            // grid-template-columns: repeat(3, 1fr);
-             display: flex;
-             justify-content: space-evenly;
+            display: flex;
+            justify-content: space-evenly;
 
-            //globalsy
             font-size: 18px;
             font-weight: 700;
 
-            // &__li {
-                
-            //     // ewentualnie usunąć
-
-            // }
         }
     }
 
     &__values {
-        // nadać wysokośc - do ustawienia title na stałe
         text-align: center;
-
-        height: 124px;
 
         overflow-y: scroll; // Dodaj pasek przewijania tylko w wierszu wartości
         &::-webkit-scrollbar { width: 0.1em;}
 
-        
+        margin-top: 5px;
+        height: 124px;
+
+        @include tablet {
+            margin-top: 10px;
+        }
+        @include desktop {
+            height: 85%;
+        }
 
         &__ul {
             list-style: none;
@@ -99,8 +90,6 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
 
-            //globalsy
-            // font-family: ;
             font-size: 16px;
             font-weight: 400;
 
