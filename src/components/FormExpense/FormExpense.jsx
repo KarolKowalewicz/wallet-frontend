@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 
+import styles from './FormExpense.module.scss'
+
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
@@ -46,9 +48,9 @@ const FormExpense = () => {
             }}
         >
             {({ isSubmitting, setFieldValue, values }) => (
-                <Form>
+                <Form className={styles.form}>
                     <div>
-                        <Field as="select" name="category">
+                        <Field className={styles.input} as="select" name="category">
                             <option value="" label="Select category" />
                             <option value="Products">Products</option>
                             <option value="Main expenses">Main expenses</option>
@@ -64,27 +66,51 @@ const FormExpense = () => {
                         {/* <ErrorMessage name="category" /> */}
                     </div>
 
+                    <div className={styles.separatorShort}></div>
+
                     <div>
-                        <Field name="amount" type="number" step="0.01" placeholder="0.00" />
+                        <Field 
+                            className={styles.input}
+                            name="amount"
+                            type="number"
+                            step="0.01" 
+                            placeholder="0.00"
+                            autoComplete="off"
+                        />
                         {/* <ErrorMessage name="amount" /> */}
                     </div>
 
+                    <div className={styles.separatorShort}></div>
+
                     <div>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div className={styles.calendarWrap}>
                             <Calendar 
                                 ref={calendarRef}
                                 value={values.date}
                                 onChange={(date) => setFieldValue('date', date)}
+                                name="date"
                             />
-                            <CalendarIcon onClick={openCalendar} style={{ cursor: 'pointer', marginLeft: '10px' }} />
+                            
+                            <CalendarIcon onClick={openCalendar} className={styles.calendarIcon} />
+
                         </div>
                         {/* <ErrorMessage name="date" /> */}
                     </div>
+
+                    <div className={styles.separatorShort}></div>
                     
                     <div>
-                        <Field name="comment" type="text" placeholder="Comment" />
+                        <Field 
+                            as="textarea"
+                            className={`${styles.input} ${styles.input__comment}`}
+                            name="comment"
+                            placeholder="Comment"
+                            autoComplete="off"
+                        />
                         {/* <ErrorMessage name="comment" /> */}
                     </div>
+
+                    <div className={styles.separatorLong}></div>
 
                     <BtnAddTrans onSubmit={isSubmitting ? null : () => document.querySelector('form').dispatchEvent(new Event('submit'))} />
                 </Form>

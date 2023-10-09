@@ -2,7 +2,7 @@ import styles from './ButtonAdd.module.scss'
 
 import { ReactComponent as ButtonPlus } from './../../img/+ btn.svg';
 import { useState } from 'react';
-import ModalTrans from '../ModalTrans/ModalTrans';
+import AddTransaction from '../AddTransaction/AddTransaction';
 
 
 const ButtonAdd = () => {
@@ -24,7 +24,7 @@ const ButtonAdd = () => {
             
 
             {modal && (
-                <ModalTrans onClose={closeModal}/>
+                <AddTransaction onClose={closeModal}/>
                 //komponent
                 
                 //ewentualne propsy

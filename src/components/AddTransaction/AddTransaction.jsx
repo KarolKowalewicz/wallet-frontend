@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './ModalTrans.module.scss';
+import styles from './AddTransaction.module.scss';
 import { ReactComponent as BtnClose } from './../../img/btn_close.svg';
 import Header from '../Header/Header';
 // import BtnAddTrans from '../BtnAddTrans/BtnAddTrans';
@@ -9,7 +9,7 @@ import FormExpense from '../FormExpense/FormExpense';
 import SliderGreen from '../SliderGreen/SliderGreen';
 import SliderRed from '../SliderRed/SliderRed';
 
-const ModalTrans = ({ onClose }) => {
+const AddTransaction = ({ onClose }) => {
     const [isIncome, setIsIncome] = useState(false);
 
     const toggleIncome = () => {
@@ -71,4 +71,4 @@ const ModalTrans = ({ onClose }) => {
     );
 }
 
-export default ModalTrans;
+export default AddTransaction;

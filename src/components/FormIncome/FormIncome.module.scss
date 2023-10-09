@@ -9,26 +9,47 @@
 }
 
 .input {
+    margin-left: 40px;
+    width: 190px;
+    height: 24px;
     border: none;
     outline: none;
+
+    &__comment {
+        height: 52px;
+    }
 }
 
 .calendarWrap {
     display: flex;
     align-items: center;
+    margin-left: 40px;
 }
 
 .separatorShort, .separatorLong {
-    border-top: 1px solid #E0E0E0;
+    margin-top: 8px;
+    margin-bottom: 40px;
     width: 280px;
     height: 0;
     flex-shrink: 0;
+    border-top: 1px solid #E0E0E0;
+
 }
 
-.separatorShort {
-    margin-top: 8px;
+// .separatorShort {
+//     margin-top: 8px;
+// }
+
+// .separatorLong {
+//     margin-top: 60px;
+// }
+
+.calendarIcon {
+    position: fixed;
+    left: 240px;
+    width: 24px;
+    height: 24px;
+    fill: #4A56E2;
+    cursor: pointer;
 }
 
-.separatorLong {
-    margin-top: 60px;
-}
