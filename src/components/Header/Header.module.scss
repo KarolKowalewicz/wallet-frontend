@@ -1,73 +1,100 @@
 @import './../../../stylesheet/vars.scss';
-// import globalsy!!!
+@import './../../../stylesheet/fonts.scss';
+
+
 
 .header {
-  // heigth mobile 60 tablet 80
-  // background-color: cadetblue;
   padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 60px;
 
-    // color: #BDBDBD;
-    color: $color-logout-button;
-    //kolor zmienna
+ 
+
+    @include tablet {
+        height: 80px;
+    }
 
 
   &__logo {
-    // background-color: antiquewhite;
     display: flex;
     align-items: center;
 
         gap: 10px;
+        @include tablet {
+            gap: 20px;
+        }
         
         &__svg {
             height: 30px;
+            @include tablet {
+                height: 40px;
+            }
         }
         &__txt {
             font-size: 22px;
-            color: black;
+            font-family: $font-family-poppins;
             color: $font-color-dark;
-            //kolor zmienna
+            @include tablet {
+                font-size: 30px;
+            }
         }
     }
 
   &__nav {
     height: 30px;
-    // background-color: aquamarine;
     display: flex;
+    
+
 
     &__name {
+      font-family: $font-family-circe;
+      color: $color-logout-button;
+      font-size: 18px;
       display: flex;
       align-items: center;
-      margin-right: 10px;
+    //   margin-right:px;
+    @include tablet {
+        margin-right: 15px;
+    }
     }
 
     &__exit {
       display: flex;
       align-items: center;
       border: none;
+      
+
       background-color: transparent;
 
-      // od tablet
-      // border-left: 1px solid;
+      @include tablet {
+        border-left: 1px solid $color-logout-button;
+
+      }
+
 
       &__icon {
         cursor: pointer;
-        // background-color: bisque;
         height: 18px;
 
-        // od tablet
-        // margin: 0 10px;
+        @include tablet {
+            margin: 0 10px;
+        }
+
       }
       &__txt {
+        font-family: $font-family-circe;
+        color: $color-logout-button;
+        font-size: 18px;
+
         cursor: pointer;
         display: none;
 
-        // od tablet
+        @include tablet {
+            display: block;
+        }
 
-        // display: block;
       }
     }
   }
