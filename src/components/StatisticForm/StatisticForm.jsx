@@ -26,7 +26,7 @@ const StatisticForm = () => {
     const monthOptions = [];
     for (let month = 1; month <= 12; month++) {
       const date = `${currentYear}-${month.toString().padStart(2, "0")}`;
-      const monthName = new Date(date).toLocaleString("default", {
+      const monthName = new Date(date).toLocaleString("en", {
         month: "long",
       });
       monthOptions.push({ value: date, label: monthName });

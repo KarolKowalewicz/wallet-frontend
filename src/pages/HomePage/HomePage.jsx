@@ -15,61 +15,63 @@ const HomePage = () => {
     document.title = "Welcome to Wallet App";
 }, []);
 
-    return (
-      <>
-        <div className={styles.container}>
-          <div className={styles.navbar}>
-            <NavBar />
-          </div>
 
-          <Media query="(max-width: 767px)">
-            {(matches) =>
-              matches ? (
-                <>
-                  <div className={styles.balance}>
-                    <Balance />
-                  </div>
-                  <TransactionList />
-                </>
-              ) : (
-                <div className={styles.exchange}>
-                  <Exchange />
-                </div>
-              )
-            }
-          </Media>
+    return ( <div className={styles.container}>
+      <div className={styles.grid}>
+        
+        <div className={styles.grid__navbar}>
+        <NavBar />
+        </div>               
+              
+        <div className={styles.grid__balance}><Balance /></div>
 
-          <Media query="(min-width: 768px)">
-            {(matches) =>
-              matches ? (
-                <>
-                  <div className={styles.balance}>
-                    <Balance />
-                  </div>
-                  <div className={styles.transactions}>
-                    <TransactionListDesktop />
-                  </div>
-                </>
-              ) : null
-            }
-          </Media>
+        <Media query="(min-width: 768px)">
+        { matches =>
+          matches ? ( <div className={styles.grid__exchange}>
+          <Exchange /></div>
+        ) : null
+        }
+        </Media>
 
-          <Media query="(max-width: 767px)">
-            {(matches) => (matches ? <TransactionList /> : null)}
-          </Media>
+        <Media query="(max-width: 767px)">
+        { matches =>
+          matches ? (
+        <TransactionList />) : null
+        }</Media>
+        
+        <Media query="(max-width: 767px)">
+        { matches =>
+          matches ? (
+        <TransactionList />) : null
+        }</Media>
 
-          <Media query="(min-width: 768px)">
-            {(matches) =>
-              matches ? (
-                <div className={styles.transactions}>
-                  <TransactionListDesktop />{" "}
-                </div>
-              ) : null
-            }
-          </Media>
+        <Media query="(min-width: 768px)">
+        { matches =>
+          matches ? ( <div className={styles.grid__transactions}>
+          <TransactionListDesktop  /> </div>
+        ) : null
+        }</Media>             
         </div>
-        <ButtonAdd className={styles.btnAdd} />
-      </>
+        <div className={styles.btnAddFixed}><ButtonAdd /></div>
+             
+        </div>
+    
+       
+        
+
+
+//     return(
+//         <div className={styles.container}>HomePage
+//             <p>UserMenu-buttony-kafelki</p>
+//             <NavBar />
+//             <Balance />
+//             <p>Tabela</p>
+//             <Exchange />
+//             <ButtonAdd className={styles.btnAdd}/>
+
+//         </div>
+
+
     );
 
 }

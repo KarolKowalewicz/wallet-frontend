@@ -13,15 +13,15 @@ const data = [
 ];
 
 const labelStyle = {
-display: "none",
-  };
+  display: "none",
+};
 
-const Diagram = () => (
+const DiagramForm = () => (
   <div>
     <svg className={styles.diagram} width={400} height={400}>
       <circle cx={200} cy={200} r={100} fill="white" />
       <VictoryPie
-      
+        labelComponent={<VictoryLabel style={labelStyle} />}
         standalone={false}
         innerRadius={100}
         data={data}
@@ -34,7 +34,6 @@ const Diagram = () => (
           "pink",
           "purple",
         ]}
-        labelComponent={<VictoryLabel style={labelStyle} />}
       />
       <text
         x={200}
@@ -49,7 +48,7 @@ const Diagram = () => (
   </div>
 );
 
-export default Diagram;
+export default DiagramForm;
 
 // import React from "react";
 // import styles from "./Diagram.module.scss";
