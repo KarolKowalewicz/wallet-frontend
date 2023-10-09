@@ -2,22 +2,24 @@ import { lazy } from "react";
 import { Route, Routes, Navigate } from "react-router";
 import authApiSlice from "./redux/slices/api/auth/authApiSlice";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+
 import StatisticsPage from "./pages/StatisticsPage/StatisticsPage";
+
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
-// const Login = lazy(() => import("./pages/Login"));
+// const Login = lazy(() => import("./pages/Login/Login"));
 // const Register = lazy(() => import("./pages/Register/Register"));
 
 function App() {
-
   // const isUserLoggedIn = false;
 
   //checking if user is logged in based on token saved in local storage
   const { data, isLoading } = authApiSlice.useCurrentQuery();
-  const isUserLoggedIn = !!data?.user?.token;
+  // const isUserLoggedIn = !!data?.user?.token;
+  const isUserLoggedIn = true;
 
   if (isLoading) {
     //TODO: display loading spinner instead of plain text
@@ -29,22 +31,12 @@ function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route
           index
-          element={
-            isUserLoggedIn ? (
-             <HomePage />              
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
+          element={isUserLoggedIn ? <HomePage /> : <Navigate to="/login" />}
         />
         <Route
           path="diagram"
           element={
-            data?.user?.token ? (
-              <p>Diagram page component...</p>
-            ) : (
-              <Navigate to="/login" />
-            )
+            data?.user?.token ? <Diagram /> : <Navigate to="/login" />
           }
         />
       </Route>

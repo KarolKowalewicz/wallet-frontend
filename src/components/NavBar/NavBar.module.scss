@@ -7,6 +7,101 @@
 
   li {
     margin-right: 10px;
-    display: inline-block;
+   display: flex;
+    align-items: center;
+
+    img {
+      width: 38px; 
+      height: 38px;
+    }
+
+    .text {
+      margin-left: 10px; 
+      font-weight: normal; 
+    }
+
+    &.active {
+      .text {
+        font-weight: bold;
+       }
+    }
+  }
+
+
+
+
+  @media (max-width: 767px) {
+    flex-direction: row; 
+    align-items: center; 
+    li {
+      margin-right: 0; 
+      margin-bottom: 10px; 
+      display: flex; 
+      align-items: center;
+
+      img {
+        width: 38px; 
+        height: 38px;
+      }
+
+      .text {
+        display: none; 
+      }
+      &.active {
+        .text {
+          font-weight: bold; 
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    flex-direction: column; 
+    align-items: left; 
+    li {
+          display: table-cell;
+    vertical-align: middle
+
+
+      img {
+        width: 38px; 
+        height: 38px;
+      }
+
+      .text {
+        margin-left: 32px; 
+        font-size: 18px;
+            
+
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    flex-direction: column; 
+    align-items: left; 
+    li {
+      margin-right: 0; 
+      margin-bottom: 10px; 
+      display: flex; 
+      justify-content: flex-start; 
+
+      img {
+        width: 38px; 
+        height: 38px;
+      }
+
+      .text {
+      
+        margin-left: 18px; 
+         font-weight: normal;
+      }
+    }
+  }
+
+  .mobileOnly {
+    @media (min-width: 768px) {
+      display: none; 
+    }
   }
 }

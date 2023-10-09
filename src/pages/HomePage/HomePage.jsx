@@ -10,20 +10,11 @@ import TransactionListDesktop from './../../components/TransactionListDesktop/Tr
 import Exchange from './../../components/Exchange/Exchange';
 import { useEffect } from 'react';
 
-
-
-// import Balance from "../../components/Balance/Balance";
-// import ButtonAdd from "../../components/ButtonAdd/ButtonAdd";
-// import Exchange from "../../components/Exchange/Exchange";
-// import NavBar from "../../components/NavBar/NavBar";
-// import styles from './HomePage.module.scss';
-
-
-
 const HomePage = () => {
   useEffect(() => {
     document.title = "Welcome to Wallet App";
 }, []);
+
 
     return ( <div className={styles.container}>
       <div className={styles.grid}>
@@ -80,9 +71,9 @@ const HomePage = () => {
 
 //         </div>
 
+
     );
 
 }
 
 export default HomePage
-

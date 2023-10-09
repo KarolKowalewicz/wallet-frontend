@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./StatisticForm.module.scss";
+import Diagram from "../Diagram/Diagram";
+
+
 
 const StatisticForm = () => {
   const [months, setMonths] = useState([]);
@@ -8,21 +11,22 @@ const StatisticForm = () => {
   const [selectedYear, setSelectedYear] = useState("");
 
   useEffect(() => {
-    // Pobierz bieżący rok
+
+
     const currentYear = new Date().getFullYear();
 
-    // Wygeneruj opcje dla lat (tylko do bieżącego roku kalendarzowego)
+    
+
     const yearOptions = [];
     for (let year = currentYear; year >= currentYear - 10; year--) {
       yearOptions.push(year);
     }
     setYears(yearOptions);
 
-    // Wygeneruj opcje dla miesięcy od stycznia do grudnia
     const monthOptions = [];
     for (let month = 1; month <= 12; month++) {
       const date = `${currentYear}-${month.toString().padStart(2, "0")}`;
-      const monthName = new Date(date).toLocaleString("default", {
+      const monthName = new Date(date).toLocaleString("en", {
         month: "long",
       });
       monthOptions.push({ value: date, label: monthName });
@@ -41,21 +45,8 @@ const StatisticForm = () => {
   return (
     <div className={styles.container}>
       <div className={styles.statistic}>
-        <h1 className={styles.statistic__name}>Statistic</h1>
-        <div>
-          <div className={styles.statistic__diagram}>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-            <div className={styles.statistic__cat}></div>
-          </div>
-        </div>
+        <h1 className={styles.statistic__name}>Statistics</h1>
+        <Diagram />
         <div className={styles.statistic__label}>
           <select
             className={styles.statistic__select}
