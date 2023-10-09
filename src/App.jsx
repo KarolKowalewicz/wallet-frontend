@@ -4,7 +4,7 @@ import authApiSlice from "./redux/slices/api/auth/authApiSlice";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-
+import Diagram from "./pages/Diagram/Diagram";
 import StatisticsPage from "./pages/StatisticsPage/StatisticsPage";
 
 
