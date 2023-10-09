@@ -1,0 +1,205 @@
+@import "./../../../public/modern-normalize.scss";
+@import "../../../stylesheet/vars.scss";
+
+// MOBILE
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  min-width: 320px;
+  width: 100vw;
+  min-height: 600px;
+  height: 100vh;
+  // padding: 20px 20px 40px 64px;
+  
+  // border-radius: 20px;
+  // border: 1px solid #000;
+  background: #FFF;
+  // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.btnCloseWrap {
+  display: none;
+  // justify-content: end;
+}
+  
+.buttonFunc {
+  background-color: #fff;
+  border: none;
+  margin: none;
+  padding: none;
+  display: none;
+  visibility: hidden;
+  pointer-events: none;
+  justify-content: center;
+  align-content: center;
+
+  &__vector {
+    display: none;
+  }
+
+  &__vector:hover {
+    transform: rotate(90deg);
+  }
+}
+
+.headerWrap {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    width: 280px;
+    height: 31px;
+    text-align: center;
+    font-size: 24px;
+  }
+}
+
+.sliderContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 42px;
+  margin-bottom: 42px;
+}
+
+.incomeLabel, .expenseLabel {
+  cursor: pointer;
+}
+
+// .expenseLabel{
+//   cursor: pointer;
+// }
+
+.sliderCheckbox {
+  display: none;
+}
+
+.sliderContainer {
+  margin-left: 12px;
+  margin-right: 18px;
+  padding: 0;
+  border: none;
+  // width: 80px;
+  width: 92px;
+  height: 100%;
+  background: none;
+  overflow: hidden;
+  position: relative;
+  // cursor: pointer;
+
+  // background-color: rebeccapurple;
+}
+
+.slider {
+  padding: 0;
+  margin: 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 100%;
+  transition: transform 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+.sliderGreen, .sliderRed {
+  z-index: 1;
+  // z-index: 0;
+}
+
+.sliderContainer::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 6px;
+  width: 80px;
+  height: 40px;
+  border-radius: 30px;
+  border: 1px solid #E0E0E0;
+  background: #FFF;
+
+  // border: 1px solid #000;
+  // background: none;
+
+  pointer-events: none;
+  z-index: 0;
+  // z-index: 1;
+}
+
+.actBtnsWrap {
+  display: flex;
+  justify-content: center;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+}
+
+// TABLET
+@include tablet {
+  .content {
+    width: 540px;
+    height: 603px;
+    // padding: 20px 20px 40px 64px;
+    
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .divBtn {
+  display: flex;
+  justify-content: end;
+  }
+      
+  .btnClose {
+    // background-color: #fff;
+    // border: none;
+    // margin: none;
+    // padding: none;
+    display: flex;
+    visibility: visible;
+    pointer-events: visible;
+    // justify-content: center;
+    // align-content: center;
+  }
+
+  .vector {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+    
+  .vector:hover {
+    transform: rotate(90deg);
+  }
+}
+
+// DESKTOP
+@include desktop {
+  .vector {
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    }
+    
+    .vector:hover {
+    transform: rotate(90deg);
+    }
+}

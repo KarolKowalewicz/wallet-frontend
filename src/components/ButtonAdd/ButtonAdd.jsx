@@ -2,7 +2,7 @@ import styles from './ButtonAdd.module.scss'
 
 import { ReactComponent as ButtonPlus } from './../../img/+ btn.svg';
 import { useState } from 'react';
-import ModalAddTrans from '../ModalAddTrans/ModalAddTrans';
+import ModalTrans from '../ModalTrans/ModalTrans';
 
 
 const ButtonAdd = () => {
@@ -24,7 +24,7 @@ const ButtonAdd = () => {
             
 
             {modal && (
-                <ModalAddTrans onClose={closeModal}/>
+                <ModalTrans onClose={closeModal}/>
                 //komponent
                 
                 //ewentualne propsy
@@ -41,8 +41,8 @@ export default ButtonAdd
 
 
 
-{/* <button className={styles.button}>+</button> */}
-            {/* <button  className={styles.btn2}><ButtonPlus/></button> */}
+// {/* <button className={styles.button}>+</button> */}
+//             {/* <button  className={styles.btn2}><ButtonPlus/></button> */}
 
 
-            {/* //onClick={openModal} na buttonie lub na komponencie */}
+//             {/* //onClick={openModal} na buttonie lub na komponencie */}
