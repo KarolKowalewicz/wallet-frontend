@@ -18,17 +18,18 @@
     } 
     &__headcell:first-child {
         padding-left: 20px;
-        padding-right: 55px; 
         border-top-left-radius: 30px 30px;
         border-bottom-left-radius: 30px 30px;
     }
     &__headcell__type {
         text-align: center;
-        padding-right: 47px;
+        padding-right: 46px;
+        padding-left: 48px;
         
     }
     &__headcell__com {
-        padding-left: 45px;
+       text-align: left;
+       padding-left: 68px;
 
     }
         
@@ -39,7 +40,8 @@
     &__headcell:last-child {
         border-top-right-radius: 30px 30px;
         border-bottom-right-radius: 30px 30px;
-        text-align: right; 
+        text-align: right;
+        min-width: 89px; 
     }
 &__body {
     overflow: scroll; //need to check
@@ -64,15 +66,22 @@
 }
 &__rowcell__type {
     text-align: center;
-    padding-right: 47px;
-    
+        
 }
+&__rowcell__com {
+    text-align: left;
+    
+
+}
+
 &__rowcell__sum {
     text-align: right;
 
 }
 &__rowcell:last-child {    
-    text-align: right; 
+    text-align: right;
+    min-width: 89px;
+      
 }
 }
 
@@ -87,15 +96,20 @@
         border: none;
         cursor: pointer;     
         background: #24CCA7;
-        color: #FFF;   
+        color: #FFF;
+        &:hover {
+            transform: scale(1.15);
+        }   
     }
 
     &__edit {
         border: none;
         cursor: pointer;
         background: transparent;
-        padding-right: 8px;
-        padding-left: 33px;       
+        padding-right: 7px;
+        &:hover {
+            transform: scale(1.15);
+        }       
     }
     &__edit__icon {
         width: 14px;
