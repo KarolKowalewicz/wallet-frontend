@@ -1,7 +1,8 @@
 .transtable {
     border-collapse: collapse;
     border-spacing: 0;
-    
+    width: 100%; //need to check
+    max-width: 100%; //need to check
       
     &__headtable {
         background-color: #FFF;
@@ -17,14 +18,14 @@
     } 
     &__headcell:first-child {
         padding-left: 20px;
-        padding-right: 65px;
+        padding-right: 55px; 
         border-top-left-radius: 30px 30px;
         border-bottom-left-radius: 30px 30px;
     }
     &__headcell__type {
         text-align: center;
-        padding-right: 45px;
-
+        padding-right: 47px;
+        
     }
     &__headcell__com {
         padding-left: 45px;
@@ -41,7 +42,7 @@
         text-align: right; 
     }
 &__body {
-    overflow: scroll;
+    overflow: scroll; //need to check
 }    
 
 &__row {
@@ -60,6 +61,18 @@
 &__rowcell:first-child {
     padding-left: 20px;
        
+}
+&__rowcell__type {
+    text-align: center;
+    padding-right: 47px;
+    
+}
+&__rowcell__sum {
+    text-align: right;
+
+}
+&__rowcell:last-child {    
+    text-align: right; 
 }
 }
 

@@ -21,10 +21,10 @@ const TransactionListDesktop = () => {
         {/*transactions.map((transaction) => */}
             <tr className={styles.transtable__row}>
               <td className={styles.transtable__rowcell}>date</td>
-              <td className={styles.transtable__rowcell}>type</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
               <td className={styles.transtable__rowcell}>category</td>
               <td className={styles.transtable__rowcell}>transaction.comment</td>
-              <td className={styles.transtable__rowcell}>transaction.sum</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
                 <button className={styles.btn__edit}>
                 <Pencil className={styles.btn__edit__icon} />
@@ -34,10 +34,10 @@ const TransactionListDesktop = () => {
             </tr>
             <tr className={styles.transtable__row}>
               <td className={styles.transtable__rowcell}>date</td>
-              <td className={styles.transtable__rowcell}>type</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
               <td className={styles.transtable__rowcell}>category</td>
               <td className={styles.transtable__rowcell}>transaction.comment</td>
-              <td className={styles.transtable__rowcell}>transaction.sum</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
                 <button className={styles.btn__edit}>
                 <Pencil className={styles.btn__edit__icon} />
@@ -47,10 +47,10 @@ const TransactionListDesktop = () => {
             </tr>
             <tr className={styles.transtable__row}>
               <td className={styles.transtable__rowcell}>date</td>
-              <td className={styles.transtable__rowcell}>type</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
               <td className={styles.transtable__rowcell}>category</td>
               <td className={styles.transtable__rowcell}>transaction.comment</td>
-              <td className={styles.transtable__rowcell}>transaction.sum</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
                 <button className={styles.btn__edit}>
                 <Pencil className={styles.btn__edit__icon} />
