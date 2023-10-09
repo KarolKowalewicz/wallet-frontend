@@ -1,0 +1,110 @@
+@import "../../../stylesheet/vars.scss";
+@import "../../../stylesheet/fonts.scss";
+
+.container {
+  background-color: rgba(224, 224, 224, 0.4);
+  padding: 12px 20px;
+ 
+  @include tablet {
+    background-image: url(./../../img/Rectangle.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 32px 32px;
+  }
+    
+  @include desktop {
+    background-image: url(./../../img/rectangle_desk.png);
+    padding: 40px 16px 63px 18px;
+    height: 100vh; //need check
+  }
+  
+}
+
+.gridstat {
+    display: flex;   
+    flex-direction: column;
+    align-items: center;
+      @include tablet {
+        display: grid;
+        grid-template-columns: minmax(336px, 1fr) minmax(336px, 1fr);     //change adaptive columns
+        column-gap: 32px;
+        align-items: start;
+        justify-items: start;  
+    }
+      @include desktop {
+        grid-template-columns: 480px minmax(800px, 1fr); //change adaptive columns
+        grid-template-rows: auto auto auto auto;
+        column-gap: 0px;        
+    }
+&__navbar {
+    padding-bottom: 12px;
+    @include tablet {
+        grid-column: span 1; 
+        grid-row: span 1;
+        padding-bottom: 0px;  
+    }
+}
+&__balance { 
+    @include tablet {
+        grid-column: span 1; 
+        grid-row: span 1;
+        padding-bottom: 20px;
+        padding-top: 28px;  
+      }
+    @include desktop {
+        grid-column: 1; 
+        padding-bottom: 32px;  
+    }
+}
+&__exchange {
+    @include tablet {
+        grid-column: 2; 
+        grid-row: 1/ span 2;
+    }
+    @include desktop {
+        grid-column: 1; 
+        grid-row: span 1;   
+    } 
+
+}
+&__diagram {
+    @include tablet {
+        grid-column: span 2; 
+        grid-row: span 1;
+    }
+    @include desktop {
+        grid-column: 2; 
+        grid-row: 1 / span 4;
+    }
+
+}
+&__diagramname {
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-family: sans-serif; //need add font
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: 10px;
+    @include tablet {
+        text-align: left;
+        padding-bottom: 20px;
+    }
+}
+&__forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // need check 
+    @include tablet {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 32px;
+        align-items: start;
+        justify-items: start;  
+    } 
+}
+
+}
+ 

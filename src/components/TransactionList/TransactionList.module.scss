@@ -55,7 +55,10 @@
         border: none;
         cursor: pointer;     
         background: #24CCA7;
-        color: #FFF;   
+        color: #FFF;
+        &:hover {
+            transform: scale(1.15);
+          }      
     }
 
     &__edit {
@@ -67,11 +70,15 @@
         font-weight: 400;
         border: none;
         cursor: pointer;
-        background: transparent;       
+        background: transparent;
+        &:hover {
+            transform: scale(1.15);
+        }          
     }
     &__edit__icon {
         width: 14px;
         height: 14px;
         padding-right: 2px;
     }
+     
 }

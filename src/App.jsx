@@ -4,7 +4,6 @@ import authApiSlice from "./redux/slices/api/auth/authApiSlice";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import Diagram from "./pages/Diagram/Diagram";
 import StatisticsPage from "./pages/StatisticsPage/StatisticsPage";
 
 
@@ -33,12 +32,7 @@ function App() {
           index
           element={isUserLoggedIn ? <HomePage /> : <Navigate to="/login" />}
         />
-        <Route
-          path="diagram"
-          element={
-            data?.user?.token ? <Diagram /> : <Navigate to="/login" />
-          }
-        />
+         <Route path="/statistic" element={isUserLoggedIn ? <StatisticsPage /> : <Navigate to="/login" />} />
       </Route>
       <Route
         path="/login"
@@ -48,7 +42,7 @@ function App() {
         path="/register"
         element={!data?.user?.token ? <Register /> : <Navigate to="/" />}
       />
-      <Route path="/statistic" element={<StatisticsPage />} />
+      
     </Routes>
   );
 }
