@@ -5,6 +5,7 @@ import SharedLayout from "./components/SharedLayout/SharedLayout";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import StatisticsPage from "./pages/StatisticsPage/StatisticsPage";
+import ModalExchange from "./components/ModalExchange/ModalExchange";
 
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
@@ -33,6 +34,7 @@ function App() {
           element={isUserLoggedIn ? <HomePage /> : <Navigate to="/login" />}
         />
          <Route path="/statistic" element={isUserLoggedIn ? <StatisticsPage /> : <Navigate to="/login" />} />
+         <Route path="/exchange" element={isUserLoggedIn ? <ModalExchange /> : <Navigate to="/login" />} />
       </Route>
       <Route
         path="/login"
