@@ -5,10 +5,11 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import authApiSlice from "../../redux/slices/api/auth/authApiSlice";
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 import { ReactComponent as Avatar } from "../../img/avatar.svg";
 import { ReactComponent as Lock } from "../../img/lock.svg";
-import { ReactComponent as Email } from "../../img/email.svg";
+import { ReactComponent as Email } from "../../img/email.svg"; 
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -16,7 +17,7 @@ const validationSchema = Yup.object().shape({
     .min(6, "Password must be at least 6 characters")
     .max(12, "Password must be at most 12 characters")
     .required("Password is required"),
-  "confirm-password": Yup.string()
+  'confirm-password': Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirm Password is required"),
   name: Yup.string()
@@ -33,10 +34,8 @@ const RegisterForm = () => {
     const { email, password, name } = values;
     const result = await register({ email, password, name });
     if ("error" in result) {
-      //TODO: display in toast or something
       console.log(error);
     } else {
-      //TODO: display in toast or something
       console.log("register successful, you can now login");
       navigate("/login");
       navigate(0);
@@ -48,13 +47,13 @@ const RegisterForm = () => {
       initialValues={{
         email: "",
         password: "",
-        "confirm-password": "",
+        'confirm-password': '', 
         name: "",
       }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, values }) => (
         <Form>
           <div className={css.formBox}>
             <div className={css.logoSection}>
@@ -83,6 +82,7 @@ const RegisterForm = () => {
                   placeholder="Password"
                   type="password"
                   name="password"
+                
                 />
                 <ErrorMessage
                   name="password"
@@ -97,6 +97,7 @@ const RegisterForm = () => {
                   placeholder="Confirm Password"
                   type="password"
                   name="confirm-password"
+                
                 />
                 <ErrorMessage
                   name="confirm-password"
@@ -104,6 +105,10 @@ const RegisterForm = () => {
                   className={css.error}
                 />
               </label>
+              <PasswordStrengthBar
+                className={css.form__passwordStrength}
+                password={values.password}
+              /> 
               <label className={css.form__label}>
                 <Avatar className={css.form__svg} />
                 <Field
@@ -124,7 +129,6 @@ const RegisterForm = () => {
                   type="submit"
                   disabled={isLoading}
                 >
-                  {/* TODO: maybe add some loading spinner instead of plain text */}
                   {isLoading ? "Loading..." : "REGISTER"}
                 </button>
                 <Link

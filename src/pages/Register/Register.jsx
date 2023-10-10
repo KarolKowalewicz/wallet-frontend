@@ -7,6 +7,7 @@ import lowerEllipse from '../../img/Ellipse1.png'
 
 
 const Register = () => {
+ 
   return (   
     <div className={css.registerPage}>
         <div className={css.registerPage__backdrop}></div>
@@ -16,6 +17,7 @@ const Register = () => {
         <img src={frame} alt='frame' className={css.registerPage__frame} />
         <RegisterForm />
     </div>
+    
   )
 }
 
