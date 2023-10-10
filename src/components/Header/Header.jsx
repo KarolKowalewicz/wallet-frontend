@@ -35,7 +35,7 @@ const Header = () => {
       </div>
       <div className={styles.header__nav}>
         <div className={styles.header__nav__name}>
-          <p>Name: {user.name}</p>
+          <p>{user.name}</p>
         </div>
         <button
           className={styles.header__nav__exit}
