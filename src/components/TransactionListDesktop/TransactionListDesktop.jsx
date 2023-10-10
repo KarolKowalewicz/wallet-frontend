@@ -5,7 +5,7 @@ import styles from './TransactionListDesktop.module.scss';
 const TransactionListDesktop = () => {
 
     return (
-        
+       
        <table className={styles.transtable}> 
         <thead  className={styles.transtable__head}>
           <tr className={styles.transtable__headtable}>
@@ -57,11 +57,11 @@ const TransactionListDesktop = () => {
                 </button>
                 <button className={styles.btn__delete}>Delete</button>
               </td>             
-            </tr>
-          
-        </tbody>                 
+            </tr>                   
+        </tbody>                      
        
        </table>
+      
        
     )
 }
