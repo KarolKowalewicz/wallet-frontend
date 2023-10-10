@@ -106,13 +106,12 @@ align-items: center;
     grid-row: span 1;
     overflow-y: scroll; // alternative decision
     &::-webkit-scrollbar { width: 0.1em;}
-    height: 60vh;
     width: 100%; //need to check
+    height: 58vh; // for change height of table with transactions
   }
   @include desktop {
     grid-column: 2; 
-    grid-row: 1 / span 3;
-    height: 90vh;
+    grid-row: 1 / span 3;    
     width: 100%;  //need to check
     }
 

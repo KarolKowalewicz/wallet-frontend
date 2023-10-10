@@ -6,12 +6,15 @@
     width: 100%; //need to check
     min-width: 704px;
     max-width: 100%; //need to check
+    position: relative;
+    height: 60vh;
       
     @include desktop {
         min-width: 715px;
         max-width: 100%; //need check 
         margin-left: 67px;
         width: 91%;  //need check 
+       
     }
       
     &__headtable {
@@ -19,6 +22,8 @@
         font-size: 18px;
         font-weight: 700;
         padding-right: 20px;
+        position: sticky;
+        top: 0;
         
     }
     &__headcell {
@@ -94,7 +99,7 @@
 &__rowcell:last-child {    
     text-align: right;
     min-width: 89px;
-      
+          
 }
 }
 
