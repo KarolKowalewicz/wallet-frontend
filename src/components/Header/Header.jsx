@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import styles from "./Header.module.scss";
 import { ReactComponent as Logo } from "./../../img/logowallet.svg";
 import { ReactComponent as ExitDoor } from "./../../img/exitdoor.svg";
+import { RotatingLines } from "react-loader-spinner";
 
 // import logo from './../../img/logowallet.png'
 // import logoText from './../../img/logowallettext.png'
@@ -34,7 +35,7 @@ const Header = () => {
       </div>
       <div className={styles.header__nav}>
         <div className={styles.header__nav__name}>
-          <p>Name: {user.name}</p>
+          <p>{user.name}</p>
         </div>
         <button
           className={styles.header__nav__exit}
@@ -43,8 +44,7 @@ const Header = () => {
         >
           <ExitDoor className={styles.header__nav__exit__icon} />
           {isLoading ? (
-            // TODO: display loading spinner instead of plain text
-            "Logging out..."
+            <RotatingLines strokeColor="#bdbdbd " width="20" />
           ) : (
             <p className={styles.header__nav__exit__txt}>Exit</p>
           )}

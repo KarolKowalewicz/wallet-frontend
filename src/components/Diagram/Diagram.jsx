@@ -3,13 +3,15 @@ import { VictoryPie, VictoryLabel } from "victory";
 import styles from "./Diagram.module.scss";
 
 const data = [
-  { x: "Dane 1", y: 30 },
-  { x: "Dane 2", y: 25 },
-  { x: "Dane 3", y: 15 },
-  { x: "Dane 4", y: 20 },
-  { x: "Dane 5", y: 10 },
-  { x: "Dane 6", y: 5 },
-  { x: "Dane 7", y: 5 },
+  { x: "Data 1", y: 8700 },
+  { x: "Data 2", y: 3800 },
+  { x: "Data 3", y: 1500 },
+  { x: "Data 4", y: 800 },
+  { x: "Data 5", y: 2208 },
+  { x: "Data 6", y: 300 },
+  { x: "Data 7", y: 3400 },
+  { x: "Data 8", y: 1230 },
+  { x: "Data 9", y: 610 },
 ];
 
 const labelStyle = {
@@ -17,13 +19,16 @@ const labelStyle = {
 };
 
 const DiagramForm = () => (
-  <div>
-    <svg className={styles.diagram} width={400} height={400}>
-      <circle cx={200} cy={200} r={100} fill="white" />
+  <div className={styles.diagram}>
+    <svg width={300} height={300}>
+      <circle cx={140} cy={140} r={120} fill="white" />
       <VictoryPie
         labelComponent={<VictoryLabel style={labelStyle} />}
         standalone={false}
-        innerRadius={100}
+        width={300}
+        height={300}
+        innerRadius={140}
+        labelRadius={10}
         data={data}
         colorScale={[
           "red",
@@ -35,14 +40,15 @@ const DiagramForm = () => (
           "purple",
         ]}
       />
+
       <text
-        x={200}
-        y={200}
+        className={styles.diagram__text}
+        x={150}
+        y={150}
         textAnchor="middle"
         dominantBaseline="middle"
-        fontSize="30"
       >
-        10000
+        &euro; 24 000.00
       </text>
     </svg>
   </div>
