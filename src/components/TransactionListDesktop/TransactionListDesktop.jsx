@@ -5,7 +5,7 @@ import styles from './TransactionListDesktop.module.scss';
 const TransactionListDesktop = () => {
 
     return (
-        
+       
        <table className={styles.transtable}> 
         <thead  className={styles.transtable__head}>
           <tr className={styles.transtable__headtable}>
@@ -21,10 +21,10 @@ const TransactionListDesktop = () => {
         {/*transactions.map((transaction) => */}
             <tr className={styles.transtable__row}>
               <td className={styles.transtable__rowcell}>date</td>
-              <td className={styles.transtable__rowcell}>type</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
               <td className={styles.transtable__rowcell}>category</td>
-              <td className={styles.transtable__rowcell}>transaction.comment</td>
-              <td className={styles.transtable__rowcell}>transaction.sum</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
                 <button className={styles.btn__edit}>
                 <Pencil className={styles.btn__edit__icon} />
@@ -34,10 +34,10 @@ const TransactionListDesktop = () => {
             </tr>
             <tr className={styles.transtable__row}>
               <td className={styles.transtable__rowcell}>date</td>
-              <td className={styles.transtable__rowcell}>type</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
               <td className={styles.transtable__rowcell}>category</td>
-              <td className={styles.transtable__rowcell}>transaction.comment</td>
-              <td className={styles.transtable__rowcell}>transaction.sum</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
                 <button className={styles.btn__edit}>
                 <Pencil className={styles.btn__edit__icon} />
@@ -47,21 +47,230 @@ const TransactionListDesktop = () => {
             </tr>
             <tr className={styles.transtable__row}>
               <td className={styles.transtable__rowcell}>date</td>
-              <td className={styles.transtable__rowcell}>type</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
               <td className={styles.transtable__rowcell}>category</td>
-              <td className={styles.transtable__rowcell}>transaction.comment</td>
-              <td className={styles.transtable__rowcell}>transaction.sum</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
                 <button className={styles.btn__edit}>
                 <Pencil className={styles.btn__edit__icon} />
                 </button>
                 <button className={styles.btn__delete}>Delete</button>
               </td>             
-            </tr>
-          
-        </tbody>                 
+            </tr> 
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr> 
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>  
+            <tr className={styles.transtable__row}>
+              <td className={styles.transtable__rowcell}>date</td>
+              <td className={styles.transtable__rowcell__type}>type</td>
+              <td className={styles.transtable__rowcell}>category</td>
+              <td className={styles.transtable__rowcell__com}>transaction.comment</td>
+              <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
+              <td className={styles.transtable__rowcell}>
+                <button className={styles.btn__edit}>
+                <Pencil className={styles.btn__edit__icon} />
+                </button>
+                <button className={styles.btn__delete}>Delete</button>
+              </td>             
+            </tr>   
+                              
+        </tbody>                      
        
        </table>
+      
        
     )
 }

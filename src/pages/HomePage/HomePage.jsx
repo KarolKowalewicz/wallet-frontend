@@ -10,37 +10,28 @@ import TransactionListDesktop from './../../components/TransactionListDesktop/Tr
 import Exchange from './../../components/Exchange/Exchange';
 import { useEffect } from 'react';
 
-
-
-// import Balance from "../../components/Balance/Balance";
-// import ButtonAdd from "../../components/ButtonAdd/ButtonAdd";
-// import Exchange from "../../components/Exchange/Exchange";
-// import NavBar from "../../components/NavBar/NavBar";
-// import styles from './HomePage.module.scss';
-
-
-
 const HomePage = () => {
   useEffect(() => {
     document.title = "Welcome to Wallet App";
 }, []);
 
-    return ( <>
-      <div className={styles.container}>
+
+    return ( <div className={styles.container}>
+      <div className={styles.grid}>
         
-        <div className={styles.navbar}>
+        <div className={styles.grid__navbar}>
         <NavBar />
-        </div>
-               
+        </div>               
+              
+        <div className={styles.grid__balance}><Balance /></div>
+
         <Media query="(min-width: 768px)">
         { matches =>
-          matches ? ( <div className={styles.exchange}>
+          matches ? ( <div className={styles.grid__exchange}>
           <Exchange /></div>
         ) : null
         }
         </Media>
-        
-        <div className={styles.balance}><Balance /></div>
 
         <Media query="(max-width: 767px)">
         { matches =>
@@ -56,15 +47,14 @@ const HomePage = () => {
 
         <Media query="(min-width: 768px)">
         { matches =>
-          matches ? ( <div className={styles.transactions}>
+          matches ? ( <div className={styles.grid__transactions}>
           <TransactionListDesktop  /> </div>
         ) : null
-        }</Media>
-               
+        }</Media>             
         </div>
-        <ButtonAdd className={styles.btnAdd} />
-        
-        </>
+        <div className={styles.btnAddFixed}><ButtonAdd /></div>
+             
+        </div>
     
        
         
@@ -81,9 +71,9 @@ const HomePage = () => {
 
 //         </div>
 
+
     );
 
 }
 
 export default HomePage
-

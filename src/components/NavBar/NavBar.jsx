@@ -22,7 +22,7 @@ function NavBar() {
       <div>
         <ul className={styles["navbar-container"]}>
           <li>
-            <NavLink exact="true" to="/"> {/* activeClassName={styles.activeLink} */} 
+            <NavLink exact to="/">
               <img
                 src={
                   activeIcon === "home"
@@ -33,15 +33,12 @@ function NavBar() {
                   activeIcon === "home" ? styles.activeIcon : ""
                 }`}
                 alt="Home"
-                style={{
-                  width: "38px",
-                  height: "38px",
-                }}
               />
+              <span className={styles.text}>Home</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/statistic"> {/* activeClassName={styles.activeLink} */} 
+            <NavLink to="/statistic">
               <img
                 src={
                   activeIcon === "statistics"
@@ -52,15 +49,12 @@ function NavBar() {
                   activeIcon === "statistics" ? styles.activeIcon : ""
                 }`}
                 alt="Statistics"
-                style={{
-                  width: "38px",
-                  height: "38px",
-                }}
               />
+              <span className={styles.text}>Statistics</span>
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/exchange"> {/* activeClassName={styles.activeLink} */} 
+          <li className={styles.mobileOnly}>
+            <NavLink to="/exchange">
               <img
                 src={
                   activeIcon === "exchange"
@@ -71,10 +65,6 @@ function NavBar() {
                   activeIcon === "exchange" ? styles.activeIcon : ""
                 }`}
                 alt="Current Exchange"
-                style={{
-                  width: "38px",
-                  height: "38px",
-                }}
               />
             </NavLink>
           </li>
