@@ -4,6 +4,7 @@
 .container {
   background-color: rgba(224, 224, 224, 0.4);
   padding: 12px 20px;
+  position: relative;
  
   @include tablet {
     background-image: url(./../../img/Rectangle.png);
@@ -21,6 +22,21 @@
   
 }
 
+//border between columns
+.container::before { 
+    @include desktop {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  left: 462px;
+  top: 0px;
+  background-color: #E7E5F2;
+  filter: drop-shadow(1px 0px 0px rgba(255, 255, 255, 0.60)) drop-shadow(-1px 0px 0px rgba(0, 0, 0, 0.05));
+  }
+  } 
+  
 .gridstat {
     display: flex;   
     flex-direction: column;
@@ -33,7 +49,7 @@
         justify-items: start;  
     }
       @include desktop {
-        grid-template-columns: 480px minmax(800px, 1fr); //change adaptive columns
+        grid-template-columns: 462px minmax(784px, 1fr); //change adaptive columns
         grid-template-rows: auto auto auto auto;
         column-gap: 0px;        
     }
@@ -72,10 +88,15 @@
     @include tablet {
         grid-column: span 2; 
         grid-row: span 1;
+        min-width: 704px;
+        max-width: 100%;  
     }
     @include desktop {
         grid-column: 2; 
         grid-row: 1 / span 4;
+        min-width: 715px;
+        max-width: 100%;
+
     }
 
 }
@@ -91,18 +112,28 @@
         text-align: left;
         padding-bottom: 20px;
     }
+    @include desktop {
+        margin-left: 84px;
+    }
 }
 &__forms{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
     // need check 
     @include tablet {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        column-gap: 32px;
+        column-gap: 22px;
         align-items: start;
-        justify-items: start;  
+        justify-items: start;
+        
+    }
+    @include desktop {
+        width: 100%;
+        margin-left: 67px;
+        
     } 
 }
 

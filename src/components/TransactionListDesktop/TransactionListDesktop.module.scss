@@ -1,14 +1,30 @@
+@import "../../../stylesheet/vars.scss";
+
 .transtable {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%; //need to check
+    min-width: 704px;
     max-width: 100%; //need to check
+    position: relative;
+    height: 60vh;
+      
+    @include desktop {
+        min-width: 715px;
+        max-width: 100%; //need check 
+        margin-left: 67px;
+        width: 91%;  //need check 
+       
+    }
       
     &__headtable {
         background-color: #FFF;
         font-size: 18px;
         font-weight: 700;
         padding-right: 20px;
+        position: sticky;
+        top: 0;
+        
     }
     &__headcell {
     padding-top: 16px;
@@ -44,7 +60,8 @@
         min-width: 89px; 
     }
 &__body {
-    overflow: scroll; //need to check
+    overflow-y: scroll; // need check
+    &::-webkit-scrollbar { width: 0.1em;}
 }    
 
 &__row {
@@ -70,6 +87,7 @@
 }
 &__rowcell__com {
     text-align: left;
+    padding-left: 68px;
     
 
 }
@@ -81,7 +99,7 @@
 &__rowcell:last-child {    
     text-align: right;
     min-width: 89px;
-      
+          
 }
 }
 
