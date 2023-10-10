@@ -1,8 +1,21 @@
 import { ReactComponent as Pencil } from './../../img/pencil.svg';
 import styles from './TransactionListDesktop.module.scss';
 
+import { useState } from 'react'
+import EditTransaction from '../EditTransaction/EditTransaction';
+
 
 const TransactionListDesktop = () => {
+
+    const [showEdittrans, setShowEditTrans] = useState(false);
+
+    const openModal = () => {
+      setShowEditTrans(true);
+    };
+
+    const closeModal = () => {
+      setShowEditTrans(false);
+    };
 
     return (
        
@@ -27,7 +40,7 @@ const TransactionListDesktop = () => {
               <td className={styles.transtable__rowcell__sum}>transaction.sum</td>
               <td className={styles.transtable__rowcell}>
                 <button className={styles.btn__edit}>
-                <Pencil className={styles.btn__edit__icon} />
+                <Pencil className={styles.btn__edit__icon} onClick={openModal} />
                 </button>
                 <button className={styles.btn__delete}>Delete</button>
               </td>             
@@ -268,7 +281,7 @@ const TransactionListDesktop = () => {
             </tr>   
                               
         </tbody>                      
-       
+        {showEdittrans && <EditTransaction onClose={closeModal} />}
        </table>
       
        
