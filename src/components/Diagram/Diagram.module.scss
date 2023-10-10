@@ -1,3 +1,19 @@
 @import "./../../../public/modern-normalize.scss";
 @import "../../../stylesheet/vars.scss";
 
+.diagram {
+  margin-bottom: 30px;
+
+  @include tablet{
+    margin-bottom: 0;
+  }
+
+  &__text {
+    text-align: center;
+    font-family: font-family-circe;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
