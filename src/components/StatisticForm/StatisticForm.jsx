@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "./StatisticForm.module.scss";
-import Diagram from "../Diagram/Diagram";
-
 
 
 const StatisticForm = () => {
@@ -26,7 +24,7 @@ const StatisticForm = () => {
     const monthOptions = [];
     for (let month = 1; month <= 12; month++) {
       const date = `${currentYear}-${month.toString().padStart(2, "0")}`;
-      const monthName = new Date(date).toLocaleString("default", {
+      const monthName = new Date(date).toLocaleString("en", {
         month: "long",
       });
       monthOptions.push({ value: date, label: monthName });
@@ -43,11 +41,9 @@ const StatisticForm = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <>
       <div className={styles.statistic}>
-        <h1 className={styles.statistic__name}>Statistics</h1>
-        <Diagram />
-        <div className={styles.statistic__label}>
+       <div className={styles.statistic__label}>
           <select
             className={styles.statistic__select}
             id="month"
@@ -55,7 +51,7 @@ const StatisticForm = () => {
             value={selectedMonth}
             onChange={handleMonthChange}
           >
-            <option value="">Month</option>
+            <option className={styles.statistic__option} value="">Month</option>
             {months.map((month) => (
               <option key={month.value} value={month.value}>
                 {month.label}
@@ -69,7 +65,7 @@ const StatisticForm = () => {
             value={selectedYear}
             onChange={handleYearChange}
           >
-            <option value="">Year</option>
+            <option className={styles.statistic__option} value="">Year</option>
             {years.map((year) => (
               <option key={year} value={year}>
                 {year}
@@ -127,7 +123,7 @@ const StatisticForm = () => {
             </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

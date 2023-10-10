@@ -4,8 +4,9 @@ import authApiSlice from "./redux/slices/api/auth/authApiSlice";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import Statistic from "./pages/Statistic";
-import DiagramForm from "./pages/Diagram/Diagram";
+import StatisticsPage from "./pages/StatisticsPage/StatisticsPage";
+import ModalExchange from "./components/ModalExchange/ModalExchange";
+import Loader from "./components/Lodaer/Loader";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
@@ -13,17 +14,16 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const Register = lazy(() => import("./pages/Register/Register"));
 
 function App() {
-
   // const isUserLoggedIn = false;
 
   //checking if user is logged in based on token saved in local storage
   const { data, isLoading } = authApiSlice.useCurrentQuery();
   // const isUserLoggedIn = !!data?.user?.token;
-    const isUserLoggedIn = true;
+  const isUserLoggedIn = true;
 
   if (isLoading) {
     //TODO: display loading spinner instead of plain text
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   return (
@@ -31,22 +31,18 @@ function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route
           index
+          element={isUserLoggedIn ? <HomePage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/statistic"
           element={
-            isUserLoggedIn ? (
-             <HomePage />              
-            ) : (
-              <Navigate to="/login" />
-            )
+            isUserLoggedIn ? <StatisticsPage /> : <Navigate to="/login" />
           }
         />
         <Route
-          path="diagram"
+          path="/exchange"
           element={
-            data?.user?.token ? (
-              <DiagramForm />
-            ) : (
-              <Navigate to="/login" />
-            )
+            isUserLoggedIn ? <ModalExchange /> : <Navigate to="/login" />
           }
         />
       </Route>
@@ -58,8 +54,6 @@ function App() {
         path="/register"
         element={!data?.user?.token ? <Register /> : <Navigate to="/" />}
       />
-      <Route path="/statistic" element={<Statistic />} />
-      <Route path="/diagram" element={<DiagramForm />} />
     </Routes>
   );
 }

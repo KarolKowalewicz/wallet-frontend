@@ -5,8 +5,7 @@
   // background-color: beige;
 
   border-radius: 30px;
-  height: 80px;
-  width: 280px;
+
   // background-color: #fff;
   background-color: $font-color-light;
   //kolor zmienna
@@ -26,28 +25,27 @@
   &__layout {
     // background-color: aquamarine;
     margin-left: 32px;
+
     @include tablet {
       margin-left: 40px;
     }
-    // height: 40px;
-  }
 
-  &__description {
-    // background-color: bisque;
-    margin: 0 auto;
-    text-transform: uppercase;
+    &__description {
+      margin: 0 auto;
+      text-transform: uppercase;
 
-    color: $color-balance-description;
+      color: $color-balance-description;
 
-    font-family: $font-family-circe;
-    font-size: 12px;
-  }
-  &__content {
-    margin: 12px 0 0 0;
+      font-family: $font-family-circe;
+      font-size: 12px;
+    }
+    &__content {
+      margin: 12px 0 0 0;
 
-    color: $font-color-dark;
+      color: $font-color-dark;
 
-    // background-color: azure;
-    font-size: 30px;
+      font-family: $font-family-poppins;
+      font-size: 30px;
+    }
   }
 }

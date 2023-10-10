@@ -1,11 +1,19 @@
 @import "./../../../public/modern-normalize.scss";
 @import "../../../stylesheet/vars.scss";
 
-.custom {
-    fill: red;
-    font-size: 25px;
+.diagram {
+  margin-bottom: 30px;
+
+  @include tablet{
+    margin-bottom: 0;
   }
 
-    .victory-pie-label tspan {
-        font-size: 25px;
-    }
+  &__text {
+    text-align: center;
+    font-family: font-family-circe;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}

@@ -1,50 +1,137 @@
+
+@import "../../../stylesheet/vars.scss";
+
 .container {
-  background-color: rgba(255, 255, 255, 0.4);
-  // backdrop-filter: blur(25px);
   background-color: rgba(224, 224, 224, 0.4);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 12px 20px;
+  position: relative;
+  height: 100%;
+  min-height: auto;
+  @include tablet {
+    background-color: none;
+    background-image: url(./../../img/Rectangle.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 32px 32px;
+    position: relative;
+  }
+  @include desktop {
+    background-image: url(./../../img/rectangle_desk.png);
+    padding: 40px 16px 63px 18px;
+    height: 100vh; 
+     
+  }
+  
+}
+
+//border between columns
+.container::before { 
+  @include desktop {
+content: '';
+display: block;
+position: absolute;
+width: 1px;
+height: 100%;
+left: 480px;
+top: 0px;
+background-color: #E7E5F2;
+filter: drop-shadow(1px 0px 0px rgba(255, 255, 255, 0.60)) drop-shadow(-1px 0px 0px rgba(0, 0, 0, 0.05));
+}
+} 
+
+.grid {
+display: flex;   
+flex-direction: column;
+align-items: center;
+  @include tablet {
+    display: grid;
+    grid-template-columns: minmax(336px, 1fr) minmax(336px, 1fr);     //change adaptive columns
+    column-gap: 32px;
+    align-items: start;
+    justify-items: start;  
+  }
+  @include desktop {
+    display: grid;
+    grid-template-columns: 462px minmax(784px, 1fr);  //change adaptive columns
+    column-gap: 0px;
+    align-items: start;
+    justify-items: start;
+    position: relative;
+  }
+
+  &__navbar {
+  padding-bottom: 12px;
+  @include tablet {
+    padding-bottom: 0px;
+    grid-column: span 1; 
+    grid-row: span 1;  
+    } 
+  @include desktop {
+    padding-bottom: 0px;
+    grid-column: span 1; 
+    grid-row: span 1;   
+  }    
+  }
+    
+&__balance {
   padding-bottom: 20px;
+  @include tablet {
+    grid-column: span 1; 
+    grid-row: span 1;
+    padding-bottom: 20px;
+    padding-top: 28px;  
+  }
+  @include desktop {
+    grid-column: 1; 
+    grid-row: span 1;
+    padding-bottom: 32px;  
+  }
+  }
+
+&__exchange {
+  @include tablet {
+      grid-column: 2; 
+      grid-row: 1/ span 2;
+    }
+  @include desktop {
+    grid-column: 1; 
+    grid-row: span 1;   
+  }      
+  }  
+
+&__transactions {
+  @include tablet {
+    grid-column: span 2; 
+    grid-row: span 1;
+    overflow-y: scroll; // alternative decision
+    &::-webkit-scrollbar { width: 0.1em;}
+    width: 100%; //need to check
+    height: 58vh; // for change height of table with transactions
+  }
+  @include desktop {
+    grid-column: 2; 
+    grid-row: 1 / span 3;    
+    width: 100%;  //need to check
+    }
+
+}
 }
 
 .btnAddFixed {
-  position: fixed;
-  bottom: 0;
-  background-color: rgba(224, 224, 224, 0.4);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+    @include tablet {
+      position: fixed;
+      bottom: 8px;
+      right: 8px;
+      z-index: 2;
+    }
+    @include desktop {
+      bottom: 40px;
+      right: 40px; 
+    }
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
-  .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 20px;
-    column-gap: 32px;
-    align-items: start;
-    justify-items: start;
-    padding: 32px 32px;
-  }
-
-  .navbar {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  .balance {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  .exchange {
-    grid-column: span 1;
-    grid-row: span 2;
-  }
-
-  .transactions {
-    grid-column: span 2;
-    grid-row: span 1;
-  }
-}
-
-@media (min-width: 1280px) {
-}

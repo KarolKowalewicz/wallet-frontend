@@ -27,11 +27,10 @@ const HomePage = () => {
         <div className={styles.grid__navbar}>
           <NavBar />
         </div>
-
         <div className={styles.grid__balance}>
           <Balance balance={data.statistics.balance} isLoading={isLoading} />
         </div>
-
+        754b25a72e4334406802aae26e500403d9c9
         <Media query="(max-width: 767px)">
           {(matches) =>
             matches ? (

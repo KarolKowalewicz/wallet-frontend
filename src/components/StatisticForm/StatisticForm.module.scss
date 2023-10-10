@@ -1,60 +1,13 @@
 @import "./../../../public/modern-normalize.scss";
 @import "../../../stylesheet/vars.scss";
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  background: rgba(193, 193, 193, 0.127);
-}
 
 .statistic {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-
-  &__name {
-    color: #000;
-    text-align: center;
-    font-size: 30px;
-    font-style: normal;
-    font-family: Popins, sans-serif;
-    font-weight: 400;
-    line-height: normal;
-    margin-bottom: 10px;
-  }
-
-  &__diagram {
-    width: 280px;
-    height: 280px;
-    background: conic-gradient(
-      red 0% 10%,
-      orange 10% 20%,
-      yellow 20% 30%,
-      green 30% 40%,
-      blue 40% 50%,
-      purple 50% 60%,
-      pink 60% 70%,
-      brown 70% 80%,
-      gray 80% 90%,
-      cyan 90% 100%
-    );
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-bottom: 30px;
-  }
-
-  &__cat {
-    position: absolute;
-    font-size: 12px;
-  }
-
+  
   &__label {
     display: flex;
     align-items: center;
@@ -86,7 +39,7 @@
     background-repeat: no-repeat;
     background-position: right 20px center;
 
-    option {
+  &__option {
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
