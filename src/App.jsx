@@ -6,7 +6,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import StatisticsPage from "./pages/StatisticsPage/StatisticsPage";
 import ModalExchange from "./components/ModalExchange/ModalExchange";
-
+import Loader from "./components/Lodaer/Loader";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
@@ -23,7 +23,7 @@ function App() {
 
   if (isLoading) {
     //TODO: display loading spinner instead of plain text
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   return (
@@ -33,8 +33,18 @@ function App() {
           index
           element={isUserLoggedIn ? <HomePage /> : <Navigate to="/login" />}
         />
-         <Route path="/statistic" element={isUserLoggedIn ? <StatisticsPage /> : <Navigate to="/login" />} />
-         <Route path="/exchange" element={isUserLoggedIn ? <ModalExchange /> : <Navigate to="/login" />} />
+        <Route
+          path="/statistic"
+          element={
+            isUserLoggedIn ? <StatisticsPage /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/exchange"
+          element={
+            isUserLoggedIn ? <ModalExchange /> : <Navigate to="/login" />
+          }
+        />
       </Route>
       <Route
         path="/login"
@@ -44,7 +54,6 @@ function App() {
         path="/register"
         element={!data?.user?.token ? <Register /> : <Navigate to="/" />}
       />
-      
     </Routes>
   );
 }

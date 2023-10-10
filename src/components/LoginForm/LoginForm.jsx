@@ -9,6 +9,7 @@ import styles from "./LoginForm.module.scss";
 import logo from "./../../img/logowallet.png";
 import { ReactComponent as Lock } from "../../img/lock.svg";
 import { ReactComponent as Email } from "../../img/email.svg";
+import { RotatingLines } from "react-loader-spinner";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ const LoginForm = () => {
           <form className={styles.login__form} onSubmit={formik.handleSubmit}>
             <div>
               <label className={styles.login__label}>
-              <Email className={styles.login__icon} />
+                <Email className={styles.login__icon} />
 
                 <input
                   className={styles.login__input}
@@ -71,7 +72,7 @@ const LoginForm = () => {
             </div>
             <div>
               <label className={styles.login__label}>
-              <Lock className={styles.login__icon} />
+                <Lock className={styles.login__icon} />
 
                 <input
                   className={styles.login__input}
@@ -92,8 +93,7 @@ const LoginForm = () => {
                   type="submit"
                   disabled={isLoading}
                 >
-                  {/* TODO: maybe add some loading spinner instead of plain text */}
-                  {isLoading ? "Loading..." : "Login"}
+                  {isLoading ? <RotatingLines width="20" /> : "Login"}
                 </button>
               </div>
               <div className={styles.login__btn}>
