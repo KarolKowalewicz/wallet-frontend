@@ -16,7 +16,7 @@ const HomePage = () => {
 
   const { data, isLoading } = transactionsApiSlice.useGetTransactionsQuery();
 
-  console.log(data);
+  // {showEdittrans && <EditTransaction onClose={closeModal} />}
 
   //TODO: add some spinner
   if (isLoading) return <h2>Loading...</h2>;

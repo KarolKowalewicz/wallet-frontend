@@ -4,9 +4,6 @@ import TransactionListDesktopItem from "../TransactionsListDesktopItem/Transacti
 import EditTransaction from "../EditTransaction/EditTransaction";
 
 const TransactionListDesktop = ({ transactions, isLoading }) => {
-  //TODO: add some spinner
-  if (isLoading) return <h2>Loading...</h2>;
-
   const [showEdittrans, setShowEditTrans] = useState(false);
 
   const openModal = () => {
@@ -16,6 +13,9 @@ const TransactionListDesktop = ({ transactions, isLoading }) => {
   const closeModal = () => {
     setShowEditTrans(false);
   };
+
+  //TODO: add some spinner
+  if (isLoading) return <h2>Loading...</h2>;
 
   return (
     <table className={styles.transtable}>

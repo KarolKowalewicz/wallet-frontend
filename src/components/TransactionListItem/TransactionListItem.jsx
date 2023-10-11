@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as Pencil } from "./../../img/pencil.svg";
 import styles from "./TransactionListItem.module.scss";
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
+import EditTransaction from "../EditTransaction/EditTransaction";
 
 const TransactionListItem = ({
   date,
@@ -13,6 +14,20 @@ const TransactionListItem = ({
 }) => {
   const [deleteTransaction, { isLoading: isDeleting }] =
     transactionsApiSlice.useDeleteTransactionMutation();
+
+  const handleDelete = async () => {
+    await deleteTransaction(_id);
+  };
+
+  const [showEdittrans, setShowEditTrans] = useState(false);
+
+  const openModal = () => {
+    setShowEditTrans(true);
+  };
+
+  const closeModal = () => {
+    setShowEditTrans(false);
+  };
 
   return (
     <ul className={styles.transaction}>
@@ -40,14 +55,11 @@ const TransactionListItem = ({
       </li>
       <li className={styles.transaction__item__last}>
         {/* TODO: add some spinner */}
-        <button
-          className={styles.btn__delete}
-          onClick={async () => await deleteTransaction(_id)}
-        >
+        <button className={styles.btn__delete} onClick={handleDelete}>
           {isDeleting ? "Deleting..." : "Delete"}
         </button>
         <button className={styles.btn__edit}>
-          <Pencil className={styles.btn__edit__icon} />
+          <Pencil className={styles.btn__edit__icon} onClick={openModal} />
           Edit
         </button>
       </li>
