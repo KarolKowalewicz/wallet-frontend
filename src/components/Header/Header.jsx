@@ -5,27 +5,38 @@ import styles from "./Header.module.scss";
 import { ReactComponent as Logo } from "./../../img/logowallet.svg";
 import { ReactComponent as ExitDoor } from "./../../img/exitdoor.svg";
 import { RotatingLines } from "react-loader-spinner";
-
+import { useState } from "react";
+import LogoutModal from "../LogoutModal/LogoutModal";
 // import logo from './../../img/logowallet.png'
 // import logoText from './../../img/logowallettext.png'
 
 const Header = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const user = useSelector((state) => state.auth);
 
   const [logout, { isLoading, error }] = authApiSlice.useLogoutMutation();
 
-  const handleLogout = async () => {
-    const result = await logout();
-    if ("error" in result) {
-      //TODO: display in toast or something
-      console.log(error);
-    } else {
-      //TODO: display in toast or something
-      console.log("logged out successful");
-      navigate("/login");
-      navigate(0);
-    }
+  // const handleLogout = async () => {
+  //   const result = await logout();
+  //   if ("error" in result) {
+  //     //TODO: display in toast or something
+  //     console.log(error);
+  //   } else {
+  //     //TODO: display in toast or something
+  //     console.log("logged out successful");
+  //     navigate("/login");
+  //     navigate(0);
+  //   }
+  // };
+
+  const [modal, setModal] = useState(false);
+
+  const openModal = () => {
+    setModal(true);
+  };
+
+  const closeModal = () => {
+    setModal(false);
   };
   return (
     <div className={styles.header}>
@@ -39,7 +50,7 @@ const Header = () => {
         </div>
         <button
           className={styles.header__nav__exit}
-          onClick={handleLogout}
+          onClick={openModal}
           disabled={isLoading}
         >
           <ExitDoor className={styles.header__nav__exit__icon} />
@@ -50,6 +61,7 @@ const Header = () => {
           )}
         </button>
       </div>
+      {modal && <LogoutModal onClose={closeModal} />}
     </div>
   );
 };
