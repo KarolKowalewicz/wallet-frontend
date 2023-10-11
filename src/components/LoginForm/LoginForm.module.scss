@@ -10,6 +10,10 @@
   width: 100vw;
   background-color: $background-light;
 
+  @include tablet {
+    background-color: #e7eaf2;
+  }
+
   @include desktop {
     background-image: url("../../img/backdrop.png");
     background-size: cover;
@@ -17,6 +21,7 @@
     height: 100vh;
     margin: 0;
   }
+
 }
 
 .login {
@@ -164,9 +169,11 @@
 
 // TABLET
 @include tablet {
+
   .container {
     background-color: $background-ccent;
   }
+
   .login {
     background-color:$background-light;
     border: none;
