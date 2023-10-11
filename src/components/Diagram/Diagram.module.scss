@@ -5,7 +5,15 @@
   margin-bottom: 30px;
 
   @include tablet{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 0;
+    width: 336px;
+  }
+
+  @include desktop{
+    width: 330px;
   }
 
   &__text {

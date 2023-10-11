@@ -1,13 +1,11 @@
 @import "./../../../public/modern-normalize.scss";
 @import "../../../stylesheet/vars.scss";
 
-
 .statistic {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  
+
   &__label {
     display: flex;
     align-items: center;
@@ -16,13 +14,23 @@
     gap: 20px;
     padding-bottom: 8px;
     margin-bottom: 20px;
+
+    @include tablet {
+      gap: 14px;
+      flex-direction: row;
+      padding-bottom: 0;
+    }
+
+    @include desktop {
+      gap: 36px;
+    }
   }
 
   &__select {
     appearance: none;
     width: 280px;
     padding: 12px;
-    border: 1px solid #000;
+    border: 1px solid $font-color-dark;
     border-radius: 30px;
     background: rgba(193, 193, 193, 0.127);
     cursor: pointer;
@@ -39,15 +47,25 @@
     background-repeat: no-repeat;
     background-position: right 20px center;
 
-  &__option {
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      font-family: $font-family-circe;
-      text-transform: capitalize;
+    @include tablet {
+      width: 160px;
+    }
+
+    @include desktop {
+      width: 180px;
     }
   }
+  &__option {
+    border-radius: 20px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: $font-family-circe;
+    text-transform: capitalize;
+    background-color: #000;
+  }
+
   &__description {
     display: flex;
     align-items: center;
@@ -62,6 +80,14 @@
     font-weight: 700;
     line-height: normal;
     margin-bottom: 20px;
+
+    @include tablet {
+      width: 336px;
+    }
+
+    @include desktop {
+      width: 395px;
+    }
   }
 
   &__table {
@@ -74,7 +100,6 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 100%;
   }
 
   &__item {
@@ -84,6 +109,14 @@
     justify-content: space-between;
     padding: 0 16px 16px 16px;
     border-bottom: 1px solid #dcdcdf;
+
+    @include tablet {
+      width: 336px;
+    }
+
+    @include desktop {
+      width: 395px;
+    }
   }
 
   &__itemColor {
@@ -111,11 +144,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 280px;
+    width: 250px;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     margin-bottom: 15px;
+
+    @include tablet {
+      width: 300px;
+    }
+
+    @include desktop {
+      width: 370px;
+    }
   }
 }
