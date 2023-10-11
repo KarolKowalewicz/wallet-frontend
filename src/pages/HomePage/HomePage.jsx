@@ -1,79 +1,63 @@
-
-import Media from 'react-media';
-
-import Balance from "../../components/Balance/Balance"
-import ButtonAdd from "../../components/ButtonAdd/ButtonAdd"
-import styles from './HomePage.module.scss';
+import Media from "react-media";
+import { useEffect } from "react";
+import Balance from "../../components/Balance/Balance";
+import ButtonAdd from "../../components/ButtonAdd/ButtonAdd";
+import styles from "./HomePage.module.scss";
 import NavBar from "./../../components/NavBar/NavBar";
-import TransactionList from './../../components/TransactionList/TransactionList';
-import TransactionListDesktop from './../../components/TransactionListDesktop/TransactionListDesktop';
-import Exchange from './../../components/Exchange/Exchange';
-import { useEffect } from 'react';
+import TransactionList from "./../../components/TransactionList/TransactionList";
+import TransactionListDesktop from "./../../components/TransactionListDesktop/TransactionListDesktop";
+import Exchange from "./../../components/Exchange/Exchange";
+import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
 const HomePage = () => {
   useEffect(() => {
     document.title = "Welcome to Wallet App";
-}, []);
+  }, []);
 
+  const { data, isLoading } = transactionsApiSlice.useGetTransactionsQuery();
 
-    return ( <div className={styles.container}>
+  // {showEdittrans && <EditTransaction onClose={closeModal} />}
+
+  //TODO: add some spinner
+  if (isLoading) return <h2>Loading...</h2>;
+
+  return (
+    <div className={styles.container}>
       <div className={styles.grid}>
-        
         <div className={styles.grid__navbar}>
-        <NavBar />
-        </div>               
-              
-        <div className={styles.grid__balance}><Balance /></div>
-
-        <Media query="(min-width: 768px)">
-        { matches =>
-          matches ? ( <div className={styles.grid__exchange}>
-          <Exchange /></div>
-        ) : null
-        }
+          <NavBar />
+        </div>
+        <div className={styles.grid__balance}>
+          <Balance balance={data.statistics.balance} isLoading={isLoading} />
+        </div>
+        <Media query="(max-width: 767px)">
+          {(matches) =>
+            matches ? (
+              <TransactionList
+                transactions={data.transactions}
+                isLoading={isLoading}
+              />
+            ) : (
+              <>
+                <div className={styles.grid__exchange}>
+                  <Exchange />
+                </div>
+                <div className={styles.grid__transactions}>
+                  <TransactionListDesktop
+                    transactions={data.transactions}
+                    isLoading={isLoading}
+                  />
+                </div>
+              </>
+            )
+          }
         </Media>
+      </div>
+      <div className={styles.btnAddFixed}>
+        <ButtonAdd />
+      </div>
+    </div>
+  );
+};
 
-        <Media query="(max-width: 767px)">
-        { matches =>
-          matches ? (
-        <TransactionList />) : null
-        }</Media>
-        
-        <Media query="(max-width: 767px)">
-        { matches =>
-          matches ? (
-        <TransactionList />) : null
-        }</Media>
-
-        <Media query="(min-width: 768px)">
-        { matches =>
-          matches ? ( <div className={styles.grid__transactions}>
-          <TransactionListDesktop  /> </div>
-        ) : null
-        }</Media>             
-        </div>
-        <div className={styles.btnAddFixed}><ButtonAdd /></div>
-             
-        </div>
-    
-       
-        
-
-
-//     return(
-//         <div className={styles.container}>HomePage
-//             <p>UserMenu-buttony-kafelki</p>
-//             <NavBar />
-//             <Balance />
-//             <p>Tabela</p>
-//             <Exchange />
-//             <ButtonAdd className={styles.btnAdd}/>
-
-//         </div>
-
-
-    );
-
-}
-
-export default HomePage
+export default HomePage;

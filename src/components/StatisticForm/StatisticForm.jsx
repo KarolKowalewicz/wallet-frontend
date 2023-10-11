@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./StatisticForm.module.scss";
 
-
-const StatisticForm = () => {
+const StatisticForm = ({ data, isLoading }) => {
   const [months, setMonths] = useState([]);
   const [years, setYears] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
 
   useEffect(() => {
-
-
     const currentYear = new Date().getFullYear();
-
-    
 
     const yearOptions = [];
     for (let year = currentYear; year >= currentYear - 10; year--) {
@@ -40,10 +35,13 @@ const StatisticForm = () => {
     setSelectedYear(e.target.value);
   };
 
+  //TODO: add some spinner
+  if (isLoading) return <h2>Loading...</h2>;
+
   return (
     <>
       <div className={styles.statistic}>
-       <div className={styles.statistic__label}>
+        <div className={styles.statistic__label}>
           <select
             className={styles.statistic__select}
             id="month"
@@ -51,7 +49,9 @@ const StatisticForm = () => {
             value={selectedMonth}
             onChange={handleMonthChange}
           >
-            <option className={styles.statistic__option} value="">Month</option>
+            <option className={styles.statistic__option} value="">
+              Month
+            </option>
             {months.map((month) => (
               <option key={month.value} value={month.value}>
                 {month.label}
@@ -65,7 +65,9 @@ const StatisticForm = () => {
             value={selectedYear}
             onChange={handleYearChange}
           >
-            <option className={styles.statistic__option} value="">Year</option>
+            <option className={styles.statistic__option} value="">
+              Year
+            </option>
             {years.map((year) => (
               <option key={year} value={year}>
                 {year}
@@ -79,48 +81,28 @@ const StatisticForm = () => {
         </div>
         <div className={styles.statistic__table}>
           <ul className={styles.statistic__list}>
-            <li className={styles.statistic__item}>
-              <div className={styles.statistic__itemColor}></div>
-              <p className={styles.statistic__itemText}>Main expenses</p>
-              <p className={styles.statistic__itemSum}>8 700.00</p>
-            </li>
-            <li className={styles.statistic__item}>
-              <div className={styles.statistic__itemColor}></div>
-              <p className={styles.statistic__itemText}>Main expenses</p>
-              <p className={styles.statistic__itemSum}>8 700.00</p>
-            </li>
-            <li className={styles.statistic__item}>
-              <div className={styles.statistic__itemColor}></div>
-              <p className={styles.statistic__itemText}>Main expenses</p>
-              <p className={styles.statistic__itemSum}>8 700.00</p>
-            </li>
-            <li className={styles.statistic__item}>
-              <div className={styles.statistic__itemColor}></div>
-              <p className={styles.statistic__itemText}>Main expenses</p>
-              <p className={styles.statistic__itemSum}>8 700.00</p>
-            </li>
-            <li className={styles.statistic__item}>
-              <div className={styles.statistic__itemColor}></div>
-              <p className={styles.statistic__itemText}>Main expenses</p>
-              <p className={styles.statistic__itemSum}>8 700.00</p>
-            </li>
-
-            <li className={styles.statistic__item}>
-              <div className={styles.statistic__itemColor}></div>
-              <p className={styles.statistic__itemText}>Main expenses</p>
-              <p className={styles.statistic__itemSum}>8 700.00</p>
-            </li>
+            {data.transactions.data.map((item) => (
+              <li className={styles.statistic__item}>
+                <div className={styles.statistic__itemColor}></div>
+                <p className={styles.statistic__itemText}>
+                  {item.category || "Income"}
+                </p>
+                <p className={styles.statistic__itemSum}>{item.amount}</p>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
-            <div className={styles.statistic__results}>
-                <p className={styles.statistic__text}>Expenses:</p>
-                <p className={styles.statistic__sum}>22 549.24</p>
-            </div>
-            <div className={styles.statistic__results}>
-                <p className={styles.statistic__text}>Income:</p>
-                <p className={styles.statistic__sum}>27 350.00</p>
-            </div>
+          <div className={styles.statistic__results}>
+            <p className={styles.statistic__text}>Expenses:</p>
+            <p className={styles.statistic__sum}>
+              {data.statistics.expenseSum}
+            </p>
+          </div>
+          <div className={styles.statistic__results}>
+            <p className={styles.statistic__text}>Income:</p>
+            <p className={styles.statistic__sum}>{data.statistics.incomeSum}</p>
+          </div>
         </div>
       </div>
     </>
