@@ -9,7 +9,6 @@ import styles from "./LoginForm.module.scss";
 import logo from "./../../img/logowallet.png";
 import { ReactComponent as Lock } from "../../img/lock.svg";
 import { ReactComponent as Email } from "../../img/email.svg";
-import frame from "../../img/Frame.png";
 
 const LoginForm = () => {
   const navigate = useNavigate();
