@@ -1,8 +1,21 @@
 import { ReactComponent as Pencil } from './../../img/pencil.svg';
 import styles from './TransactionList.module.scss';
 
+import { useState } from 'react'
+import EditTransaction from '../EditTransaction/EditTransaction';
+
 
 const TransactionList = () => {
+
+    const [showEdittrans, setShowEditTrans] = useState(false);
+
+    const openModal = () => {
+        setShowEditTrans(true);
+    };
+
+    const closeModal = () => {
+        setShowEditTrans(false);
+    };
 
     return (
        <div>
@@ -25,13 +38,13 @@ const TransactionList = () => {
                     <p className={styles.transaction__data}>transaction.sum</p></li>
                 <li className={styles.transaction__item__last}>
                     <button className={styles.btn__delete}>Delete</button>
-                    <button className={styles.btn__edit}>
+                    <button className={styles.btn__edit} onClick={openModal}>
                     <Pencil className={styles.btn__edit__icon} />Edit</button>
                 </li>
             </ul>     
                   
-
-        
+            {showEdittrans && <EditTransaction onClose={closeModal} />}
+            
        </div>
     )
 }
