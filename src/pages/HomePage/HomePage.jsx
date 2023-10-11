@@ -16,8 +16,6 @@ const HomePage = () => {
 
   const { data, isLoading } = transactionsApiSlice.useGetTransactionsQuery();
 
-  // {showEdittrans && <EditTransaction onClose={closeModal} />}
-
   //TODO: add some spinner
   if (isLoading) return <h2>Loading...</h2>;
 
@@ -28,13 +26,13 @@ const HomePage = () => {
           <NavBar />
         </div>
         <div className={styles.grid__balance}>
-          <Balance balance={data.statistics.balance} isLoading={isLoading} />
+          <Balance balance={data?.statistics.balance} isLoading={isLoading} />
         </div>
         <Media query="(max-width: 767px)">
           {(matches) =>
             matches ? (
               <TransactionList
-                transactions={data.transactions}
+                transactions={data?.transactions}
                 isLoading={isLoading}
               />
             ) : (
@@ -44,7 +42,7 @@ const HomePage = () => {
                 </div>
                 <div className={styles.grid__transactions}>
                   <TransactionListDesktop
-                    transactions={data.transactions}
+                    transactions={data?.transactions}
                     isLoading={isLoading}
                   />
                 </div>
