@@ -17,42 +17,7 @@
     height: 100vh;
     margin: 0;
   }
-  //   @include tablet {
-  //     padding: 60px;
-  //     flex-direction: column;
-  //     align-items: center;
-  //     justify-content: flex-start;
-  //   }
-
-  //   @include desktop {
-  //     justify-content: flex-end;
-  // }
 }
-
-// .frame {
-//   display: none;
-
-//   @include tablet {
-//     display: flex;
-//     justify-content: flex-start;
-//     width: 260px;
-//     height: 250px;
-//     margin-bottom: 30px;
-//   //   position: fixed;
-//   //   margin-left: 120px;
-//   //   margin-top: 60px;
-//   }
-
-//   @include desktop {
-//     display: flex;
-//     align-items: center;
-//     justify-content: flex-end;
-//     width: 30vw;
-//     height: 50vh;
-//     margin: auto;
-//     z-index: 1;
-//   }
-// }
 
 .login {
   display: flex;
