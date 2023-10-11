@@ -8,7 +8,51 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
+  background-color: white;
+
+  @include desktop {
+    background-image: url("../../img/backdrop.png");
+    background-size: cover;
+    width: 60vw;
+    height: 100vh;
+    margin: 0;
+  }
+  //   @include tablet {
+  //     padding: 60px;
+  //     flex-direction: column;
+  //     align-items: center;
+  //     justify-content: flex-start;
+  //   }
+
+  //   @include desktop {
+  //     justify-content: flex-end;
+  // }
 }
+
+// .frame {
+//   display: none;
+
+//   @include tablet {
+//     display: flex;
+//     justify-content: flex-start;
+//     width: 260px;
+//     height: 250px;
+//     margin-bottom: 30px;
+//   //   position: fixed;
+//   //   margin-left: 120px;
+//   //   margin-top: 60px;
+//   }
+
+//   @include desktop {
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-end;
+//     width: 30vw;
+//     height: 50vh;
+//     margin: auto;
+//     z-index: 1;
+//   }
+// }
 
 .login {
   display: flex;
@@ -18,6 +62,11 @@
   gap: 20px;
   border-radius: 10px;
   padding: 20px;
+
+  @include tablet {
+    position: relative;
+    z-index: 1;
+  }
 
   &__logo {
     display: flex;
@@ -37,7 +86,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
     width: 100%;
   }
 
@@ -55,14 +103,17 @@
   &__icon {
     width: 24px;
     height: 24px;
-    fill: rgb(224, 224, 224)
+    fill: rgb(224, 224, 224);
   }
 
   &__input {
     border: none;
     outline: none;
-    font-size: 16px;
-    color: #bdbdbd;
+    font-family: "Circe", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 
     &::placeholder {
       color: #bdbdbd;
@@ -83,6 +134,7 @@
   }
 
   &__button {
+    font-family: "Circe", sans-serif;
     width: 100%;
     padding: 15px 0;
     border: 1px solid #4a56e2;
@@ -107,6 +159,7 @@
   }
 
   &__link {
+    font-family: "Circe", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,20 +208,12 @@
       margin-bottom: 20px;
     }
 
-    &__form {
-      margin: 20px;
-    }
-
     &__label {
       width: 400px;
     }
 
     &__input {
       width: 400px;
-    }
-
-    &__buttons {
-      padding-bottom: 20px;
     }
 
     &__btn {
@@ -192,10 +237,6 @@
 
     &__logo {
       margin-bottom: 20px;
-    }
-
-    &__form {
-      margin: 20px;
     }
 
     &__label {

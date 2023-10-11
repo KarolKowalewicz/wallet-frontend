@@ -9,6 +9,7 @@ import styles from "./LoginForm.module.scss";
 import logo from "./../../img/logowallet.png";
 import { ReactComponent as Lock } from "../../img/lock.svg";
 import { ReactComponent as Email } from "../../img/email.svg";
+import frame from "../../img/Frame.png";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -46,6 +47,8 @@ const LoginForm = () => {
 
   return (
     <div className={styles.container}>
+      {/* <div>
+      <img src={frame} alt="frame" className={styles.frame} /> */}
       <div className={styles.login}>
         <div className={styles.login__logo}>
           <img className={styles.login__logoimg} src={logo} alt="logo" />
@@ -55,7 +58,7 @@ const LoginForm = () => {
           <form className={styles.login__form} onSubmit={formik.handleSubmit}>
             <div>
               <label className={styles.login__label}>
-              <Email className={styles.login__icon} />
+                <Email className={styles.login__icon} />
 
                 <input
                   className={styles.login__input}
@@ -71,7 +74,7 @@ const LoginForm = () => {
             </div>
             <div>
               <label className={styles.login__label}>
-              <Lock className={styles.login__icon} />
+                <Lock className={styles.login__icon} />
 
                 <input
                   className={styles.login__input}
@@ -109,6 +112,7 @@ const LoginForm = () => {
           </form>
         </div>
       </div>
+      {/* </div> */}
     </div>
   );
 };
