@@ -47,6 +47,8 @@ const LoginForm = () => {
 
   return (
     <div className={styles.container}>
+      {/* <div>
+      <img src={frame} alt="frame" className={styles.frame} /> */}
       <div className={styles.login}>
         <div className={styles.login__logo}>
           <img className={styles.login__logoimg} src={logo} alt="logo" />
@@ -109,6 +111,7 @@ const LoginForm = () => {
           </form>
         </div>
       </div>
+      {/* </div> */}
     </div>
   );
 };
