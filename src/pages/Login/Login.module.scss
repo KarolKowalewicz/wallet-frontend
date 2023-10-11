@@ -2,7 +2,7 @@
 @import "../../../stylesheet/vars.scss";
 
 .loginPage {
-  background-color: #e7eaf2;
+  background-color: $background-ccent;
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -18,14 +18,14 @@
       position: fixed;
       display: flex;
       z-index: 2;
-      right: 200px;
+      right: 167px;
       top: 170px;
     }
 
     @include desktop {
       top: auto;
-      left: 20%;
-      bottom: 90px;
+      left: 200px;
+      bottom: 77px;
     }
   }
 
@@ -35,8 +35,8 @@
     @include tablet {
       display: block;
       position: fixed;
-      width: 400px;
-      height: 400px;
+      width: 370px;
+      height: 380px;
       top: 0px;
       right: 0px;
     }
@@ -52,7 +52,7 @@
       display: block;
       position: fixed;
       width: 500px;
-      height: 350px;
+      height: 325px;
       z-index: 0;
       bottom: 0px;
       left: 0px;
@@ -73,15 +73,15 @@
       width: 260px;
       height: 250px;
       position: absolute;
-      left: 18%;
-      top: 50px;
+      left: 114px;
+      top: 60px;
     }
 
     @include desktop {
-        top: 25%;
-        left: 5%;
-      width: 30vw;
-      height: 50vh;
+        top: 150px;
+        left: 76px;
+      width: 435px;
+      height: 419px;
       z-index: 1;
     }
   }

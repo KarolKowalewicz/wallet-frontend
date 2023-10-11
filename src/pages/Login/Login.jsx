@@ -2,7 +2,7 @@ import React from "react";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import styles from "./Login.module.scss";
 import upperEllipse from "../../img/Ellipse2.png";
-import frame from "../../img/Frame.png";
+import frame from "../../img/frameLoginDesktop.png";
 import lowerEllipse from "../../img/Ellipse1.png";
 
 const Login = () => {
