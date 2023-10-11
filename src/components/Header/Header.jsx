@@ -11,23 +11,23 @@ import LogoutModal from "../LogoutModal/LogoutModal";
 // import logoText from './../../img/logowallettext.png'
 
 const Header = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.auth);
 
   const [logout, { isLoading, error }] = authApiSlice.useLogoutMutation();
 
-  // const handleLogout = async () => {
-  //   const result = await logout();
-  //   if ("error" in result) {
-  //     //TODO: display in toast or something
-  //     console.log(error);
-  //   } else {
-  //     //TODO: display in toast or something
-  //     console.log("logged out successful");
-  //     navigate("/login");
-  //     navigate(0);
-  //   }
-  // };
+  const handleLogout = async () => {
+    const result = await logout();
+    if ("error" in result) {
+      //TODO: display in toast or something
+      console.log(error);
+    } else {
+      //TODO: display in toast or something
+      console.log("logged out successful");
+      navigate("/login");
+      navigate(0);
+    }
+  };
 
   const [modal, setModal] = useState(false);
 
@@ -38,6 +38,7 @@ const Header = () => {
   const closeModal = () => {
     setModal(false);
   };
+
   return (
     <div className={styles.header}>
       <div className={styles.header__logo}>
@@ -61,7 +62,7 @@ const Header = () => {
           )}
         </button>
       </div>
-      {modal && <LogoutModal onClose={closeModal} />}
+      {modal && <LogoutModal logout={handleLogout} onClose={closeModal} />}
     </div>
   );
 };
