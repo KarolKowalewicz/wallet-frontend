@@ -1,9 +1,21 @@
+import { useState } from "react";
 import styles from "./TransactionListDesktop.module.scss";
 import TransactionListDesktopItem from "../TransactionsListDesktopItem/TransactionsListDesktopItem";
+import EditTransaction from "../EditTransaction/EditTransaction";
 
 const TransactionListDesktop = ({ transactions, isLoading }) => {
   //TODO: add some spinner
   if (isLoading) return <h2>Loading...</h2>;
+
+  const [showEdittrans, setShowEditTrans] = useState(false);
+
+  const openModal = () => {
+    setShowEditTrans(true);
+  };
+
+  const closeModal = () => {
+    setShowEditTrans(false);
+  };
 
   return (
     <table className={styles.transtable}>
