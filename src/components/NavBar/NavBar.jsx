@@ -22,7 +22,7 @@ function NavBar() {
       <div>
         <ul className={styles["navbar-container"]}>
           <li>
-            <NavLink exact to="/">
+            <NavLink exact="true" to="/">
               <img
                 src={
                   activeIcon === "home"
