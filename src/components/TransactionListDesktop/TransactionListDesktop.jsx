@@ -30,9 +30,9 @@ const TransactionListDesktop = ({ transactions, isLoading }) => {
         </tr>
       </thead>
 
-      {transactions.data.length > 0 ? (
+      {transactions?.data.length > 0 ? (
         <tbody className={styles.transtable__body}>
-          {transactions.data.map((transaction) => (
+          {transactions?.data.map((transaction) => (
             <TransactionListDesktopItem key={transaction.id} {...transaction} />
           ))}
         </tbody>

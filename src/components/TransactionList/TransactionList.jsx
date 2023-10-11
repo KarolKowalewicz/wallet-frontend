@@ -6,8 +6,8 @@ const TransactionList = ({ transactions, isLoading }) => {
 
   return (
     <ul>
-      {transactions.data.length > 0 ? (
-        transactions.data.map((transaction) => (
+      {transactions?.data.length > 0 ? (
+        transactions?.data.map((transaction) => (
           <TransactionListItem key={transaction.id} {...transaction} />
         ))
       ) : (
