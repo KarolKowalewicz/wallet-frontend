@@ -1,11 +1,11 @@
-@import './../../../stylesheet/vars.scss';
-@import './../../../stylesheet/fonts.scss';
+@import "./../../../stylesheet/vars.scss";
+@import "./../../../stylesheet/fonts.scss";
 
 .balance {
   // background-color: beige;
 
   border-radius: 30px;
-  
+
   // background-color: #fff;
   background-color: $font-color-light;
   //kolor zmienna
@@ -14,44 +14,38 @@
 
   height: 80px;
   width: 280px;
-  
-  @include tablet{
+
+  @include tablet {
     width: 336px;
   }
   @include desktop {
     width: 395px;
   }
-  
 
   &__layout {
     // background-color: aquamarine;
     margin-left: 32px;
-    @include tablet { 
-    margin-left: 40px;
+
+    @include tablet {
+      margin-left: 40px;
     }
-    // height: 40px;
-    
-    
-  }
 
-  &__description {
-    margin: 0 auto;
-    text-transform: uppercase;
+    &__description {
+      margin: 0 auto;
+      text-transform: uppercase;
 
-    color: $color-balance-description; 
-    
-    font-family: $font-family-circe;
-    font-size: 12px;
-  }
-  &__content {
-    margin: 12px 0 0 0;
-    
+      color: $color-balance-description;
 
-    color: $font-color-dark;
+      font-family: $font-family-circe;
+      font-size: 12px;
+    }
+    &__content {
+      margin: 12px 0 0 0;
 
-    font-family: $font-family-poppins;
-    font-size: 30px;
+      color: $font-color-dark;
 
-    
+      font-family: $font-family-poppins;
+      font-size: 30px;
+    }
   }
 }
