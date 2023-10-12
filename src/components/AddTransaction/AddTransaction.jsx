@@ -42,7 +42,7 @@ const AddTransaction = ({ onClose }) => {
             style={{ color: isIncome ? "#24CCA7" : "#E0E0E0" }}
             onClick={() => setIsIncome(true)}
           >
-            income
+            Income
           </p>
 
           <input
@@ -71,7 +71,7 @@ const AddTransaction = ({ onClose }) => {
             style={{ color: isIncome ? "#E0E0E0" : "#FF6596" }}
             onClick={() => setIsIncome(false)}
           >
-            expense
+            Expense
           </p>
         </div>
 

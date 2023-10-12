@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as Pencil } from "./../../img/pencil.svg";
 import styles from "./TransactionsListDesktopItem.module.scss";
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
+import EditTransaction from "../EditTransaction/EditTransaction";
 
 const TransactionsListDesktopItem = ({
   date,
@@ -14,6 +15,16 @@ const TransactionsListDesktopItem = ({
   const [deleteTransaction, { isLoading: isDeleting }] =
     transactionsApiSlice.useDeleteTransactionMutation();
 
+  const [showEdittrans, setShowEditTrans] = useState(false);
+
+  const openModal = () => {
+    setShowEditTrans(true);
+  };
+
+  const closeModal = () => {
+    setShowEditTrans(false);
+  };
+
   return (
     <tr className={styles.transtable__row}>
       <td className={styles.transtable__rowcell}>{date}</td>
@@ -25,7 +36,7 @@ const TransactionsListDesktopItem = ({
       <td className={styles.transtable__rowcell__sum}>{amount}</td>
       <td className={styles.transtable__rowcell}>
         <button className={styles.btn__edit}>
-          <Pencil className={styles.btn__edit__icon} />
+          <Pencil className={styles.btn__edit__icon} onClick={openModal} />
         </button>
         <button
           className={styles.btn__delete}
@@ -35,6 +46,7 @@ const TransactionsListDesktopItem = ({
           {isDeleting ? "Deleting..." : "Delete"}
         </button>
       </td>
+      {showEdittrans && <EditTransaction onClose={closeModal} income={income}/>}
     </tr>
   );
 };
