@@ -1,5 +1,12 @@
+import { closeModal } from "../../redux/slices/modal/modalSlice";
 import styles from "./LogoutModal.module.scss";
-const LogoutModal = ({ logout, onClose }) => {
+import { useDispatch, useSelector } from "react-redux";
+
+const LogoutModal = ({ logout }) => {
+  const dispatch = useDispatch();
+  const { modals } = useSelector((state) => state.modal);
+
+  if (!modals["logout"]) return null;
   return (
     <div className={styles.logoutModalContainer}>
       <div className={styles.logoutModal}>
@@ -9,7 +16,7 @@ const LogoutModal = ({ logout, onClose }) => {
         </button>
         <button
           className={`${styles.button} ${styles.button__close}`}
-          onClick={onClose}
+          onClick={() => dispatch(closeModal("logout"))}
         >
           <p
             className={`${styles.button__label} ${styles.button__label__close} `}
