@@ -51,9 +51,8 @@ const HomePage = () => {
           }
         </Media>
       </div>
-      <div className={styles.btnAddFixed}>
-        <ButtonAdd />
-      </div>
+
+      <ButtonAdd />
     </div>
   );
 };

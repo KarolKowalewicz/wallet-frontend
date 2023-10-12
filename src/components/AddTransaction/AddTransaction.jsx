@@ -1,36 +1,28 @@
-import { useState } from "react";
 import styles from "./AddTransaction.module.scss";
-import { ReactComponent as BtnClose } from "./../../img/btn_close.svg";
-import Header from "../Header/Header";
-// import BtnAddTrans from '../BtnAddTrans/BtnAddTrans';
-import BtnCancelTrans from "../BtnCancelTrans/BtnCancelTrans";
-import FormIncome from "../FormIncome/FormIncome";
-import FormExpense from "../FormExpense/FormExpense";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal } from "../../redux/slices/modal/modalSlice";
 import SliderGreen from "../SliderGreen/SliderGreen";
 import SliderRed from "../SliderRed/SliderRed";
+import FormEdit from "../FormEdit/FormEdit";
+import FormExpenseValidation from "../../utils/validations/FormExpenseValidation";
+import FormIncomeValidation from "../../utils/validations/FormIncomeValidation";
+import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
-const AddTransaction = ({ onClose }) => {
+const AddTransaction = () => {
+  const dispatch = useDispatch();
+  const { modals } = useSelector((state) => state.modal);
+  const [addTransaction] = transactionsApiSlice.useAddTransactionMutation();
   const [isIncome, setIsIncome] = useState(false);
 
   const toggleIncome = () => {
     setIsIncome(!isIncome);
   };
 
+  if (!modals["addTransaction"]) return null;
   return (
-    // backdrop
     <div className={styles.overlay}>
-      {/* modal content */}
       <div className={styles.content}>
-        <Header />
-
-        {/* close btn */}
-        <div className={styles.btnCloseWrap}>
-          <button className={styles.btnCloseFunc} onClick={onClose}>
-            <BtnClose className={styles.btnCloseFunc__vector} />
-          </button>
-        </div>
-
-        {/* transaction head */}
         <div className={styles.headerWrap}>
           <p className={styles.headerWrap__title}>Add transaction</p>
         </div>
@@ -75,11 +67,22 @@ const AddTransaction = ({ onClose }) => {
           </p>
         </div>
 
-        {isIncome ? <FormIncome /> : <FormExpense />}
+        <FormEdit
+          validationSchema={
+            isIncome ? FormIncomeValidation : FormExpenseValidation
+          }
+          query={addTransaction}
+          income={isIncome}
+          _id={null}
+        />
 
         <div className={styles.actBtnsWrap}>
-          {/* <BtnAddTrans /> */}
-          <BtnCancelTrans className={styles.btnCancelTrans} onClose={onClose} />
+          <button
+            className={styles.closeBtn}
+            onClick={() => dispatch(closeModal("addTransaction"))}
+          >
+            <p className={styles.closeBtnText}>cancel</p>
+          </button>
         </div>
       </div>
     </div>
