@@ -1,7 +1,7 @@
 import React from "react";
 import { VictoryPie, VictoryLabel } from "victory";
 import styles from "./Diagram.module.scss";
-
+import Loader from "../Lodaer/Loader";
 const labelStyle = {
   display: "none",
 };
@@ -11,8 +11,7 @@ const DiagramForm = ({ data, isLoading }) => {
     return { x: item.category, y: item.amount };
   });
 
-  //TODO: add some spinner
-  if (isLoading) return <h2>Loading...</h2>;
+  if (isLoading) return <Loader />;
 
   return (
     <div className={styles.diagram}>
