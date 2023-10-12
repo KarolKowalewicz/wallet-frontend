@@ -46,7 +46,13 @@ const TransactionsListDesktopItem = ({
           {isDeleting ? "Deleting..." : "Delete"}
         </button>
       </td>
-      {showEdittrans && <EditTransaction onClose={closeModal} income={income}/>}
+      {showEdittrans && (
+        <EditTransaction
+          onClose={closeModal}
+          income={income}
+          transactionId={_id}
+        />
+      )}
     </tr>
   );
 };

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import Select from 'react-select';
+import Select from "react-select";
 
 import styles from "./FormExpense.module.scss";
 
@@ -29,45 +29,45 @@ const validationSchema = Yup.object().shape({
 
 const categoryOptions = [
   // { value: '', label: 'Select category' },
-  { value: 'Products', label: 'Products' },
-  { value: 'Main expenses', label: 'Main expenses' },
-  { value: 'Car', label: 'Car' },
-  { value: 'Self care', label: 'Self care' },
-  { value: 'Child care', label: 'Child care' },
-  { value: 'Household products', label: 'Household products' },
-  { value: 'Education', label: 'Education' },
-  { value: 'Leisure', label: 'Leisure' },
-  { value: 'Other expenses', label: 'Other expenses' },
-  { value: 'Entertainment', label: 'Entertainment' },
+  { value: "Products", label: "Products" },
+  { value: "Main expenses", label: "Main expenses" },
+  { value: "Car", label: "Car" },
+  { value: "Self care", label: "Self care" },
+  { value: "Child care", label: "Child care" },
+  { value: "Household products", label: "Household products" },
+  { value: "Education", label: "Education" },
+  { value: "Leisure", label: "Leisure" },
+  { value: "Other expenses", label: "Other expenses" },
+  { value: "Entertainment", label: "Entertainment" },
 ];
 
 const inputCategoryStyles = {
   container: (provided) => ({
     ...provided,
-    marginLeft: '40px', 
-    padding: '0',
+    marginLeft: "40px",
+    padding: "0",
   }),
   inputContainer: (provided) => ({
     ...provided,
-    margin: '0', 
-    padding: '0',
+    margin: "0",
+    padding: "0",
   }),
   input: (provided) => ({
     ...provided,
-    margin: '0', 
-    padding: '0',
-    color: '#000',
-    fontFamily: 'Circe',
-    fontSize: '18px',
-    fontStyle: 'normal',
-    fontWeight: '400',
-    lineHeight: 'normal,'
+    margin: "0",
+    padding: "0",
+    color: "#000",
+    fontFamily: "Circe",
+    fontSize: "18px",
+    fontStyle: "normal",
+    fontWeight: "400",
+    lineHeight: "normal,",
   }),
   selectInput: (provided) => ({
     ...provided,
-    // margin: '0', 
+    // margin: '0',
     // padding: '0',
-    color: 'red',
+    color: "red",
     // fontFamily: 'Circe',
     // fontSize: '18px',
     // fontStyle: 'normal',
@@ -76,53 +76,53 @@ const inputCategoryStyles = {
   }),
   valueContainer: (provided) => ({
     ...provided,
-    margin: '0',
-    padding: '0', 
+    margin: "0",
+    padding: "0",
   }),
   control: (provided) => ({
     ...provided,
-    width: '190px',
-    height: '24px',
+    width: "190px",
+    height: "24px",
     flexShrink: 0,
     // color: '#BDBDBD',
-    color: '#000',
-    fontFamily: 'Circe',
-    fontSize: '18px',
-    fontStyle: 'normal',
+    color: "#000",
+    fontFamily: "Circe",
+    fontSize: "18px",
+    fontStyle: "normal",
     fontWeight: 400,
-    lineHeight: 'normal',
-    backgroundColor: 'transparent',
-    border: 'none',
-    boxShadow: 'none',
+    lineHeight: "normal",
+    backgroundColor: "transparent",
+    border: "none",
+    boxShadow: "none",
   }),
   menu: (provided) => ({
     ...provided,
-    width: '280px',
+    width: "280px",
     // height: '',
     flexShrink: 0,
-    borderRadius: '20px',
-    background: 'rgba(255, 255, 255, 0.70)',
-    boxShadow: '0px 6px 15px 0px rgba(0, 0, 0, 0.10)',
-    backdropFilter: 'blur(25px)',
+    borderRadius: "20px",
+    background: "rgba(255, 255, 255, 0.70)",
+    boxShadow: "0px 6px 15px 0px rgba(0, 0, 0, 0.10)",
+    backdropFilter: "blur(25px)",
   }),
   option: (provided, state) => ({
     ...provided,
-    fontFamily: 'Circe',
-    fontSize: '18px',
+    fontFamily: "Circe",
+    fontSize: "18px",
     fontWeight: 400,
-    color: state.isSelected ? 'white' : '#BDBDBD', // Możesz dostosować kolory dla wybranych i niezaznaczonych opcji
+    color: state.isSelected ? "white" : "#BDBDBD", // Możesz dostosować kolory dla wybranych i niezaznaczonych opcji
   }),
   singleValue: (provided) => ({
     ...provided,
-    fontFamily: 'Circe',
-    fontSize: '18px',
+    fontFamily: "Circe",
+    fontSize: "18px",
     fontWeight: 400,
-    color: '#000',
+    color: "#000",
   }),
   indicatorSeparator: (provided) => ({
     ...provided,
-    display: 'none',
-  })
+    display: "none",
+  }),
 };
 
 const FormExpense = () => {
@@ -143,7 +143,6 @@ const FormExpense = () => {
         date: moment().format("YYYY-MM-DD"),
         comment: "",
       }}
-
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         addTransaction({
@@ -163,8 +162,12 @@ const FormExpense = () => {
             <Select
               styles={inputCategoryStyles}
               options={categoryOptions}
-              value={categoryOptions.find(option => option.value === values.category)}
-              onChange={option => setFieldValue('category', option ? option.value : '')}
+              value={categoryOptions.find(
+                (option) => option.value === values.category
+              )}
+              onChange={(option) =>
+                setFieldValue("category", option ? option.value : "")
+              }
               classNamePrefix="react-select"
               placeholder="Select category"
             />
@@ -196,7 +199,10 @@ const FormExpense = () => {
                 }
                 name="date"
               />
-              <CalendarIcon onClick={openCalendar} className={styles.calendarIcon} />
+              <CalendarIcon
+                onClick={openCalendar}
+                className={styles.calendarIcon}
+              />
             </div>
             <ErrorMessage name="date" />
           </div>
@@ -220,7 +226,10 @@ const FormExpense = () => {
             onSubmit={
               isSubmitting
                 ? null
-                : () => document.querySelector("form").dispatchEvent(new Event("submit"))
+                : () =>
+                    document
+                      .querySelector("form")
+                      .dispatchEvent(new Event("submit"))
             }
           />
         </Form>

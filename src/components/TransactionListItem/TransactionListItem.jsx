@@ -63,7 +63,13 @@ const TransactionListItem = ({
           Edit
         </button>
       </li>
-      {showEdittrans && <EditTransaction onClose={closeModal} income={income} />}
+      {showEdittrans && (
+        <EditTransaction
+          onClose={closeModal}
+          income={income}
+          transactionId={_id}
+        />
+      )}
     </ul>
   );
 };
