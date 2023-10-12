@@ -9,6 +9,7 @@
   border-left: solid 5px;
   margin: 8px 0px 0px 0px;
   padding: 0px;
+  font-family: "Circe";
 
   &__item {
     display: flex;
@@ -18,13 +19,13 @@
     padding: 12px 15px 8px 20px;
     margin: 0px;
     line-height: normal;
-    font-family: "Circe";
+    
   }
 
   &__item__last {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     border-bottom: none;
     padding: 12px 15px 12px 20px;
     margin: 0px;
@@ -63,17 +64,18 @@
 .btn {
   &__delete {
     width: 67px;
-    height: 26px;
+    padding: 4px 12px;
+    font-family: Circe;
     border-radius: 18px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 400;
     border: none;
     cursor: pointer;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     background:$color-brand-secondary;
     color: $background-light;
-    &:hover {
-      transform: scale(1.15);
+    &:hover { 
+      background-color: $color-brand-primary;
+      color: $background-light;
+      border-color: $color-brand-primary;
     }
   }
 
@@ -97,6 +99,5 @@
   &__edit__icon {
     width: 14px;
     height: 14px;
-    padding-right: 2px;
   }
 }
