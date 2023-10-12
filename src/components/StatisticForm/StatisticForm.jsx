@@ -11,9 +11,7 @@ const StatisticForm = ({ data, isLoading }) => {
     const currentYear = new Date().getFullYear();
 
     const yearOptions = [];
-    for (let year = currentYear; year >= currentYear - 10; year--) {
-      yearOptions.push(year);
-    }
+    for (let year = currentYear; year >= currentYear - 10; year--) {}
     setYears(yearOptions);
 
     const monthOptions = [];

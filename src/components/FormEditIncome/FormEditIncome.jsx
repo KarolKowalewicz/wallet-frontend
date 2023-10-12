@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import BtnSaveTrans from "../BtnSaveTrans/BtnSaveTrans";
 import Calendar from "../Calendar/Calendar";
 import { ReactComponent as CalendarIcon } from "../../img/calendar.svg";
+import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
 const validationSchema = Yup.object().shape({
   amount: Yup.number("Enter a valid amount")
@@ -22,7 +23,9 @@ const validationSchema = Yup.object().shape({
   comment: Yup.string(),
 });
 
-const FormEditIncome = () => {
+const FormEditIncome = ({ transactionId }) => {
+  const [updateTransaction] =
+    transactionsApiSlice.useUpdateTransactionMutation();
   const calendarRef = useRef(null);
 
   const openCalendar = () => {
@@ -41,12 +44,13 @@ const FormEditIncome = () => {
       <Formik
         initialValues={{
           amount: "",
-          date: moment().format("YYYY-MM-DD"),
+          income: true,
+          date: moment().format("YYYY-MM-DD HH:mm:ss"),
           comment: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log(values);
+          updateTransaction({ _id: transactionId, body: values });
           setSubmitting(false);
           resetForm();
         }}
