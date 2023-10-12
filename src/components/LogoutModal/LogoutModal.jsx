@@ -3,7 +3,7 @@ const LogoutModal = ({ logout, onClose }) => {
   return (
     <div className={styles.logoutModalContainer}>
       <div className={styles.logoutModal}>
-        <p className={styles.header}>Are you sure you want to log out??</p>
+        <p className={styles.header}>Are you sure you want to log out?</p>
         <button className={styles.button} onClick={logout}>
           <p className={styles.button__label}>Please log me out</p>
         </button>
