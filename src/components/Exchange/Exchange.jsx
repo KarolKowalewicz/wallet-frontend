@@ -8,17 +8,17 @@ const Exchange = () => {
   const apiUrl = "https://api.exchangerate-api.com/v4/latest/EUR"; // ECB API URL
 
   useEffect(() => {
-    const fetchData = () => {
-      Axios.get(apiUrl)
-        .then((response) => {
-          if (response.status === 200) {
-            setExchangeRates(response.data.rates);
-            // console.log(response.data)
-          } else {
-            console.error("Błąd pobierania danych:", response.statusText);
-          }
-        })
-        .catch((error) => console.error("Błąd pobierania danych:", error));
+    const fetchData = async () => {
+      try {
+        const response = await Axios.get(apiUrl)
+        if (response.status === 200) {
+          setExchangeRates(response.data.rates)
+        } else {
+          console.error("Błąd pobierania danych:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Błąd pobierania danych:", error);
+      }
     };
 
     fetchData();
