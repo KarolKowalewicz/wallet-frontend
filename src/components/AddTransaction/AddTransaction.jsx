@@ -1,36 +1,25 @@
-import { useState } from "react";
 import styles from "./AddTransaction.module.scss";
-import { ReactComponent as BtnClose } from "./../../img/btn_close.svg";
-import Header from "../Header/Header";
-// import BtnAddTrans from '../BtnAddTrans/BtnAddTrans';
-import BtnCancelTrans from "../BtnCancelTrans/BtnCancelTrans";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal } from "../../redux/slices/modal/modalSlice";
 import FormIncome from "../FormIncome/FormIncome";
 import FormExpense from "../FormExpense/FormExpense";
 import SliderGreen from "../SliderGreen/SliderGreen";
 import SliderRed from "../SliderRed/SliderRed";
 
-const AddTransaction = ({ onClose }) => {
+const AddTransaction = () => {
+  const dispatch = useDispatch();
+  const { isModalAddTransactionOpen } = useSelector((state) => state.modal);
   const [isIncome, setIsIncome] = useState(false);
 
   const toggleIncome = () => {
     setIsIncome(!isIncome);
   };
 
+  if (!isModalAddTransactionOpen) return null;
   return (
-    // backdrop
     <div className={styles.overlay}>
-      {/* modal content */}
       <div className={styles.content}>
-        <Header />
-
-        {/* close btn */}
-        <div className={styles.btnCloseWrap}>
-          <button className={styles.btnCloseFunc} onClick={onClose}>
-            <BtnClose className={styles.btnCloseFunc__vector} />
-          </button>
-        </div>
-
-        {/* transaction head */}
         <div className={styles.headerWrap}>
           <p className={styles.headerWrap__title}>Add transaction</p>
         </div>
@@ -78,8 +67,12 @@ const AddTransaction = ({ onClose }) => {
         {isIncome ? <FormIncome /> : <FormExpense />}
 
         <div className={styles.actBtnsWrap}>
-          {/* <BtnAddTrans /> */}
-          <BtnCancelTrans className={styles.btnCancelTrans} onClose={onClose} />
+          <button
+            className={styles.closeBtn}
+            onClick={() => dispatch(closeModal("isModalAddTransactionOpen"))}
+          >
+            <p className={styles.closeBtnText}>cancel</p>
+          </button>
         </div>
       </div>
     </div>

@@ -1,35 +1,43 @@
-// import { useState } from 'react';
 import styles from "./EditTransaction.module.scss";
-import { ReactComponent as BtnClose } from "./../../img/btn_close.svg";
-import Header from "../Header/Header";
-import BtnCancelTrans from "../BtnCancelTrans/BtnCancelTrans";
-import FormEditIncome from "../FormEditIncome/FormEditIncome";
-import FormEditExpense from "../FormEditExpense/FormEditExpense";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal } from "../../redux/slices/modal/modalSlice";
+import FormEdit from "../FormEdit/FormEdit";
+import FormExpenseValidation from "../../utils/validations/FormExpenseValidation";
+import FormIncomeValidation from "../../utils/validations/FormIncomeValidation";
 
-const EditTransaction = ({ onClose, income, transactionId }) => {
+const EditTransaction = ({ transaction }) => {
+  const { income, _id } = transaction;
+  const { modals } = useSelector((state) => state.modal);
+  const dispatch = useDispatch();
+
+  if (!modals[`${_id}edit`]) return null;
   return (
     <div className={styles.overlay}>
       <div className={styles.content}>
-        <Header />
-
-        <div className={styles.btnCloseWrap}>
-          <button className={styles.btnCloseFunc} onClick={onClose}>
-            <BtnClose className={styles.btnCloseFunc__vector} />
-          </button>
-        </div>
-
         <div className={styles.headerWrap}>
           <p className={styles.headerWrap__title}>Edit transaction</p>
         </div>
 
-        {income ? (
-          <FormEditIncome transactionId={transactionId} />
-        ) : (
-          <FormEditExpense transactionId={transactionId} />
-        )}
+        <div className={styles.typeOfTransHead}>
+          <p style={{ color: `${income && "#24cca7"}` }}>income</p>
+          <p className={styles.slashLabel}>/</p>
+          <p style={{ color: `${!income && "#ff6596"}` }}>expense</p>
+        </div>
+
+        <FormEdit
+          validationSchema={
+            income ? FormIncomeValidation : FormExpenseValidation
+          }
+          transaction={transaction}
+        />
 
         <div className={styles.actBtnsWrap}>
-          <BtnCancelTrans className={styles.btnCancelTrans} onClose={onClose} />
+          <button
+            className={styles.closeBtn}
+            onClick={() => dispatch(closeModal(`${_id}edit`))}
+          >
+            <p className={styles.closeBtnText}>cancel</p>
+          </button>
         </div>
       </div>
     </div>
