@@ -1,29 +1,16 @@
+import styles from "./FormEdit.module.scss";
 import React, { useRef } from "react";
-
-import styles from "./FormIncome.module.scss";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import moment from "moment";
+//TODO: display error with toast notification!!!
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import BtnAddTrans from "../BtnAddTrans/BtnAddTrans";
-import Calendar from "../Calendar/Calendar";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ReactComponent as CalendarIcon } from "../../img/calendar.svg";
-import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
-const validationSchema = Yup.object().shape({
-  amount: Yup.number("Enter a valid amount")
-    .positive("Amount should be positive")
-    .required("Amount is required")
-    .max(999999999, "Amount is too large")
-    .typeError("Amount must be a number"),
-  date: Yup.date()
-    .max(moment().endOf("day"), "Date cannot be in the future")
-    .required("Date is required"),
-  comment: Yup.string(),
-});
+import Calendar from "../Calendar/Calendar";
+import BtnSaveTrans from "../BtnSaveTrans/BtnSaveTrans";
 
-const FormIncome = () => {
-  const [addTransaction] = transactionsApiSlice.useAddTransactionMutation();
+const FormEdit = ({ validationSchema, query, income, _id }) => {
   const calendarRef = useRef(null);
 
   const openCalendar = () => {
@@ -34,25 +21,52 @@ const FormIncome = () => {
 
   return (
     <Formik
-      initialValues={{
-        amount: "",
-        date: moment().format("YYYY-MM-DD HH:mm:ss"),
-        comment: "",
-      }}
+      initialValues={
+        income
+          ? {
+              amount: "",
+              income: income,
+              date: moment().format("YYYY-MM-DD HH:mm:ss"),
+              comment: "",
+            }
+          : {
+              category: "",
+              amount: "",
+              income: income,
+              date: moment().format("YYYY-MM-DD HH:mm:ss"),
+              comment: "",
+            }
+      }
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        addTransaction({
-          income: true,
-          amount: values.amount,
-          date: values.date,
-          comment: values.comment,
-        });
+        query(_id ? { _id, body: values } : values);
         setSubmitting(false);
         resetForm();
       }}
     >
       {({ isSubmitting, setFieldValue, values }) => (
         <Form className={styles.form}>
+          {!income && (
+            <div>
+              <Field className={styles.input} as="select" name="category">
+                <option value="" label="Select category" />
+                <option value="Products">Products</option>
+                <option value="Main expenses">Main expenses</option>
+                <option value="Car">Car</option>
+                <option value="Self care">Self care</option>
+                <option value="Child care">Child care</option>
+                <option value="Household products">Household products</option>
+                <option value="Education">Education</option>
+                <option value="Leisure">Leisure</option>
+                <option value="Other expenses">Other expenses</option>
+                <option value="Entertaiment">Entertaiment</option>
+              </Field>
+              <ErrorMessage name="category" />
+            </div>
+          )}
+
+          <div className={styles.separatorShort}></div>
+
           <div>
             <Field
               className={styles.input}
@@ -61,7 +75,7 @@ const FormIncome = () => {
               placeholder="0.00"
               autoComplete="off"
             />
-            <ErrorMessage name="amount" component="div" />
+            <ErrorMessage name="amount" />
           </div>
 
           <div className={styles.separatorShort}></div>
@@ -72,7 +86,7 @@ const FormIncome = () => {
                 ref={calendarRef}
                 value={values.date}
                 onChange={(date) =>
-                  setFieldValue("date", date.format("YYYY-MM-DD"))
+                  setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
                 }
                 name="date"
               />
@@ -100,7 +114,8 @@ const FormIncome = () => {
 
           <div className={styles.separatorLong}></div>
 
-          <BtnAddTrans
+          <BtnSaveTrans
+            disabled={isSubmitting}
             onSubmit={
               isSubmitting
                 ? null
@@ -116,4 +131,4 @@ const FormIncome = () => {
   );
 };
 
-export default FormIncome;
+export default FormEdit;

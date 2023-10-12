@@ -8,7 +8,7 @@ const TransactionList = ({ transactions, isLoading }) => {
     <ul>
       {transactions?.data.length > 0 ? (
         transactions?.data.map((transaction) => (
-          <TransactionListItem key={transaction.id} {...transaction} />
+          <TransactionListItem key={transaction.id} transaction={transaction} />
         ))
       ) : (
         <h2>No transactions added yet</h2>

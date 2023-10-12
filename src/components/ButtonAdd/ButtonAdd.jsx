@@ -1,48 +1,20 @@
-import styles from './ButtonAdd.module.scss'
-
-import { ReactComponent as ButtonPlus } from './../../img/+ btn.svg';
-import { useState } from 'react';
-import AddTransaction from '../AddTransaction/AddTransaction';
-
+import styles from "./ButtonAdd.module.scss";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../redux/slices/modal/modalSlice";
+import { ReactComponent as ButtonPlus } from "./../../img/+ btn.svg";
+import AddTransaction from "../AddTransaction/AddTransaction";
 
 const ButtonAdd = () => {
+  const dispatch = useDispatch();
+  return (
+    <>
+      <ButtonPlus
+        className={styles.buttonAdd}
+        onClick={() => dispatch(openModal("addTransaction"))}
+      />
+      <AddTransaction />
+    </>
+  );
+};
 
-    const [ modal, setModal ] = useState(false)
-
-    const openModal = () => {
-        setModal(true);
-      };
-    
-      const closeModal = () => {
-        setModal(false);
-      };
-
-
-     return(
-        <div className={styles.btnDiv}>
-            <ButtonPlus  className={styles.btn} onClick={openModal}/>
-            
-
-            {modal && (
-                <AddTransaction onClose={closeModal}/>
-                //komponent
-                
-                //ewentualne propsy
-
-            )}
-
-
-        </div>
-     )
-}
-
-export default ButtonAdd
-
-
-
-
-// {/* <button className={styles.button}>+</button> */}
-//             {/* <button  className={styles.btn2}><ButtonPlus/></button> */}
-
-
-//             {/* //onClick={openModal} na buttonie lub na komponencie */}
+export default ButtonAdd;
