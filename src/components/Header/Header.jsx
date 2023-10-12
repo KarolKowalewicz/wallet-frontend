@@ -5,7 +5,10 @@ import styles from "./Header.module.scss";
 import { ReactComponent as Logo } from "./../../img/logowallet.svg";
 import { ReactComponent as ExitDoor } from "./../../img/exitdoor.svg";
 import { RotatingLines } from "react-loader-spinner";
+import LogoutModal from "../LogoutModal/LogoutModal";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../redux/slices/modal/modalSlice";
 
 // import logo from './../../img/logowallet.png'
 // import logoText from './../../img/logowallettext.png'
@@ -13,6 +16,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const [logout, { isLoading, error }] = authApiSlice.useLogoutMutation();
 
@@ -28,6 +32,7 @@ const Header = () => {
       navigate(0);
     }
   };
+
   return (
     <div className={styles.header}>
       <Link to="/">
@@ -42,7 +47,7 @@ const Header = () => {
         </div>
         <button
           className={styles.header__nav__exit}
-          onClick={handleLogout}
+          onClick={() => dispatch(openModal("logout"))}
           disabled={isLoading}
         >
           <ExitDoor className={styles.header__nav__exit__icon} />
@@ -53,6 +58,7 @@ const Header = () => {
           )}
         </button>
       </div>
+      <LogoutModal logout={handleLogout} />
     </div>
   );
 };
