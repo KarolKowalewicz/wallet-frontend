@@ -43,7 +43,7 @@ const FormEditExpense = () => {
         initialValues={{
           category: "",
           amount: "",
-          date: moment().format("YYYY-MM-DD HH:mm:ss"),
+          date: moment().format("YYYY-MM-DD"),
           comment: "",
         }}
         validationSchema={validationSchema}
@@ -69,7 +69,7 @@ const FormEditExpense = () => {
                 <option value="Other expenses">Other expenses</option>
                 <option value="Entertaiment">Entertaiment</option>
               </Field>
-              {/* <ErrorMessage name="category" /> */}
+              <ErrorMessage name="category" />
             </div>
 
             <div className={styles.separatorShort}></div>
@@ -79,11 +79,10 @@ const FormEditExpense = () => {
                 className={styles.input}
                 name="amount"
                 type="number"
-                step="0.01"
                 placeholder="0.00"
                 autoComplete="off"
               />
-              {/* <ErrorMessage name="amount" /> */}
+              <ErrorMessage name="amount" />
             </div>
 
             <div className={styles.separatorShort}></div>
@@ -104,7 +103,7 @@ const FormEditExpense = () => {
                   className={styles.calendarIcon}
                 />
               </div>
-              {/* <ErrorMessage name="date" /> */}
+              <ErrorMessage name="date" />
             </div>
 
             <div className={styles.separatorShort}></div>
@@ -117,7 +116,7 @@ const FormEditExpense = () => {
                 placeholder="Comment"
                 autoComplete="off"
               />
-              {/* <ErrorMessage name="comment" /> */}
+              <ErrorMessage name="comment" />
             </div>
 
             <div className={styles.separatorLong}></div>

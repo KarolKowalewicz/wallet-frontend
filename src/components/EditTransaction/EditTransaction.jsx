@@ -6,7 +6,7 @@ import BtnCancelTrans from '../BtnCancelTrans/BtnCancelTrans';
 import FormEditIncome from '../FormEditIncome/FormEditIncome';
 import FormEditExpense from '../FormEditExpense/FormEditExpense';
 
-const EditTransaction = ({ onClose }) => {
+const EditTransaction = ({ onClose, income }) => {
 
     return (
         // backdrop
@@ -36,8 +36,8 @@ const EditTransaction = ({ onClose }) => {
                 </div> */}
                 
                 {/* logika do otwierania income lub expense w zależności od typu otwieranej trnasakcji  */}
-                {/* {isIncome ? <FormEditIncome /> : <FormEditExpense />} */}
-                <FormEditExpense />
+                {income ? <FormEditIncome /> : <FormEditExpense />}
+                {/* <FormEditExpense /> */}
                 {/* <FormEditIncome /> */}
 
                 <div className={styles.actBtnsWrap}>
