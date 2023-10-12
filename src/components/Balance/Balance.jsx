@@ -10,12 +10,7 @@ const Balance = ({ balance, isLoading }) => {
           {/* TODO: Add some spinner */}
 
           &euro; {isLoading ? "Loading..." : balance.toFixed(2)}
-//  konflikt
-      //    {isLoading ? (
-      //      <RotatingLines strokeColor="black" width="30" />
-      //    ) : (
-      //      `€ ${balance}`
-      //    )}
+
 
         </h3>
       </div>
