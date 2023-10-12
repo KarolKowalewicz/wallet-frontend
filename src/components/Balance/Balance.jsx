@@ -8,11 +8,15 @@ const Balance = ({ balance, isLoading }) => {
         <p className={styles.balanceClass__layout__description}>your balance</p>
         <h3 className={styles.balanceClass__layout__content}>
           {/* TODO: Add some spinner */}
-          {isLoading ? (
-            <RotatingLines strokeColor="black" width="30" />
-          ) : (
-            `€ ${balance}`
-          )}
+
+          &euro; {isLoading ? "Loading..." : balance.toFixed(2)}
+//  konflikt
+      //    {isLoading ? (
+      //      <RotatingLines strokeColor="black" width="30" />
+      //    ) : (
+      //      `€ ${balance}`
+      //    )}
+
         </h3>
       </div>
     </div>
