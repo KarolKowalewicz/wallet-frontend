@@ -9,7 +9,6 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.25);
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,39 +19,8 @@
   width: 100vw;
   min-height: 600px;
   height: 100vh;
-  // padding: 20px 20px 40px 64px;
-
-  // border-radius: 20px;
-  // border: 1px solid #000;
   background: #fff;
-  // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
   overflow-y: auto;
-}
-
-.btnCloseWrap {
-  display: none;
-  // justify-content: end;
-}
-
-.buttonFunc {
-  background-color: #fff;
-  border: none;
-  margin: none;
-  padding: none;
-  display: none;
-  visibility: hidden;
-  pointer-events: none;
-  justify-content: center;
-  align-content: center;
-
-  &__vector {
-    display: none;
-  }
-
-  &__vector:hover {
-    transform: rotate(90deg);
-  }
 }
 
 .headerWrap {
@@ -82,10 +50,6 @@
   cursor: pointer;
 }
 
-// .expenseLabel{
-//   cursor: pointer;
-// }
-
 .sliderCheckbox {
   display: none;
 }
@@ -96,15 +60,11 @@
   padding: 0;
   border: none;
   border-radius: 30px;
-  // width: 80px;
   width: 92px;
   height: 100%;
   background: none;
   overflow: hidden;
   position: relative;
-  // cursor: pointer;
-
-  // background-color: rebeccapurple;
 }
 
 .slider {
@@ -122,7 +82,6 @@
 .sliderGreen,
 .sliderRed {
   z-index: 1;
-  // z-index: 0;
 }
 
 .sliderContainer::before {
@@ -135,21 +94,54 @@
   border-radius: 30px;
   border: 1px solid #e0e0e0;
   background: #fff;
-
-  // border: 1px solid #000;
-  // background: none;
-
   pointer-events: none;
   z-index: 0;
-  // z-index: 1;
 }
 
 .actBtnsWrap {
   display: flex;
   justify-content: center;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
+}
+
+.closeBtn {
+  margin-bottom: 37px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 300px;
+  height: 50px;
+  flex-shrink: 0;
+
+  border: 1px solid $color-brand-primary;
+  border-radius: 20px;
+  background: $background-light;
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease;
+  }
+}
+
+.closeBtnText {
+  width: 164px;
+  height: 24px;
+  flex-shrink: 0;
+  color: $color-brand-primary;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  @font-face {
+    font-family: "circe-regular";
+    src: url("../../assets/fonts/circe-regular.otf");
+  }
 }
 
 // TABLET
@@ -157,54 +149,7 @@
   .content {
     width: 540px;
     height: 603px;
-    // padding: 20px 20px 40px 64px;
-
     border-radius: 20px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  }
-
-  .divBtn {
-    display: flex;
-    justify-content: end;
-  }
-
-  .btnClose {
-    // background-color: #fff;
-    // border: none;
-    // margin: none;
-    // padding: none;
-    display: flex;
-    visibility: visible;
-    pointer-events: visible;
-    // justify-content: center;
-    // align-content: center;
-  }
-
-  .vector {
-    display: flex;
-    width: 16px;
-    height: 16px;
-    margin: auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-
-  .vector:hover {
-    transform: rotate(90deg);
-  }
-}
-
-// DESKTOP
-@include desktop {
-  .vector {
-    width: 16px;
-    height: 16px;
-    margin: auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-
-  .vector:hover {
-    transform: rotate(90deg);
   }
 }
