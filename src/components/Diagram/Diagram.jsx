@@ -44,7 +44,7 @@ const DiagramForm = ({ data, isLoading }) => {
           textAnchor="middle"
           dominantBaseline="middle"
         >
-          &euro; {data.statistics.balance}
+          &euro; {data?.statistics.balance}
         </text>
       </svg>
     </div>
