@@ -9,6 +9,7 @@ import moment from "moment";
 import BtnSaveTrans from "../BtnSaveTrans/BtnSaveTrans";
 import Calendar from "../Calendar/Calendar";
 import { ReactComponent as CalendarIcon } from "../../img/calendar.svg";
+import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
 const validationSchema = Yup.object().shape({
   category: Yup.string().required("Category is required"),
@@ -23,7 +24,9 @@ const validationSchema = Yup.object().shape({
   comment: Yup.string(),
 });
 
-const FormEditExpense = () => {
+const FormEditExpense = ({ transactionId }) => {
+  const [updateTransaction] =
+    transactionsApiSlice.useUpdateTransactionMutation();
   const calendarRef = useRef(null);
 
   const openCalendar = () => {
@@ -43,12 +46,13 @@ const FormEditExpense = () => {
         initialValues={{
           category: "",
           amount: "",
+          income: false,
           date: moment().format("YYYY-MM-DD HH:mm:ss"),
           comment: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log(values);
+          updateTransaction({ _id: transactionId, body: values });
           setSubmitting(false);
           resetForm();
         }}
@@ -69,7 +73,7 @@ const FormEditExpense = () => {
                 <option value="Other expenses">Other expenses</option>
                 <option value="Entertaiment">Entertaiment</option>
               </Field>
-              {/* <ErrorMessage name="category" /> */}
+              <ErrorMessage name="category" />
             </div>
 
             <div className={styles.separatorShort}></div>
@@ -79,11 +83,10 @@ const FormEditExpense = () => {
                 className={styles.input}
                 name="amount"
                 type="number"
-                step="0.01"
                 placeholder="0.00"
                 autoComplete="off"
               />
-              {/* <ErrorMessage name="amount" /> */}
+              <ErrorMessage name="amount" />
             </div>
 
             <div className={styles.separatorShort}></div>
@@ -104,7 +107,7 @@ const FormEditExpense = () => {
                   className={styles.calendarIcon}
                 />
               </div>
-              {/* <ErrorMessage name="date" /> */}
+              <ErrorMessage name="date" />
             </div>
 
             <div className={styles.separatorShort}></div>
@@ -117,7 +120,7 @@ const FormEditExpense = () => {
                 placeholder="Comment"
                 autoComplete="off"
               />
-              {/* <ErrorMessage name="comment" /> */}
+              <ErrorMessage name="comment" />
             </div>
 
             <div className={styles.separatorLong}></div>

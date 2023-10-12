@@ -1,51 +1,39 @@
 // import { useState } from 'react';
-import styles from './EditTransaction.module.scss';
-import { ReactComponent as BtnClose } from './../../img/btn_close.svg';
-import Header from '../Header/Header';
-import BtnCancelTrans from '../BtnCancelTrans/BtnCancelTrans';
-import FormEditIncome from '../FormEditIncome/FormEditIncome';
-import FormEditExpense from '../FormEditExpense/FormEditExpense';
+import styles from "./EditTransaction.module.scss";
+import { ReactComponent as BtnClose } from "./../../img/btn_close.svg";
+import Header from "../Header/Header";
+import BtnCancelTrans from "../BtnCancelTrans/BtnCancelTrans";
+import FormEditIncome from "../FormEditIncome/FormEditIncome";
+import FormEditExpense from "../FormEditExpense/FormEditExpense";
 
-const EditTransaction = ({ onClose }) => {
+const EditTransaction = ({ onClose, income, transactionId }) => {
+  return (
+    <div className={styles.overlay}>
+      <div className={styles.content}>
+        <Header />
 
-    return (
-        // backdrop
-        <div className={styles.overlay}>
-            {/* modal content */}
-            <div className={styles.content}>
-
-                <Header />
-                
-                {/* close btn */}
-                <div className={styles.btnCloseWrap}>
-                    <button className={styles.btnCloseFunc} onClick={onClose}>
-                        <BtnClose className={styles.btnCloseFunc__vector} />
-                    </button>
-                </div>
-
-                {/* transaction head */}
-                <div className={styles.headerWrap}>
-                    <p className={styles.headerWrap__title}>Edit transaction</p>
-                </div>
-
-                {/* container for slider */}
-                {/* <div className={styles.typeOfTransHead}>
-                    <p className={styles.incomeLabel}>income</p>
-                    <p className={styles.slashLabel}>/</p>
-                    <p className={styles.expenseLabel}>expense</p>
-                </div> */}
-                
-                {/* logika do otwierania income lub expense w zależności od typu otwieranej trnasakcji  */}
-                {/* {isIncome ? <FormEditIncome /> : <FormEditExpense />} */}
-                <FormEditExpense />
-                {/* <FormEditIncome /> */}
-
-                <div className={styles.actBtnsWrap}>
-                    <BtnCancelTrans className={styles.btnCancelTrans} onClose={onClose} />
-                </div>
-            </div>
+        <div className={styles.btnCloseWrap}>
+          <button className={styles.btnCloseFunc} onClick={onClose}>
+            <BtnClose className={styles.btnCloseFunc__vector} />
+          </button>
         </div>
-    );
-}
+
+        <div className={styles.headerWrap}>
+          <p className={styles.headerWrap__title}>Edit transaction</p>
+        </div>
+
+        {income ? (
+          <FormEditIncome transactionId={transactionId} />
+        ) : (
+          <FormEditExpense transactionId={transactionId} />
+        )}
+
+        <div className={styles.actBtnsWrap}>
+          <BtnCancelTrans className={styles.btnCancelTrans} onClose={onClose} />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default EditTransaction;

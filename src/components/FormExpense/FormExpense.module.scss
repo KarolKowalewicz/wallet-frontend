@@ -8,6 +8,8 @@
     flex-direction: column;
 }
 
+
+
 .input {
     margin-left: 40px;
     width: 190px;
@@ -17,6 +19,12 @@
 
     &__comment {
         height: 52px;
+    }
+
+    &__option {
+        background-color: yellow;
+        border-radius: 50px;
+        border: 2px solid red;
     }
 }
 
