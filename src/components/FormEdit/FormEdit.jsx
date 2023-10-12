@@ -6,15 +6,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ReactComponent as CalendarIcon } from "../../img/calendar.svg";
-import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
 import Calendar from "../Calendar/Calendar";
 import BtnSaveTrans from "../BtnSaveTrans/BtnSaveTrans";
 
-const FormEdit = ({ validationSchema, transaction: { income, _id } }) => {
+const FormEdit = ({ validationSchema, query, income, _id }) => {
   const calendarRef = useRef(null);
-  const [updateTransaction] =
-    transactionsApiSlice.useUpdateTransactionMutation();
 
   const openCalendar = () => {
     if (calendarRef.current && calendarRef.current.openCalendar) {
@@ -42,7 +39,7 @@ const FormEdit = ({ validationSchema, transaction: { income, _id } }) => {
       }
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        updateTransaction({ _id, body: values });
+        query(_id ? { _id, body: values } : values);
         setSubmitting(false);
         resetForm();
       }}
@@ -118,7 +115,7 @@ const FormEdit = ({ validationSchema, transaction: { income, _id } }) => {
           <div className={styles.separatorLong}></div>
 
           <BtnSaveTrans
-            diasbled={isSubmitting}
+            disabled={isSubmitting}
             onSubmit={
               isSubmitting
                 ? null

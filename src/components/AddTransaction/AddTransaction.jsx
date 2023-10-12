@@ -2,21 +2,24 @@ import styles from "./AddTransaction.module.scss";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../redux/slices/modal/modalSlice";
-import FormIncome from "../FormIncome/FormIncome";
-import FormExpense from "../FormExpense/FormExpense";
 import SliderGreen from "../SliderGreen/SliderGreen";
 import SliderRed from "../SliderRed/SliderRed";
+import FormEdit from "../FormEdit/FormEdit";
+import FormExpenseValidation from "../../utils/validations/FormExpenseValidation";
+import FormIncomeValidation from "../../utils/validations/FormIncomeValidation";
+import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
 const AddTransaction = () => {
   const dispatch = useDispatch();
-  const { isModalAddTransactionOpen } = useSelector((state) => state.modal);
+  const { modals } = useSelector((state) => state.modal);
+  const [addTransaction] = transactionsApiSlice.useAddTransactionMutation();
   const [isIncome, setIsIncome] = useState(false);
 
   const toggleIncome = () => {
     setIsIncome(!isIncome);
   };
 
-  if (!isModalAddTransactionOpen) return null;
+  if (!modals["addTransaction"]) return null;
   return (
     <div className={styles.overlay}>
       <div className={styles.content}>
@@ -64,12 +67,19 @@ const AddTransaction = () => {
           </p>
         </div>
 
-        {isIncome ? <FormIncome /> : <FormExpense />}
+        <FormEdit
+          validationSchema={
+            isIncome ? FormIncomeValidation : FormExpenseValidation
+          }
+          query={addTransaction}
+          income={isIncome}
+          _id={null}
+        />
 
         <div className={styles.actBtnsWrap}>
           <button
             className={styles.closeBtn}
-            onClick={() => dispatch(closeModal("isModalAddTransactionOpen"))}
+            onClick={() => dispatch(closeModal("addTransaction"))}
           >
             <p className={styles.closeBtnText}>cancel</p>
           </button>

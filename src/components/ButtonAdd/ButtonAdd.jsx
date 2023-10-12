@@ -10,7 +10,7 @@ const ButtonAdd = () => {
     <>
       <ButtonPlus
         className={styles.buttonAdd}
-        onClick={() => dispatch(openModal("isModalAddTransactionOpen"))}
+        onClick={() => dispatch(openModal("addTransaction"))}
       />
       <AddTransaction />
     </>
