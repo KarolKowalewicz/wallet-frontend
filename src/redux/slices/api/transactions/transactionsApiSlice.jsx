@@ -7,6 +7,11 @@ const transactionsApiSlice = apiSlice.injectEndpoints({
 
       providesTags: ["Transaction"],
     }),
+    getPeriodTransactions: builder.query({
+      query: ({ period }) => `/api/transactions/statistics/${period}`,
+
+      providesTags: ["Transaction"],
+    }),
     deleteTransaction: builder.mutation({
       query: (_id) => ({
         url: `/api/transactions/${_id}`,
@@ -32,6 +37,8 @@ const transactionsApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
         body,
       }),
+
+      //TODO: optimistic update
 
       invalidatesTags: ["Transaction"],
     }),
