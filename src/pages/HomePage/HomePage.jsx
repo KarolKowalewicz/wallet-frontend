@@ -7,6 +7,8 @@ import NavBar from "./../../components/NavBar/NavBar";
 import TransactionList from "./../../components/TransactionList/TransactionList";
 import TransactionListDesktop from "./../../components/TransactionListDesktop/TransactionListDesktop";
 import Exchange from "./../../components/Exchange/Exchange";
+import Loader from "../../components/Lodaer/Loader";
+
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
 const HomePage = () => {
@@ -16,8 +18,7 @@ const HomePage = () => {
 
   const { data, isLoading } = transactionsApiSlice.useGetTransactionsQuery();
 
-  //TODO: add some spinner
-  if (isLoading) return <h2>Loading...</h2>;
+  if (isLoading) return <Loader />;
 
   return (
     <div className={styles.container}>
