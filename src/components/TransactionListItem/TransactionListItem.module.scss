@@ -1,11 +1,12 @@
+@import "../../../stylesheet/vars.scss";
+
 .transaction {
   border-radius: 10px;
-  background: #fff;
+  background: $background-light;
   width: 280px;
   height: 282px;
   list-style: none;
   border-left: solid 5px;
-  border-color: #ff6596; // depends on the type
   margin: 8px 0px 0px 0px;
   padding: 0px;
 
@@ -13,9 +14,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #dcdcdf;
+    border-bottom: 1px solid $background-gray;
     padding: 12px 15px 8px 20px;
     margin: 0px;
+    line-height: normal;
+    font-family: "Circe";
   }
 
   &__item__last {
@@ -41,6 +44,20 @@
     padding: 0px;
     margin: 0px;
   }
+
+  &__expense {
+    color:$color-brand-accent;
+  }
+  &__income {
+    color:$color-brand-secondary;
+  }
+  
+  &__incomeBorder{
+    border-color: $color-brand-secondary;
+  }
+  &__expenseBorder {
+    border-color: $color-brand-accent;
+  }
 }
 
 .btn {
@@ -53,15 +70,15 @@
     font-weight: 400;
     border: none;
     cursor: pointer;
-    background: #24cca7;
-    color: #fff;
+    background:$color-brand-secondary;
+    color: $background-light;
     &:hover {
       transform: scale(1.15);
     }
   }
 
   &__edit {
-    width: 67px;
+    width: 54px;
     height: 26px;
     border-radius: 18px;
     text-align: center;
@@ -70,6 +87,9 @@
     border: none;
     cursor: pointer;
     background: transparent;
+    display: flex;
+    justify-content: space-between;
+    
     &:hover {
       transform: scale(1.15);
     }
