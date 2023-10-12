@@ -58,11 +58,18 @@ const TransactionListItem = ({
         <button className={styles.btn__delete} onClick={handleDelete}>
           {isDeleting ? "Deleting..." : "Delete"}
         </button>
-        <button className={styles.btn__edit}>
-          <Pencil className={styles.btn__edit__icon} onClick={openModal} />
+        <button className={styles.btn__edit} onClick={openModal}>
+          <Pencil className={styles.btn__edit__icon} />
           Edit
         </button>
       </li>
+      {showEdittrans && (
+        <EditTransaction
+          onClose={closeModal}
+          income={income}
+          transactionId={_id}
+        />
+      )}
     </ul>
   );
 };
