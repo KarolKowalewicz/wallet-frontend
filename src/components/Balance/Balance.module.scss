@@ -1,14 +1,11 @@
 @import "./../../../stylesheet/vars.scss";
 @import "./../../../stylesheet/fonts.scss";
 
-.balance {
-  // background-color: beige;
+.balanceClass {
 
   border-radius: 30px;
 
-  // background-color: #fff;
   background-color: $font-color-light;
-  //kolor zmienna
   display: flex;
   align-items: center;
 
@@ -23,7 +20,6 @@
   }
 
   &__layout {
-    // background-color: aquamarine;
     margin-left: 32px;
 
     @include tablet {
@@ -49,3 +45,4 @@
     }
   }
 }
+

@@ -15,7 +15,7 @@
 
     border-radius: 30px;
 
-    height: 174px;  /// mozna zaakoment dziala bez
+    height: 174px; 
     width: 280px;
 
     overflow: hidden;
@@ -50,12 +50,12 @@
 
         position: sticky;
         
-        top: 0; // Pozostawia wiersz tytułowy na górze
-        z-index: 1; // Przód na wierzchu
+        top: 0; 
+        z-index: 1; 
 
         &__ul {
-            list-style: none;
-            padding: 0;
+            // list-style: none;
+            // padding: 0;
             width: 100%;
 
             display: flex;
@@ -70,7 +70,7 @@
     &__values {
         text-align: center;
 
-        overflow-y: scroll; // Dodaj pasek przewijania tylko w wierszu wartości
+        overflow-y: scroll; 
         &::-webkit-scrollbar { width: 0.1em;}
 
         margin-top: 5px;
@@ -84,8 +84,8 @@
         }
 
         &__ul {
-            list-style: none;
-            padding: 0;
+            // list-style: none;
+            // padding: 0;
 
             display: grid;
             grid-template-columns: repeat(3, 1fr);

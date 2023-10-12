@@ -5,6 +5,7 @@ import styles from "./Header.module.scss";
 import { ReactComponent as Logo } from "./../../img/logowallet.svg";
 import { ReactComponent as ExitDoor } from "./../../img/exitdoor.svg";
 import { RotatingLines } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 // import logo from './../../img/logowallet.png'
 // import logoText from './../../img/logowallettext.png'
@@ -29,10 +30,12 @@ const Header = () => {
   };
   return (
     <div className={styles.header}>
-      <div className={styles.header__logo}>
-        <Logo className={styles.header__logo__svg} />
-        <h1 className={styles.header__logo__txt}>Wallet</h1>
-      </div>
+      <Link to="/">
+        <div className={styles.header__logo}>
+          <Logo className={styles.header__logo__svg} />
+          <h1 className={styles.header__logo__txt}>Wallet</h1>
+        </div>
+      </Link>
       <div className={styles.header__nav}>
         <div className={styles.header__nav__name}>
           <p>{user.name}</p>
