@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import authApiSlice from "../../redux/slices/api/auth/authApiSlice";
 import { RotatingLines } from "react-loader-spinner";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 const LogoutModal = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,22 @@ const LogoutModal = () => {
       navigate(0);
     }
   };
+
+  const closeModalByESC = () => {
+    dispatch(closeModal("logout"));
+  };
+
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === "Escape") {
+        closeModalByESC();
+      }
+    };
+    window.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      window.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
 
   if (!modals["logout"]) return null;
   return (
