@@ -26,9 +26,23 @@
   height: 24px;
   border: none;
   outline: none;
+  color: $color-logout-button;
+  font-family: Circe;
+  font-size: 18px;
+
 
   &__comment {
     height: 52px;
+  }
+}
+
+.category {
+  color: #000;
+  font-family: Circe;
+  font-size: 18px;
+
+  &:hover {
+    color: $color-brand-accent;
   }
 }
 
