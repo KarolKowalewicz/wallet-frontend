@@ -1,7 +1,7 @@
 import styles from "./ButtonAdd.module.scss";
 import { useDispatch } from "react-redux";
 import { openModal } from "../../redux/slices/modal/modalSlice";
-import { ReactComponent as ButtonPlus } from "./../../img/+ btn.svg";
+import { ReactComponent as ButtonPlus } from "./../../img/btn.svg";
 import AddTransaction from "../AddTransaction/AddTransaction";
 
 const ButtonAdd = () => {

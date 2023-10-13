@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { openModal } from "../../redux/slices/modal/modalSlice";
 
-// import logo from './../../img/logowallet.png'
-// import logoText from './../../img/logowallettext.png'
 
 const Header = () => {
   const user = useSelector((state) => state.auth);
