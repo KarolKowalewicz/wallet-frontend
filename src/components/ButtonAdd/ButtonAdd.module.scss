@@ -7,14 +7,17 @@
   bottom: 20px;
   right: 20px;
   z-index: 2;
+  transition: transform 0.5s;
   @include tablet {
     position: fixed;
     bottom: 8px;
     right: 8px;
-    z-index: 2;
   }
   @include desktop {
     bottom: 40px;
     right: 40px;
   }
+}
+.buttonAdd:hover {
+  transform: scale(1.2);
 }
