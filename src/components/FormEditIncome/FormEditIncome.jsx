@@ -1,15 +1,20 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 import styles from "./FormEditIncome.module.scss";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import moment from "moment";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import BtnSaveTrans from "../BtnSaveTrans/BtnSaveTrans";
+
 import Calendar from "../Calendar/Calendar";
 import { ReactComponent as CalendarIcon } from "../../img/calendar.svg";
+
+import BtnSaveTrans from "../BtnSaveTrans/BtnSaveTrans";
+
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
+
+// import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 const validationSchema = Yup.object().shape({
   amount: Yup.number("Enter a valid amount")
@@ -23,10 +28,11 @@ const validationSchema = Yup.object().shape({
   comment: Yup.string(),
 });
 
-const FormEditIncome = ({ transactionId }) => {
+const FormEditIncome = ({ transactionId, onClose }) => {
   const [updateTransaction] =
     transactionsApiSlice.useUpdateTransactionMutation();
-  const calendarRef = useRef(null);
+  
+    const calendarRef = useRef(null);
 
   const openCalendar = () => {
     if (calendarRef.current && calendarRef.current.openCalendar) {
@@ -37,15 +43,15 @@ const FormEditIncome = ({ transactionId }) => {
   return (
     <div>
       <div className={styles.typeOfTransHead}>
-        <p className={styles.incomeLabel}>income</p>
-        <p className={styles.slashLabel}>/</p>
-        <p className={styles.expenseLabel}>expense</p>
+        <p className={`${styles.transLabel} ${styles.transLabel__income}`}>Income</p>
+        <p className={`${styles.transLabel} ${styles.transLabel__slash}`}>/</p>
+        <p className={styles.transLabel}>Expense</p>
       </div>
       <Formik
         initialValues={{
           amount: "",
           income: true,
-          date: moment().format("YYYY-MM-DD HH:mm:ss"),
+          date: moment().format("YYYY-MM-DD"),
           comment: "",
         }}
         validationSchema={validationSchema}
@@ -53,10 +59,12 @@ const FormEditIncome = ({ transactionId }) => {
           updateTransaction({ _id: transactionId, body: values });
           setSubmitting(false);
           resetForm();
+          onClose();
         }}
       >
         {({ isSubmitting, setFieldValue, values }) => (
           <Form className={styles.form}>
+            <div className={styles.amountCalendarWrap}>
             <div>
               <Field
                 className={styles.input}
@@ -66,30 +74,43 @@ const FormEditIncome = ({ transactionId }) => {
                 autoComplete="off"
               />
               <ErrorMessage name="amount" />
+              <div className={styles.separatorShort}></div>
             </div>
-
-            <div className={styles.separatorShort}></div>
 
             <div>
               <div className={styles.calendarWrap}>
-                <Calendar
-                  ref={calendarRef}
-                  value={values.date}
-                  onChange={(date) =>
-                    setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
+              <Calendar
+                ref={calendarRef}
+                value={values.date}
+                name="date"
+                // onChange={(date) =>
+                //   setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
+                // }
+                onChange={(dateOrString) => {
+                  let formattedDate;
+                  if (typeof dateOrString === 'string') {
+                      const parsedDate = moment(dateOrString, 'YYYY-MM-DD', true);
+                      if (parsedDate.isValid()) {
+                        formattedDate = parsedDate.format('YYYY-MM-DD');
+                      } else {
+                        formattedDate = dateOrString;
+                      }
+                    } else {
+                      formattedDate = dateOrString.format('YYYY-MM-DD');
                   }
-                  name="date"
-                />
+                  setFieldValue('date', formattedDate);
+                }}
+              />
 
                 <CalendarIcon
                   onClick={openCalendar}
                   className={styles.calendarIcon}
                 />
               </div>
+              <div className={styles.separatorShort}></div>
               <ErrorMessage name="date" />
             </div>
-
-            <div className={styles.separatorShort}></div>
+            </div>
 
             <div>
               <Field
@@ -123,124 +144,3 @@ const FormEditIncome = ({ transactionId }) => {
 
 export default FormEditIncome;
 
-// /////////////////////////////////////////////////////////
-
-// import React, { useRef } from 'react';
-
-// import styles from './FormIncome.module.scss'
-
-// import { useFormik } from 'formik';
-// import * as Yup from 'yup';
-// import moment from 'moment';
-
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-// import BtnAddTrans from '../BtnAddTrans/BtnAddTrans';
-// // import BtnCancelTrans from '../BtnCancelTrans/BtnCancelTrans';
-// import Calendar from '../Calendar/Calendar';
-// import { ReactComponent as CalendarIcon } from '../../img/calendar.svg';
-
-// const validationSchema = Yup.object().shape({
-//     amount: Yup
-//         .number('Enter a valid amount')
-//         .positive('Amount should be positive')
-//         .required('Amount is required')
-//         .max(999999999, 'Amount is too large')
-//         .typeError('Amount must be a number'),
-//     date: Yup
-//         .date()
-//         .max(moment().endOf('day'), 'Date cannot be in the future')
-//         .required('Date is required'),
-//     comment: Yup.string()
-// });
-
-// const FormIncome = () => {
-//     const formik = useFormik({
-//         initialValues: {
-//             amount: '',
-//             date: moment(),
-//             comment: '',
-//         },
-//         validationSchema: validationSchema,
-//         onSubmit: (values) => {
-//             if (formik.errors.amount) {
-//                 toast.error(formik.errors.amount);
-//             }
-//             if (formik.errors.date) {
-//                 toast.error(formik.errors.date);
-//             }
-//             if (formik.errors.comment) {
-//                 toast.error(formik.errors.comment);
-//             }
-//             if (!formik.errors.amount && !formik.errors.date && !formik.errors.comment) {
-//                 console.log('income info', values);
-//             }
-//         },
-//     });
-
-//     const calendarRef = useRef(null);
-
-//     const openCalendar = () => {
-//         if (calendarRef.current && calendarRef.current.openCalendar) {
-//             calendarRef.current.openCalendar();
-//         }
-//     }
-
-//     return (
-//         // <div className={styles.formWrap}>
-//         <form className={styles.form} onSubmit={formik.handleSubmit}>
-//             <div>
-//                 <input
-//                     className={styles.input}
-//                     type="number"
-//                     name="amount"
-//                     value={formik.values.amount}
-//                     onChange={formik.handleChange}
-//                     onBlur={formik.handleBlur}
-//                     placeholder='0.00'
-//                     autocomplete="off"
-//                 />
-//                 {/* {formik.touched.amount && formik.errors.amount ? <div>{formik.errors.amount}</div> : null} */}
-//             </div>
-
-//             <div className={styles.separatorShort}></div>
-
-//             <div>
-//                 <div className={styles.calendarWrap}>
-//                 <Calendar
-//                     // className={styles.input}
-//                     ref={calendarRef}
-//                     value={formik.values.date}
-//                     onChange={(date) => formik.setFieldValue('date', date)}
-//                 />
-//                 <CalendarIcon onClick={openCalendar} className={styles.calendarIcon} />
-//                 </div>
-//                 {/* {formik.touched.date && formik.errors.date ? <div>{formik.errors.date}</div> : null} */}
-//             </div>
-
-//             <div className={styles.separatorShort}></div>
-
-//             <div>
-//                 <textarea
-//                     className={`${styles.input} ${styles.input__comment}`}
-//                     type="text"
-//                     name="comment"
-//                     value={formik.values.comment}
-//                     onChange={formik.handleChange}
-//                     onBlur={formik.handleBlur}
-//                     placeholder='Comment'
-//                     autocomplete="off"
-//                 />
-//                 {/* {formik.touched.comment && formik.errors.comment ? <div>{formik.errors.comment}</div> : null} */}
-//             </div>
-
-//             <div className={styles.separatorLong}></div>
-
-//             <BtnAddTrans onSubmit={formik.handleSubmit} />
-//         </form>
-//         // </div>
-//     );
-// };
-
-// export default FormIncome;

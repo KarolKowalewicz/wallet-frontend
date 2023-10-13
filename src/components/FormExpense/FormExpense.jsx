@@ -1,7 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Select from "react-select";
 
 import styles from "./FormExpense.module.scss";
+
+import { getDeviceConfig } from "../FormExpenseStyles/inputCategoryStyles";
+import { stylesForDevice } from "../FormExpenseStyles/inputCategoryStyles";
+
+import { categoryOptions } from "../FormCategoryExpense/formCategoryExpense";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -9,6 +14,7 @@ import moment from "moment";
 
 import Calendar from "../Calendar/Calendar";
 import { ReactComponent as CalendarIcon } from "../../img/calendar.svg";
+import SelectArrow from "../SelectArrow/SelectArrow";
 
 import BtnAddTrans from "../BtnAddTrans/BtnAddTrans";
 
@@ -27,105 +33,32 @@ const validationSchema = Yup.object().shape({
   comment: Yup.string(),
 });
 
-const categoryOptions = [
-  // { value: '', label: 'Select category' },
-  { value: "Products", label: "Products" },
-  { value: "Main expenses", label: "Main expenses" },
-  { value: "Car", label: "Car" },
-  { value: "Self care", label: "Self care" },
-  { value: "Child care", label: "Child care" },
-  { value: "Household products", label: "Household products" },
-  { value: "Education", label: "Education" },
-  { value: "Leisure", label: "Leisure" },
-  { value: "Other expenses", label: "Other expenses" },
-  { value: "Entertainment", label: "Entertainment" },
-];
-
-const inputCategoryStyles = {
-  container: (provided) => ({
-    ...provided,
-    marginLeft: "40px",
-    padding: "0",
-  }),
-  inputContainer: (provided) => ({
-    ...provided,
-    margin: "0",
-    padding: "0",
-  }),
-  input: (provided) => ({
-    ...provided,
-    margin: "0",
-    padding: "0",
-    color: "#000",
-    fontFamily: "Circe",
-    fontSize: "18px",
-    fontStyle: "normal",
-    fontWeight: "400",
-    lineHeight: "normal,",
-  }),
-  selectInput: (provided) => ({
-    ...provided,
-    // margin: '0',
-    // padding: '0',
-    color: "red",
-    // fontFamily: 'Circe',
-    // fontSize: '18px',
-    // fontStyle: 'normal',
-    // fontWeight: '400',
-    // lineHeight: 'normal,'
-  }),
-  valueContainer: (provided) => ({
-    ...provided,
-    margin: "0",
-    padding: "0",
-  }),
-  control: (provided) => ({
-    ...provided,
-    width: "190px",
-    height: "24px",
-    flexShrink: 0,
-    // color: '#BDBDBD',
-    color: "#000",
-    fontFamily: "Circe",
-    fontSize: "18px",
-    fontStyle: "normal",
-    fontWeight: 400,
-    lineHeight: "normal",
-    backgroundColor: "transparent",
-    border: "none",
-    boxShadow: "none",
-  }),
-  menu: (provided) => ({
-    ...provided,
-    width: "280px",
-    // height: '',
-    flexShrink: 0,
-    borderRadius: "20px",
-    background: "rgba(255, 255, 255, 0.70)",
-    boxShadow: "0px 6px 15px 0px rgba(0, 0, 0, 0.10)",
-    backdropFilter: "blur(25px)",
-  }),
-  option: (provided, state) => ({
-    ...provided,
-    fontFamily: "Circe",
-    fontSize: "18px",
-    fontWeight: 400,
-    color: state.isSelected ? "white" : "#BDBDBD", // Możesz dostosować kolory dla wybranych i niezaznaczonych opcji
-  }),
-  singleValue: (provided) => ({
-    ...provided,
-    fontFamily: "Circe",
-    fontSize: "18px",
-    fontWeight: 400,
-    color: "#000",
-  }),
-  indicatorSeparator: (provided) => ({
-    ...provided,
-    display: "none",
-  }),
+const DropdownIndicator = (props) => {
+  return (
+    <SelectArrow {...props} isMenuOpen={props.selectProps.menuIsOpen} />
+  );
 };
 
-const FormExpense = () => {
+const FormExpense = ({ onClose }) => {
+
+  // set styles for diffrent devices *BEGIN*
+  const [device, setDevice] = useState(getDeviceConfig(window.innerWidth));
+  
+  const currentStyle = stylesForDevice[device];
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setDevice(getDeviceConfig(window.innerWidth));
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  // set styles for diffrent devices *END*
+
   const [addTransaction] = transactionsApiSlice.useAddTransactionMutation();
   const calendarRef = useRef(null);
 
@@ -154,13 +87,14 @@ const FormExpense = () => {
         });
         setSubmitting(false);
         resetForm();
+        onClose();
       }}
     >
       {({ isSubmitting, setFieldValue, values }) => (
         <Form className={styles.form}>
           <div>
             <Select
-              styles={inputCategoryStyles}
+              styles={currentStyle}
               options={categoryOptions}
               value={categoryOptions.find(
                 (option) => option.value === values.category
@@ -170,12 +104,14 @@ const FormExpense = () => {
               }
               classNamePrefix="react-select"
               placeholder="Select category"
+              components={{DropdownIndicator}}
             />
             <ErrorMessage name="category" />
           </div>
 
-          <div className={styles.separatorShort}></div>
+          <div className={styles.separatorLong}></div>
 
+          <div className={styles.amountCalendarWrap}>
           <div>
             <Field
               className={styles.input}
@@ -185,29 +121,43 @@ const FormExpense = () => {
               autoComplete="off"
             />
             <ErrorMessage name="amount" />
+            <div className={styles.separatorShort}></div>
           </div>
-
-          <div className={styles.separatorShort}></div>
 
           <div>
             <div className={styles.calendarWrap}>
               <Calendar
                 ref={calendarRef}
                 value={values.date}
-                onChange={(date) =>
-                  setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
-                }
                 name="date"
+                // onChange={(date) =>
+                //   setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
+                // }
+                onChange={(dateOrString) => {
+                  let formattedDate;
+                  if (typeof dateOrString === 'string') {
+                      const parsedDate = moment(dateOrString, 'YYYY-MM-DD', true);
+                      if (parsedDate.isValid()) {
+                        formattedDate = parsedDate.format('YYYY-MM-DD');
+                      } else {
+                        formattedDate = dateOrString;
+                      }
+                    } else {
+                      formattedDate = dateOrString.format('YYYY-MM-DD');
+                  }
+                  setFieldValue('date', formattedDate);
+                }}
               />
+              
               <CalendarIcon
                 onClick={openCalendar}
                 className={styles.calendarIcon}
               />
             </div>
+            <div className={styles.separatorShort}></div>
             <ErrorMessage name="date" />
           </div>
-
-          <div className={styles.separatorShort}></div>
+          </div>
 
           <div>
             <Field
@@ -239,147 +189,3 @@ const FormExpense = () => {
 };
 
 export default FormExpense;
-
-// import React, { useRef } from "react";
-// import Select from 'react-select'
-
-// import styles from "./FormExpense.module.scss";
-
-// import { Formik, Field, Form, ErrorMessage } from "formik";
-// import * as Yup from "yup";
-// import moment from "moment";
-
-// import BtnAddTrans from "../BtnAddTrans/BtnAddTrans";
-// import Calendar from "../Calendar/Calendar";
-// import { ReactComponent as CalendarIcon } from "../../img/calendar.svg";
-// import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
-
-// const validationSchema = Yup.object().shape({
-//   category: Yup.string().required("Category is required"),
-//   amount: Yup.number()
-//     .typeError("Amount must be a number")
-//     .positive("Amount must be positive")
-//     .max(9999999, "Amount too large")
-//     .required("Amount is required"),
-//   date: Yup.date()
-//     .max(moment(), "Date cannot be in the future")
-//     .required("Date is required"),
-//   comment: Yup.string(),
-// });
-
-// const FormExpense = () => {
-//   const [addTransaction] = transactionsApiSlice.useAddTransactionMutation();
-//   const calendarRef = useRef(null);
-
-//   const openCalendar = () => {
-//     if (calendarRef.current && calendarRef.current.openCalendar) {
-//       calendarRef.current.openCalendar();
-//     }
-//   };
-
-//   return (
-//     <Formik
-//       initialValues={{
-//         category: "",
-//         amount: "",
-//         date: moment().format("YYYY-MM-DD"),
-//         comment: "",
-//       }}
-//       validationSchema={validationSchema}
-//       onSubmit={(values, { setSubmitting, resetForm }) => {
-//         addTransaction({
-//           income: false,
-//           amount: values.amount,
-//           category: values.category,
-//           date: values.date,
-//           comment: values.comment,
-//         });
-//         setSubmitting(false);
-//         resetForm();
-//       }}
-//     >
-//       {({ isSubmitting, setFieldValue, values }) => (
-//         <Form className={styles.form}>
-//           <div>
-//             <Field className={styles.input} as="select" name="category">
-//               <option className={styles.input__option} value="" label="Select category" />
-//               <option value="Products">Products</option>
-//               <option value="Main expenses">Main expenses</option>
-//               <option value="Car">Car</option>
-//               <option value="Self care">Self care</option>
-//               <option value="Child care">Child care</option>
-//               <option value="Household products">Household products</option>
-//               <option value="Education">Education</option>
-//               <option value="Leisure">Leisure</option>
-//               <option value="Other expenses">Other expenses</option>
-//               <option value="Entertainment">Entertainment</option>
-//             </Field>
-//             <ErrorMessage name="category" />
-//           </div>
-
-//           <div className={styles.separatorShort}></div>
-
-//           <div>
-//             <Field
-//               className={styles.input}
-//               name="amount"
-//               type="number"
-//               placeholder="0.00"
-//               autoComplete="off"
-//             />
-//             <ErrorMessage name="amount" />
-//           </div>
-
-//           <div className={styles.separatorShort}></div>
-
-//           <div>
-//             <div className={styles.calendarWrap}>
-//               <Calendar
-//                 ref={calendarRef}
-//                 value={values.date}
-//                 onChange={(date) =>
-//                   setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
-//                 }
-//                 name="date"
-//               />
-
-//               <CalendarIcon
-//                 onClick={openCalendar}
-//                 className={styles.calendarIcon}
-//               />
-//             </div>
-//             <ErrorMessage name="date" />
-//           </div>
-
-//           <div className={styles.separatorShort}></div>
-
-//           <div>
-//             <Field
-//               as="textarea"
-//               className={`${styles.input} ${styles.input__comment}`}
-//               name="comment"
-//               placeholder="Comment"
-//               autoComplete="off"
-//             />
-//             <ErrorMessage name="comment" />
-//           </div>
-
-//           <div className={styles.separatorLong}></div>
-
-//           <BtnAddTrans
-//             onSubmit={
-//               isSubmitting
-//                 ? null
-//                 : () =>
-//                     document
-//                       .querySelector("form")
-//                       .dispatchEvent(new Event("submit"))
-//             }
-//           />
-//         </Form>
-//       )}
-//     </Formik>
-//   );
-// };
-
-// export default FormExpense;

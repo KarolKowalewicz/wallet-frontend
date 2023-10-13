@@ -22,7 +22,7 @@ const validationSchema = Yup.object().shape({
   comment: Yup.string(),
 });
 
-const FormIncome = () => {
+const FormIncome = ({ onClose }) => {
   const [addTransaction] = transactionsApiSlice.useAddTransactionMutation();
   const calendarRef = useRef(null);
 
@@ -36,7 +36,7 @@ const FormIncome = () => {
     <Formik
       initialValues={{
         amount: "",
-        date: moment().format("YYYY-MM-DD HH:mm:ss"),
+        date: moment().format("YYYY-MM-DD"),
         comment: "",
       }}
       validationSchema={validationSchema}
@@ -49,10 +49,12 @@ const FormIncome = () => {
         });
         setSubmitting(false);
         resetForm();
+        onClose();
       }}
     >
       {({ isSubmitting, setFieldValue, values }) => (
         <Form className={styles.form}>
+          <div className={styles.amountCalendarWrap}>
           <div>
             <Field
               className={styles.input}
@@ -61,20 +63,33 @@ const FormIncome = () => {
               placeholder="0.00"
               autoComplete="off"
             />
-            <ErrorMessage name="amount" component="div" />
+            <ErrorMessage name="amount" />
+            <div className={styles.separatorShort}></div>
           </div>
-
-          <div className={styles.separatorShort}></div>
 
           <div>
             <div className={styles.calendarWrap}>
-              <Calendar
+            <Calendar
                 ref={calendarRef}
                 value={values.date}
-                onChange={(date) =>
-                  setFieldValue("date", date.format("YYYY-MM-DD"))
-                }
                 name="date"
+                // onChange={(date) =>
+                //   setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
+                // }
+                onChange={(dateOrString) => {
+                  let formattedDate;
+                  if (typeof dateOrString === 'string') {
+                      const parsedDate = moment(dateOrString, 'YYYY-MM-DD', true);
+                      if (parsedDate.isValid()) {
+                        formattedDate = parsedDate.format('YYYY-MM-DD');
+                      } else {
+                        formattedDate = dateOrString;
+                      }
+                    } else {
+                      formattedDate = dateOrString.format('YYYY-MM-DD');
+                  }
+                  setFieldValue('date', formattedDate);
+                }}
               />
 
               <CalendarIcon
@@ -83,9 +98,9 @@ const FormIncome = () => {
               />
             </div>
             <ErrorMessage name="date" />
+            <div className={styles.separatorShort}></div>
           </div>
-
-          <div className={styles.separatorShort}></div>
+          </div>
 
           <div>
             <Field
