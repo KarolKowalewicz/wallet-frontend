@@ -1,3 +1,4 @@
+import { RotatingLines } from "react-loader-spinner";
 import styles from "./Balance.module.scss";
 
 const Balance = ({ balance, isLoading }) => {
@@ -10,7 +11,7 @@ const Balance = ({ balance, isLoading }) => {
       {isLoading ? (
           <RotatingLines strokeColor="black" width="30" />
           ) : (
-            `€ ${balance}`
+            `€ ${balance.toFixed(2)}`
           )}
         </h3>
       </div>
