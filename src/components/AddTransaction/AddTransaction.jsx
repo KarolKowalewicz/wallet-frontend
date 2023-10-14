@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "./AddTransaction.module.scss";
 import { ReactComponent as BtnClose } from "./../../img/btn_close.svg";
 import Header from "../Header/Header";
-// import BtnAddTrans from '../BtnAddTrans/BtnAddTrans';
 import BtnCancelTrans from "../BtnCancelTrans/BtnCancelTrans";
 import FormIncome from "../FormIncome/FormIncome";
 import FormExpense from "../FormExpense/FormExpense";
@@ -20,13 +19,16 @@ const AddTransaction = ({ onClose }) => {
     // backdrop
     <div className={styles.overlay}>
       {/* modal content */}
-      <div className={styles.content}>
-        <Header />
+      <div className={`${styles.content} ${isIncome ? styles.incomeSizeContent : ""}`}>
 
+        <div className={styles.headerIsHidden}>
+        <Header />
+        </div>
+        
         {/* close btn */}
         <div className={styles.btnCloseWrap}>
           <button className={styles.btnCloseFunc} onClick={onClose}>
-            <BtnClose className={styles.btnCloseFunc__vector} />
+            <BtnClose />
           </button>
         </div>
 
@@ -74,12 +76,11 @@ const AddTransaction = ({ onClose }) => {
             Expense
           </p>
         </div>
+        
+        {isIncome ? <FormIncome onClose={onClose} /> : <FormExpense onClose={onClose} />}
 
-        {isIncome ? <FormIncome /> : <FormExpense />}
-
-        <div className={styles.actBtnsWrap}>
-          {/* <BtnAddTrans /> */}
-          <BtnCancelTrans className={styles.btnCancelTrans} onClose={onClose} />
+        <div className={styles.btnCancelTransWrap}>
+          <BtnCancelTrans onClose={onClose} />
         </div>
       </div>
     </div>

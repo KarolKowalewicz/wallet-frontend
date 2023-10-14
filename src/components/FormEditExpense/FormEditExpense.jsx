@@ -1,14 +1,23 @@
-import React, { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import Select from 'react-select'
 
 import styles from "./FormEditExpense.module.scss";
+
+import { getDeviceConfig } from "../FormExpenseStyles/inputCategoryStyles";
+import { stylesForDevice } from "../FormExpenseStyles/inputCategoryStyles";
+
+import { categoryOptions } from "../FormCategoryExpense/formCategoryExpense";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import moment from "moment";
 
-import BtnSaveTrans from "../BtnSaveTrans/BtnSaveTrans";
 import Calendar from "../Calendar/Calendar";
 import { ReactComponent as CalendarIcon } from "../../img/calendar.svg";
+import SelectArrow from "../SelectArrow/SelectArrow";
+
+import BtnSaveTrans from "../BtnSaveTrans/BtnSaveTrans";
+
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
 const validationSchema = Yup.object().shape({
@@ -24,7 +33,32 @@ const validationSchema = Yup.object().shape({
   comment: Yup.string(),
 });
 
-const FormEditExpense = ({ transactionId }) => {
+const DropdownIndicator = (props) => {
+  return (
+    <SelectArrow {...props} isMenuOpen={props.selectProps.menuIsOpen} />
+  );
+};
+
+const FormEditExpense = ({ transactionId, onClose }) => {
+
+    // set styles for diffrent devices on input category *BEGIN*
+    const [device, setDevice] = useState(getDeviceConfig(window.innerWidth));
+  
+    const currentStyle = stylesForDevice[device];
+    
+    useEffect(() => {
+      const handleResize = () => {
+        setDevice(getDeviceConfig(window.innerWidth));
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+    // set styles for diffrent devices on input category *END*
+
   const [updateTransaction] =
     transactionsApiSlice.useUpdateTransactionMutation();
   const calendarRef = useRef(null);
@@ -38,16 +72,16 @@ const FormEditExpense = ({ transactionId }) => {
   return (
     <div>
       <div className={styles.typeOfTransHead}>
-        <p className={styles.incomeLabel}>income</p>
-        <p className={styles.slashLabel}>/</p>
-        <p className={styles.expenseLabel}>expense</p>
+        <p className={styles.transLabel}>Income</p>
+        <p className={`${styles.transLabel} ${styles.transLabel__slash}`}>/</p>
+        <p className={`${styles.transLabel} ${styles.transLabel__expense}`}>Expense</p>
       </div>
       <Formik
         initialValues={{
           category: "",
           amount: "",
           income: false,
-          date: moment().format("YYYY-MM-DD HH:mm:ss"),
+          date: moment().format("YYYY-MM-DD"),
           comment: "",
         }}
         validationSchema={validationSchema}
@@ -55,29 +89,31 @@ const FormEditExpense = ({ transactionId }) => {
           updateTransaction({ _id: transactionId, body: values });
           setSubmitting(false);
           resetForm();
+          onClose();
         }}
       >
         {({ isSubmitting, setFieldValue, values }) => (
           <Form className={styles.form}>
             <div>
-              <Field className={styles.input} as="select" name="category">
-                <option value="" label="Select category" />
-                <option value="Products">Products</option>
-                <option value="Main expenses">Main expenses</option>
-                <option value="Car">Car</option>
-                <option value="Self care">Self care</option>
-                <option value="Child care">Child care</option>
-                <option value="Household products">Household products</option>
-                <option value="Education">Education</option>
-                <option value="Leisure">Leisure</option>
-                <option value="Other expenses">Other expenses</option>
-                <option value="Entertaiment">Entertaiment</option>
-              </Field>
-              <ErrorMessage name="category" />
+            <Select
+              styles={currentStyle}
+              options={categoryOptions}
+              value={categoryOptions.find(
+                (option) => option.value === values.category
+              )}
+              onChange={(option) =>
+                setFieldValue("category", option ? option.value : "")
+              }
+              classNamePrefix="react-select"
+              placeholder="Select category"
+              components={{DropdownIndicator}}
+            />
+            <ErrorMessage name="category" />
             </div>
 
-            <div className={styles.separatorShort}></div>
+            <div className={styles.separatorLong}></div>
 
+            <div className={styles.amountCalendarWrap}>
             <div>
               <Field
                 className={styles.input}
@@ -87,30 +123,43 @@ const FormEditExpense = ({ transactionId }) => {
                 autoComplete="off"
               />
               <ErrorMessage name="amount" />
+              <div className={styles.separatorShort}></div>
             </div>
-
-            <div className={styles.separatorShort}></div>
 
             <div>
               <div className={styles.calendarWrap}>
-                <Calendar
-                  ref={calendarRef}
-                  value={values.date}
-                  onChange={(date) =>
-                    setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
+              <Calendar
+                ref={calendarRef}
+                value={values.date}
+                name="date"
+                // onChange={(date) =>
+                //   setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
+                // }
+                onChange={(dateOrString) => {
+                  let formattedDate;
+                  if (typeof dateOrString === 'string') {
+                      const parsedDate = moment(dateOrString, 'YYYY-MM-DD', true);
+                      if (parsedDate.isValid()) {
+                        formattedDate = parsedDate.format('YYYY-MM-DD');
+                      } else {
+                        formattedDate = dateOrString;
+                      }
+                    } else {
+                      formattedDate = dateOrString.format('YYYY-MM-DD');
                   }
-                  name="date"
-                />
-
-                <CalendarIcon
-                  onClick={openCalendar}
-                  className={styles.calendarIcon}
-                />
-              </div>
-              <ErrorMessage name="date" />
+                  setFieldValue('date', formattedDate);
+                }}
+              />
+              
+              <CalendarIcon
+                onClick={openCalendar}
+                className={styles.calendarIcon}
+              />
             </div>
-
             <div className={styles.separatorShort}></div>
+            <ErrorMessage name="date" />
+          </div>
+          </div>
 
             <div>
               <Field

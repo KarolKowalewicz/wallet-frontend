@@ -7,29 +7,39 @@ import FormEditIncome from "../FormEditIncome/FormEditIncome";
 import FormEditExpense from "../FormEditExpense/FormEditExpense";
 
 const EditTransaction = ({ onClose, income, transactionId }) => {
-  return (
-    <div className={styles.overlay}>
-      <div className={styles.content}>
-        <Header />
+  
+  const isIncome = income;
 
+  return (
+    // backdrop
+    <div className={styles.overlay}>
+      {/* modal content */}
+      <div className={`${styles.content} ${isIncome ? styles.incomeSizeContent : ""}`}>
+        
+        <div className={styles.headerIsHidden}>
+          <Header />
+        </div>
+
+        {/* close btn */}
         <div className={styles.btnCloseWrap}>
           <button className={styles.btnCloseFunc} onClick={onClose}>
-            <BtnClose className={styles.btnCloseFunc__vector} />
+            <BtnClose />
           </button>
         </div>
 
+        {/* transaction head */}
         <div className={styles.headerWrap}>
           <p className={styles.headerWrap__title}>Edit transaction</p>
         </div>
 
         {income ? (
-          <FormEditIncome transactionId={transactionId} />
+          <FormEditIncome transactionId={transactionId} onClose={onClose}/>
         ) : (
-          <FormEditExpense transactionId={transactionId} />
+          <FormEditExpense transactionId={transactionId} onClose={onClose} />
         )}
 
-        <div className={styles.actBtnsWrap}>
-          <BtnCancelTrans className={styles.btnCancelTrans} onClose={onClose} />
+        <div className={styles.btnCancelTransWrap}>
+          <BtnCancelTrans onClose={onClose} />
         </div>
       </div>
     </div>
