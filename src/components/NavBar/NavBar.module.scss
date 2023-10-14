@@ -1,3 +1,7 @@
+@import './../../../stylesheet/vars.scss';
+@import './../../../stylesheet/fonts.scss';
+
+
 .navbar-container {
   display: flex;
   justify-content: center;
@@ -7,18 +11,22 @@
 
   li {
     margin-right: 10px;
+    font-family: 'Poppins', sans-serif;
    display: flex;
     align-items: center;
 
     img {
       width: 38px; 
       height: 38px;
-      vertical-align: middle;
+      
+      vertical-align: middle; // działa
     }
 
     .text {
       margin-left: 10px; 
-      font-weight: normal; 
+      color: black; //działa
+      font-size: 18px; // działa
+      font-weight: normal;  // nie działa
     }
 
     &.active {
@@ -30,7 +38,7 @@
 
 
 
-
+// mobilka
   @media (max-width: 767px) {
     flex-direction: row; 
     align-items: center; 
@@ -47,12 +55,7 @@
 
       .text {
         display: none; 
-      }
-      &.active {
-        .text {
-          font-weight: bold; 
-        }
-      }
+       }
     }
   }
 
@@ -75,6 +78,11 @@
             
 
       }
+   &.active {
+      .text {
+        font-weight: bold;
+       }
+    }
     }
   }
 
