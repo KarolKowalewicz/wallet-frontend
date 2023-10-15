@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import authApiSlice from "../../redux/slices/api/auth/authApiSlice";
 import { RotatingLines } from "react-loader-spinner";
 import { useNavigate } from "react-router";
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const LogoutModal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { modals } = useSelector((state) => state.modal);
   const [logout, { isLoading, error }] = authApiSlice.useLogoutMutation();
+  const modalRef = useRef();
 
   const handleLogout = async () => {
     const result = await logout();
@@ -25,14 +26,10 @@ const LogoutModal = () => {
     }
   };
 
-  const closeModalByESC = () => {
-    dispatch(closeModal("logout"));
-  };
-
   useEffect(() => {
     const handleEscapeKey = (event) => {
       if (event.key === "Escape") {
-        closeModalByESC();
+        dispatch(closeModal("logout"));
       }
     };
     window.addEventListener("keydown", handleEscapeKey);
@@ -41,10 +38,22 @@ const LogoutModal = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        dispatch(closeModal("logout"));
+      }
+    };
+    window.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      window.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
   if (!modals["logout"]) return null;
   return (
     <div className={styles.logoutModalContainer}>
-      <div className={styles.logoutModal}>
+      <div ref={modalRef} className={styles.logoutModal}>
         <p className={styles.header}>Are you sure you want to log out?</p>
         <button className={styles.button} onClick={handleLogout}>
           {isLoading ? (
