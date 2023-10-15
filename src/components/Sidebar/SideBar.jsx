@@ -21,7 +21,7 @@ const SideBar = () => {
       <div className={styles.sidebarFlex}>
         <NavBar />
         {location.pathname === "/exchange" ? null : (
-          <Balance balance={data?.statistics?.balance} isLoading={isLoading} />
+          <Balance balance={data?.statistics?.balance.toFixed(2)} isLoading={isLoading} />
         )}
       </div>
       <Media query="(min-width: 768px)">
