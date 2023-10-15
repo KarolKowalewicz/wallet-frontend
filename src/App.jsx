@@ -7,6 +7,7 @@ import Register from "./pages/Register/Register";
 import StatisticsPage from "./pages/StatisticsPage/StatisticsPage";
 import ModalExchange from "./components/ModalExchange/ModalExchange";
 import Loader from "./components/Lodaer/Loader";
+import Media from "react-media";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
@@ -21,7 +22,6 @@ function App() {
   const isUserLoggedIn = !!data?.user?.token;
 
   if (isLoading) {
-    //TODO: display loading spinner instead of plain text
     return <Loader />;
   }
 
@@ -41,17 +41,25 @@ function App() {
         <Route
           path="/exchange"
           element={
-            isUserLoggedIn ? <ModalExchange /> : <Navigate to="/login" />
+            !isUserLoggedIn ? (
+              <Navigate to="/login" />
+            ) : (
+              <Media queries={{ medium: { maxWidth: 768 } }}>
+                {(matches) =>
+                  matches.medium ? <ModalExchange /> : <Navigate to="/" />
+                }
+              </Media>
+            )
           }
         />
       </Route>
       <Route
         path="/login"
-        element={!data?.user?.token ? <Login /> : <Navigate to="/" />}
+        element={!isUserLoggedIn ? <Login /> : <Navigate to="/" />}
       />
       <Route
         path="/register"
-        element={!data?.user?.token ? <Register /> : <Navigate to="/" />}
+        element={!isUserLoggedIn ? <Register /> : <Navigate to="/" />}
       />
     </Routes>
   );

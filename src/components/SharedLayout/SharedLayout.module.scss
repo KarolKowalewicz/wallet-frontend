@@ -1,0 +1,45 @@
+@import "../../../stylesheet/vars.scss";
+@import "../../../stylesheet/fonts.scss";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(224, 224, 224, 0.4);
+  min-height: 100vh;
+  width: 100%;
+  padding: 25px 0px;
+
+  @include tablet {
+    background-image: url(./../../img/Rectangle.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 35px 20px;
+  }
+
+  @include desktop {
+    background-image: url(./../../img/rectangle_desk.png);
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    padding: 50px 20px;
+  }
+}
+
+//border between columns
+.main::before {
+  @include desktop {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    left: 462px;
+    top: 0px;
+    background-color: #e7e5f2;
+    filter: drop-shadow(1px 0px 0px rgba(255, 255, 255, 0.6))
+      drop-shadow(-1px 0px 0px rgba(0, 0, 0, 0.05));
+  }
+}

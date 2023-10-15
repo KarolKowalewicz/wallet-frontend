@@ -3,17 +3,37 @@
 
 .diagram {
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 
-  @include tablet{
-    display: flex;
+  @include tablet {
     justify-content: center;
     align-items: center;
     margin-bottom: 0;
     width: 336px;
   }
 
-  @include desktop{
+  @include desktop {
     width: 330px;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-family: sans-serif;
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: 10px;
+    @include tablet {
+      text-align: left;
+      padding-bottom: 20px;
+    }
+    @include desktop {
+      margin-left: 25px;
+    }
   }
 
   &__text {
