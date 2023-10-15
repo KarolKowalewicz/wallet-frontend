@@ -127,14 +127,17 @@ const StatisticForm = ({ data, isLoading, getTransactionPeriod }) => {
             {data?.transactions.data.length > 0 ? (
               data?.transactions.data.map(({ x: category, y: amount }, i) => (
                 <li key={nanoid()} className={styles.statistic__item}>
+                  <div className={styles.statistic__categoryBox}>
                   <div
                     className={styles.statistic__itemColor}
                     style={{ backgroundColor: `${colors[i]}` }}
-                  ></div>
-                  <p className={styles.statistic__itemText}>
+                  >
+                  </div>
+                  <div className={styles.statistic__itemText}>
                     {category || "Income"}
-                  </p>
-                  <p className={styles.statistic__itemSum}>{amount}</p>
+                  </div>
+                  </div>
+                  <p className={styles.statistic__itemSum}>{amount.toFixed(2)}</p>
                 </li>
               ))
             ) : (
@@ -142,17 +145,17 @@ const StatisticForm = ({ data, isLoading, getTransactionPeriod }) => {
             )}
           </ul>
         </div>
-        <div>
+        <div className={styles.statistic__resultsBox}>
           <div className={styles.statistic__results}>
             <p className={styles.statistic__text}>Expenses:</p>
-            <p className={styles.statistic__sum}>
-              {data?.statistics.expenseSum}
+            <p className={styles.statistic__expensesSum}>
+              {data?.statistics.expenseSum.toFixed(2)}
             </p>
           </div>
           <div className={styles.statistic__results}>
             <p className={styles.statistic__text}>Income:</p>
-            <p className={styles.statistic__sum}>
-              {data?.statistics.incomeSum}
+            <p className={styles.statistic__incomeSum}>
+              {data?.statistics.incomeSum.toFixed(2)}
             </p>
           </div>
         </div>

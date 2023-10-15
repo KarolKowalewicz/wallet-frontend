@@ -9,7 +9,6 @@ export const getDeviceConfig = (width) => {
   }
 };
 
-// styles for date inputs
 export const customSelectStyles = {
   mobile: {
     control: (provided) => ({
@@ -31,12 +30,7 @@ export const customSelectStyles = {
       backgroundImage: 'url("../../img/Vector 19.svg")',
       backgroundRepeat: "no-repeat",
       backgroundPosition: "right 20px center",
-      // "@media (min-width: 768px)": {
-      //   width: "160px",
-      // },
-      // "@media (min-width: 1024px)": {
-      //   width: "180px",
-      // },
+    
     }),
     option: (provided) => ({
       ...provided,
@@ -64,6 +58,103 @@ export const customSelectStyles = {
       display: "none",
     }),
   },
+
+  tablet: {
+    control: (provided) => ({
+      ...provided,
+      width: "160px",
+      padding: "12px",
+      border: "1px solid black",
+      borderRadius: "30px",
+      background: "rgba(193, 193, 193, 0.127)",
+      cursor: "pointer",
+      transition: "all 250ms cubic-bezier(0.4, 0, 0.2, 1)",
+      color: "#000",
+      fontFamily: "Circe",
+      fontSize: "16px",
+      fontStyle: "normal",
+      fontWeight: 400,
+      lineHeight: "normal",
+      textTransform: "capitalize",
+      backgroundImage: 'url("../../img/Vector 19.svg")',
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "right 20px center",
+    }),
+    option: (provided) => ({
+      ...provided,
+      borderRadius: "20px",
+      fontSize: "16px",
+      fontStyle: "normal",
+      fontWeight: 400,
+      lineHeight: "normal",
+      fontFamily: "Circe",
+      textTransform: "capitalize",
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      fontFamily: "Circe",
+      fontSize: "16px",
+      fontWeight: 400,
+      cursor: "pointer",
+    }),
+    IndicatorsContainer: (provided) => ({
+      ...provided,
+      hiden: true,
+    }),
+    indicatorSeparator: (provided) => ({
+      ...provided,
+      display: "none",
+    }),
+  },
+  desktop: {
+    control: (provided) => ({
+      ...provided,
+      width: "182px",
+      padding: "12px",
+      border: "1px solid black",
+      borderRadius: "30px",
+      background: "rgba(193, 193, 193, 0.127)",
+      cursor: "pointer",
+      transition: "all 250ms cubic-bezier(0.4, 0, 0.2, 1)",
+      color: "#000",
+      fontFamily: "Circe",
+      fontSize: "16px",
+      fontStyle: "normal",
+      fontWeight: 400,
+      lineHeight: "normal",
+      textTransform: "capitalize",
+      backgroundImage: 'url("../../img/Vector 19.svg")',
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "right 20px center",
+      
+    }),
+    option: (provided) => ({
+      ...provided,
+      borderRadius: "20px",
+      fontSize: "16px",
+      fontStyle: "normal",
+      fontWeight: 400,
+      lineHeight: "normal",
+      fontFamily: "Circe",
+      textTransform: "capitalize",
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      fontFamily: "Circe",
+      fontSize: "16px",
+      fontWeight: 400,
+      cursor: "pointer",
+    }),
+    IndicatorsContainer: (provided) => ({
+      ...provided,
+      hiden: true,
+    }),
+    indicatorSeparator: (provided) => ({
+      ...provided,
+      display: "none",
+    }),
+  },
+  
 };
 
 // export const stylesForDevice = {

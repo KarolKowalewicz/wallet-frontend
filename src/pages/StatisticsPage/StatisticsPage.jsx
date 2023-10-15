@@ -32,7 +32,7 @@ const StatisticsPage = () => {
             matches ? (
               <div className={styles.gridstat__balance}>
                 <Balance
-                  balance={data?.statistics.balance}
+                  balance={data?.statistics.balance.toFixed(2)}
                   isLoading={isLoading}
                 />
               </div>
