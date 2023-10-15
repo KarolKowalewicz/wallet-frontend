@@ -1,5 +1,6 @@
 @import "./../../../public/modern-normalize.scss";
 @import "../../../stylesheet/vars.scss";
+@import '../../../stylesheet/fonts.scss';
 
 // MOBILE
 .overlay {
@@ -9,18 +10,33 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.25);
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .content {
-  min-width: 320px;
+  padding: 0;
+  min-width: 100vw;
   width: 100vw;
-  min-height: 600px;
+  min-height: 100vh;
   height: 100vh;
-  background: #fff;
+  background: #FFF;
   overflow-y: auto;
+  // z-index: 9;
+}
+
+.headerIsHidden {
+  display: inline;
+}
+
+.btnCloseWrap {
+  display: none;
+}
+  
+.buttonCloseFunc {
+  display: none;
 }
 
 .headerWrap {
@@ -32,8 +48,13 @@
   &__title {
     width: 280px;
     height: 31px;
+    color: #000;
     text-align: center;
+    font-family: Poppins;
     font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 }
 
@@ -147,9 +168,82 @@
 // TABLET
 @include tablet {
   .content {
+    padding: 20px 20px 60px 73px;
+    min-width: 540px;
     width: 540px;
+    min-height: 603px;
     height: 603px;
     border-radius: 20px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow-y: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .incomeSizeContent {
+    min-height: 508px;
+    height: 508px;
+    max-height: 508px;
+  }
+
+  .contentContainer {
+    transition: width 0.3s ease;
+  }
+
+  .headerIsHidden {
+    display: none;
+  }
+  
+  .btnCloseWrap {
+    display: flex;
+    justify-content: end;
+  }
+    
+  .btnCloseFunc {
+    display: flex;
+    background-color: #fff;
+    border: none;
+    margin: none;
+    padding: none;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+  
+    // &:hover {
+    //   transform: rotate(90deg);
+    // }
+  }
+  
+  .headerWrap {
+    margin-top: 4px;
+  
+    &__title {
+      width: 381px;
+      height: 40px;
+      font-size: 30px;
+    }
+  }
+  
+  .sliderContent {
+    margin-top: 24px;
+  }
+
+  .btnCancelTransWrap {
+    display: block;
+    margin-left: 47px;
+  }
+}
+// DESKTOP
+@include desktop {
+  .content {
+    padding: 20px 20px 60px 73px;
+  }
+  
+  .headerIsHidden {
+    display: none;
+  }
+  
+  .headerWrap {  
+    &__title {
+      font-size: 38px;
+    }
   }
 }
