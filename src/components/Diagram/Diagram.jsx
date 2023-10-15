@@ -13,6 +13,7 @@ const Diagram = ({ data, isLoading }) => {
 
   return (
     <div className={styles.diagram}>
+      <h3 className={styles.diagram__title}>Statistics</h3>
       <svg width={300} height={300}>
         <circle cx={140} cy={140} r={120} fill="white" />
         <VictoryPie

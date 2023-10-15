@@ -1,8 +1,7 @@
+@import "../../../stylesheet/vars.scss";
+@import "../../../stylesheet/fonts.scss";
 
-@import "./../../../stylesheet/vars.scss";
-@import "./../../../stylesheet/fonts.scss";
-
-.navbar-container {
+.navbarContainer {
   display: flex;
   justify-content: center;
   background-color: transparent;
@@ -52,7 +51,7 @@
       .nav__svg {
         width: 38px;
         height: 38px;
-        fill: $nav-icon-color-inactive; 
+        fill: $nav-icon-color-inactive;
       }
 
       .text {
@@ -73,12 +72,13 @@
     gap: 12px;
     li {
       display: table-cell;
+
       vertical-align: middle;
 
       .nav__svg {
         width: 38px;
         height: 38px;
-        fill: $nav-icon-color-inactive; 
+        fill: $nav-icon-color-inactive;
         vertical-align: middle;
 
         @include tablet {
@@ -112,7 +112,7 @@
       .nav__svg {
         width: 38px;
         height: 38px;
-        fill: $nav-icon-color-inactive; 
+        fill: $nav-icon-color-inactive;
         vertical-align: middle;
       }
 
@@ -129,14 +129,14 @@
     }
   }
 
-.nav__svg.active {
-  fill: $color-brand-primary;
-  filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.50));
-}
+  .nav__svg.active {
+    fill: $color-brand-primary;
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  }
 
-.text.active {
-  font-weight: bold; 
-}
+  .text.active {
+    font-weight: bold;
+  }
 
   .mobileOnly {
     @media (min-width: 768px) {

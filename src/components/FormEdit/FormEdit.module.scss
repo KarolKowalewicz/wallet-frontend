@@ -1,23 +1,19 @@
 @import "./../../../public/modern-normalize.scss";
 @import "../../../stylesheet/vars.scss";
+@import '../../../stylesheet/fonts.scss';
 
-.typeOfTransHead {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-
-.slashLabel {
-  margin: 0 11px 0 11px;
-}
-
+// MOBILE
 .form {
-  margin: 0;
-  padding: 0 11px 0 11px;
-  display: flex;
-  flex-direction: column;
+    margin: 0;
+    padding: 0 11px 0 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.amountCalendarWrap{
+    display: flex;
+    flex-direction: column;
 }
 
 .input {
@@ -31,9 +27,26 @@
   font-size: 18px;
 
 
-  &__comment {
-    height: 52px;
-  }
+    &__comment {
+        resize: none;
+        margin-left: 20px;
+        min-width: 239px;
+        max-width: 239px;
+        height: 52px;
+        overflow: hidden;
+
+        text-align: start;
+        color: #000;
+        font-family: Circe;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    &__comment::placeholder {
+        font-weight: 400;
+    }
 }
 
 .category {
@@ -47,26 +60,116 @@
 }
 
 .calendarWrap {
-  display: flex;
-  align-items: center;
-  margin-left: 40px;
-}
-
-.separatorShort,
-.separatorLong {
-  margin-top: 8px;
-  margin-bottom: 40px;
-  width: 280px;
-  height: 0;
-  flex-shrink: 0;
-  border-top: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    width: 243px;
+    height: 24px;
 }
 
 .calendarIcon {
-  position: fixed;
-  left: 240px;
-  width: 24px;
-  height: 24px;
-  fill: #4a56e2;
-  cursor: pointer;
+    width: 24px;
+    height: 24px;
+    fill: #4A56E2;
+    cursor: pointer;
+}
+
+.separatorShort, .separatorLong {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 8px;
+    margin-bottom: 40px;
+    width: 280px;
+    height: 0;
+    flex-shrink: 0;
+    border-top: 1px solid #E0E0E0;
+}
+
+// TABLET
+// DESKTOP
+@include tablet {
+    .form {
+        margin-right: 53px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .amountCalendarWrap{
+        flex-direction: row;
+        align-items: center;
+        gap: 22px;
+    }
+    
+    .input {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        // width: 190px;
+        min-width: 190px;
+        max-width: 190px;
+        height: 24px;
+        border: none;
+        outline: none;
+    
+        text-align: center;
+        color: #000;
+        font-family: Circe;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    
+        &::placeholder {
+            color: #BDBDBD;
+            font-family: Circe;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    
+        &__comment {
+            resize: none;
+            margin-left: 20px;
+            min-width: 378px;
+            max-width: 378px;
+            height: 24px;
+            overflow: hidden;
+    
+            text-align: start;
+            color: #000;
+            font-family: Circe;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    
+        &__comment::placeholder {
+            font-weight: 400;
+        }
+    }
+    
+    .calendarWrap {
+        display: flex;
+        margin-left: 0;
+        width: 181px;
+    }
+    
+    .calendarIcon {
+        width: 24px;
+        height: 24px;
+        fill: #4A56E2;
+        cursor: pointer;
+    }
+
+    .separatorLong {
+        width: 394px;
+    }
+
+    .separatorShort {
+        width: 181px;
+    }
 }
