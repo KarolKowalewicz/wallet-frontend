@@ -17,6 +17,7 @@ const StatisticsPage = () => {
   }, []);
 
   return (
+
     <div className={styles.statistics}>
       <Diagram data={data} isLoading={isLoading} />
       <StatisticForm
@@ -24,6 +25,7 @@ const StatisticsPage = () => {
         isLoading={isLoading}
         getTransactionPeriod={getTransactionPeriod}
       />
+
     </div>
   );
 };

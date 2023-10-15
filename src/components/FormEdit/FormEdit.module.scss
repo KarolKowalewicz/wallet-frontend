@@ -1,7 +1,6 @@
 @import "./../../../public/modern-normalize.scss";
 @import "../../../stylesheet/vars.scss";
 @import '../../../stylesheet/fonts.scss';
-
 // MOBILE
 .form {
     margin: 0;
@@ -10,12 +9,10 @@
     flex-direction: column;
     align-items: center;
 }
-
 .amountCalendarWrap{
     display: flex;
     flex-direction: column;
 }
-
 .input {
     display: flex;
     justify-content: start;
@@ -27,7 +24,6 @@
     height: 24px;
     border: none;
     outline: none;
-
     text-align: start;
     color: #000;
     font-family: Circe;
@@ -35,7 +31,6 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-
     &::placeholder {
         color: #BDBDBD;
         font-family: Circe;
@@ -44,7 +39,6 @@
         font-weight: 700;
         line-height: normal;
     }
-
     &__comment {
         resize: none;
         margin-left: 20px;
@@ -52,7 +46,6 @@
         max-width: 239px;
         height: 52px;
         overflow: hidden;
-
         text-align: start;
         color: #000;
         font-family: Circe;
@@ -61,12 +54,10 @@
         font-weight: 400;
         line-height: normal;
     }
-
     &__comment::placeholder {
         font-weight: 400;
     }
 }
-
 .calendarWrap {
     display: flex;
     align-items: center;
@@ -74,14 +65,12 @@
     width: 243px;
     height: 24px;
 }
-
 .calendarIcon {
     width: 24px;
     height: 24px;
     fill: #4A56E2;
     cursor: pointer;
 }
-
 .separatorShort, .separatorLong {
     margin-right: auto;
     margin-left: auto;
@@ -92,7 +81,6 @@
     flex-shrink: 0;
     border-top: 1px solid #E0E0E0;
 }
-
 // TABLET
 // DESKTOP
 @include tablet {
@@ -103,13 +91,11 @@
         flex-direction: column;
         align-items: center;
     }
-
     .amountCalendarWrap{
         flex-direction: row;
         align-items: center;
         gap: 22px;
     }
-    
     .input {
         display: flex;
         margin: 0;
@@ -120,7 +106,6 @@
         height: 24px;
         border: none;
         outline: none;
-    
         text-align: center;
         color: #000;
         font-family: Circe;
@@ -128,7 +113,6 @@
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-    
         &::placeholder {
             color: #BDBDBD;
             font-family: Circe;
@@ -137,7 +121,6 @@
             font-weight: 700;
             line-height: normal;
         }
-    
         &__comment {
             resize: none;
             margin-left: 20px;
@@ -145,7 +128,6 @@
             max-width: 378px;
             height: 24px;
             overflow: hidden;
-    
             text-align: start;
             color: #000;
             font-family: Circe;
@@ -154,29 +136,24 @@
             font-weight: 400;
             line-height: normal;
         }
-    
         &__comment::placeholder {
             font-weight: 400;
         }
     }
-    
     .calendarWrap {
         display: flex;
         margin-left: 0;
         width: 181px;
     }
-    
     .calendarIcon {
         width: 24px;
         height: 24px;
         fill: #4A56E2;
         cursor: pointer;
     }
-
     .separatorLong {
         width: 394px;
     }
-
     .separatorShort {
         width: 181px;
     }

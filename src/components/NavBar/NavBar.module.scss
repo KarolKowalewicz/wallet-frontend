@@ -69,6 +69,7 @@
   @include tablet {
     flex-direction: column;
     align-items: left;
+    gap: 12px;
     li {
       display: table-cell;
 
@@ -79,6 +80,11 @@
         height: 38px;
         fill: $nav-icon-color-inactive;
         vertical-align: middle;
+
+        @include tablet {
+          width: 24px;
+          height: 24px;
+        }
       }
 
       .text {
