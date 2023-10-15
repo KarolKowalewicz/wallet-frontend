@@ -1,5 +1,5 @@
 import styles from "./FormEdit.module.scss";
-import React, { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import moment from "moment";
 //TODO: display error with toast notification!!!
 import { toast } from "react-toastify";
@@ -10,7 +10,44 @@ import { ReactComponent as CalendarIcon } from "../../img/calendar.svg";
 import Calendar from "../Calendar/Calendar";
 import BtnSaveTrans from "../BtnSaveTrans/BtnSaveTrans";
 
+import Select from "react-select";
+
+import { getDeviceConfig } from "../FormExpenseStyles/inputCategoryStyles";
+import { stylesForDevice } from "../FormExpenseStyles/inputCategoryStyles";
+
+import { categoryOptions } from "../FormCategoryExpense/formCategoryExpense";
+
+import SelectArrow from "../SelectArrow/SelectArrow";
+
+import { useDispatch } from "react-redux";
+import { closeModal } from "../../redux/slices/modal/modalSlice";
+
+const DropdownIndicator = (props) => {
+  return <SelectArrow {...props} isMenuOpen={props.selectProps.menuIsOpen} />;
+};
+
 const FormEdit = ({ validationSchema, query, income, _id }) => {
+  const dispatch = useDispatch();
+  const closeModall = () => dispatch(closeModal("addTransaction"));
+
+  // set styles for diffrent devices on input category *BEGIN*
+  const [device, setDevice] = useState(getDeviceConfig(window.innerWidth));
+
+  const currentStyle = stylesForDevice[device];
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDevice(getDeviceConfig(window.innerWidth));
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  // set styles for diffrent devices on input category *END*
+
   const calendarRef = useRef(null);
 
   const openCalendar = () => {
@@ -26,14 +63,14 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
           ? {
               amount: "",
               income: income,
-              date: moment().format("YYYY-MM-DD HH:mm:ss"),
+              date: moment().format("YYYY-MM-DD"),
               comment: "",
             }
           : {
               category: "",
               amount: "",
               income: income,
-              date: moment().format("YYYY-MM-DD HH:mm:ss"),
+              date: moment().format("YYYY-MM-DD"),
               comment: "",
             }
       }
@@ -42,64 +79,83 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
         query(_id ? { _id, body: values } : values);
         setSubmitting(false);
         resetForm();
+        closeModall();
       }}
     >
       {({ isSubmitting, setFieldValue, values }) => (
         <Form className={styles.form}>
           {!income && (
             <div>
-              <Field className={styles.input} as="select" name="category">
-                <option value="" label="Select category" />
-                <option value="Products">Products</option>
-                <option value="Main expenses">Main expenses</option>
-                <option value="Car">Car</option>
-                <option value="Self care">Self care</option>
-                <option value="Child care">Child care</option>
-                <option value="Household products">Household products</option>
-                <option value="Education">Education</option>
-                <option value="Leisure">Leisure</option>
-                <option value="Other expenses">Other expenses</option>
-                <option value="Entertaiment">Entertaiment</option>
-              </Field>
+              <Select
+                styles={currentStyle}
+                options={categoryOptions}
+                value={categoryOptions.find(
+                  (option) => option.value === values.category
+                )}
+                onChange={(option) =>
+                  setFieldValue("category", option ? option.value : "")
+                }
+                classNamePrefix="react-select"
+                placeholder="Select category"
+                components={{ DropdownIndicator }}
+              />
               <ErrorMessage name="category" />
             </div>
           )}
 
-          <div className={styles.separatorShort}></div>
+          <div className={styles.separatorLong}></div>
 
-          <div>
-            <Field
-              className={styles.input}
-              name="amount"
-              type="number"
-              placeholder="0.00"
-              autoComplete="off"
-            />
-            <ErrorMessage name="amount" />
-          </div>
-
-          <div className={styles.separatorShort}></div>
-
-          <div>
-            <div className={styles.calendarWrap}>
-              <Calendar
-                ref={calendarRef}
-                value={values.date}
-                onChange={(date) =>
-                  setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
-                }
-                name="date"
+          <div className={styles.amountCalendarWrap}>
+            <div>
+              <Field
+                className={styles.input}
+                name="amount"
+                type="number"
+                placeholder="0.00"
+                autoComplete="off"
               />
-
-              <CalendarIcon
-                onClick={openCalendar}
-                className={styles.calendarIcon}
-              />
+              <ErrorMessage name="amount" />
+              <div className={styles.separatorShort}></div>
             </div>
-            <ErrorMessage name="date" />
-          </div>
 
-          <div className={styles.separatorShort}></div>
+            <div>
+              <div className={styles.calendarWrap}>
+                <Calendar
+                  ref={calendarRef}
+                  value={values.date}
+                  name="date"
+                  // onChange={(date) =>
+                  //   setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
+                  // }
+                  onChange={(dateOrString) => {
+                    let formattedDate;
+                    if (typeof dateOrString === "string") {
+                      const parsedDate = moment(
+                        dateOrString,
+                        "YYYY-MM-DD",
+                        true
+                      );
+                      if (parsedDate.isValid()) {
+                        formattedDate = parsedDate.format("YYYY-MM-DD");
+                      } else {
+                        formattedDate = dateOrString;
+                      }
+                    } else {
+                      formattedDate = dateOrString.format("YYYY-MM-DD");
+                    }
+                    setFieldValue("date", formattedDate);
+                  }}
+                />
+
+                <CalendarIcon
+                  onClick={openCalendar}
+                  className={styles.calendarIcon}
+                />
+              </div>
+              <div className={styles.separatorShort}></div>
+              <ErrorMessage name="date" />
+            </div>
+          </div>
 
           <div>
             <Field

@@ -1,0 +1,16 @@
+@import "./../../../public/modern-normalize.scss";
+@import "../../../stylesheet/vars.scss";
+
+.icon {
+    width: 18px;
+    height: 9px;
+    flex-shrink: 0;
+    stroke-width: 1px;
+    stroke: #000;
+    transition: transform 0.3s ease;
+}
+
+.iconRotated {
+    transform: rotate(180deg);
+}
+

@@ -5,6 +5,7 @@ import authApiSlice from "../../redux/slices/api/auth/authApiSlice";
 import { RotatingLines } from "react-loader-spinner";
 import { useNavigate } from "react-router";
 import { useRef, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const LogoutModal = () => {
   const dispatch = useDispatch();
@@ -16,11 +17,18 @@ const LogoutModal = () => {
   const handleLogout = async () => {
     const result = await logout();
     if ("error" in result) {
-      //TODO: display in toast or something
       console.log(error);
+      toast.error("An error occured when logging out", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     } else {
-      //TODO: display in toast or something
-      console.log("logged out successful");
       navigate("/login");
       navigate(0);
     }
@@ -61,6 +69,7 @@ const LogoutModal = () => {
           ) : (
             <p className={styles.button__label}>Please log me out</p>
           )}
+          <ToastContainer />
         </button>
         <button
           className={`${styles.button} ${styles.button__close}`}
