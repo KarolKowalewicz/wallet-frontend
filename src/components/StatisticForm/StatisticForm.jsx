@@ -4,8 +4,11 @@ import Select from "react-select";
 import { Formik, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 import { SubmitListener } from "../../utils/formik/SubmitListener";
+import { colors } from "../../utils/chart/chartColors";
 
-//TODO: render month and years based on transaction data from server
+const today = new Date();
+const month = today.getMonth() + 1;
+const year = today.getFullYear();
 
 const monthsArr = [
   { value: "01", label: "January" },
@@ -39,7 +42,7 @@ const StatisticForm = ({ data, isLoading, getTransactionPeriod }) => {
     <>
       <div className={styles.statistic}>
         <Formik
-          initialValues={{ month: "", year: "" }}
+          initialValues={{ month, year }}
           validationSchema={Yup.object({
             month: Yup.string().required("Set chosen month"),
             year: Yup.string().required("Set chosen year"),
@@ -60,7 +63,11 @@ const StatisticForm = ({ data, isLoading, getTransactionPeriod }) => {
                 onChange={(option) =>
                   formik.setFieldValue("month", option ? option.value : "")
                 }
-                placeholder="Month"
+                defaultValue={{
+                  value: month,
+                  label: monthsArr[month - 1].label,
+                }}
+                placeholder={"Month"}
               />
               <ErrorMessage name="month" />
 
@@ -71,7 +78,11 @@ const StatisticForm = ({ data, isLoading, getTransactionPeriod }) => {
                 onChange={(option) =>
                   formik.setFieldValue("year", option ? option.value : "")
                 }
-                placeholder="Month"
+                defaultValue={{
+                  value: year,
+                  label: year,
+                }}
+                placeholder={"Year"}
               />
               <ErrorMessage name="year" />
             </Form>
@@ -84,10 +95,13 @@ const StatisticForm = ({ data, isLoading, getTransactionPeriod }) => {
         </div>
         <div className={styles.statistic__table}>
           <ul className={styles.statistic__list}>
-            {data?.transactions.length > 0 ? (
-              data?.transactions.data.map((item) => (
+            {data?.transactions.data.length > 0 ? (
+              data?.transactions.data.map((item, i) => (
                 <li className={styles.statistic__item}>
-                  <div className={styles.statistic__itemColor}></div>
+                  <div
+                    className={styles.statistic__itemColor}
+                    style={{ backgroundColor: `${colors[i]}` }}
+                  ></div>
                   <p className={styles.statistic__itemText}>
                     {item.category || "Income"}
                   </p>
