@@ -96,16 +96,16 @@ const StatisticForm = ({ data, isLoading, getTransactionPeriod }) => {
         <div className={styles.statistic__table}>
           <ul className={styles.statistic__list}>
             {data?.transactions.data.length > 0 ? (
-              data?.transactions.data.map((item, i) => (
+              data?.transactions.data.map(({ x: category, y: amount }, i) => (
                 <li className={styles.statistic__item}>
                   <div
                     className={styles.statistic__itemColor}
                     style={{ backgroundColor: `${colors[i]}` }}
                   ></div>
                   <p className={styles.statistic__itemText}>
-                    {item.category || "Income"}
+                    {category || "Income"}
                   </p>
-                  <p className={styles.statistic__itemSum}>{item.amount}</p>
+                  <p className={styles.statistic__itemSum}>{amount}</p>
                 </li>
               ))
             ) : (
