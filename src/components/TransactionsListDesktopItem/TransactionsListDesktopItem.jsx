@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { openModal } from "../../redux/slices/modal/modalSlice";
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 import EditTransaction from "../EditTransaction/EditTransaction";
+import convertDate from "../../utils/helperFunctions/convertDate";
 
 const TransactionsListDesktopItem = ({ transaction }) => {
   const { _id, date, category, comment, amount, income } = transaction;
@@ -19,7 +20,7 @@ const TransactionsListDesktopItem = ({ transaction }) => {
   return (
     <>
       <tr className={styles.transtable__row}>
-        <td className={styles.transtable__rowcell}>{date}</td>
+        <td className={styles.transtable__rowcell}>{convertDate(date)}</td>
         <td className={styles.transtable__rowcell__type}>
           {income ? "Income" : "Expense"}
         </td>
