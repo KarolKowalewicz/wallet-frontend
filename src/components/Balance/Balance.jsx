@@ -11,7 +11,7 @@ const Balance = ({ balance, isLoading }) => {
       {isLoading ? (
           <RotatingLines strokeColor="black" width="30" />
           ) : (
-            `€ ${balance.toFixed(2)}`
+            `€ ${balance}`
           )}
         </h3>
       </div>
