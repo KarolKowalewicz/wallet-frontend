@@ -5,7 +5,7 @@ import { Formik, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 import { SubmitListener } from "../../utils/formik/SubmitListener";
 import { colors } from "../../utils/chart/chartColors";
-
+import { nanoid } from "@reduxjs/toolkit";
 const today = new Date();
 const month = today.getMonth() + 1;
 const year = today.getFullYear();
@@ -97,7 +97,7 @@ const StatisticForm = ({ data, isLoading, getTransactionPeriod }) => {
           <ul className={styles.statistic__list}>
             {data?.transactions.data.length > 0 ? (
               data?.transactions.data.map(({ x: category, y: amount }, i) => (
-                <li className={styles.statistic__item}>
+                <li key={nanoid()} className={styles.statistic__item}>
                   <div
                     className={styles.statistic__itemColor}
                     style={{ backgroundColor: `${colors[i]}` }}
