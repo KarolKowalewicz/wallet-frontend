@@ -5,14 +5,9 @@ import { ReactComponent as Pencil } from "./../../img/pencil.svg";
 import { openModal } from "../../redux/slices/modal/modalSlice";
 import EditTransaction from "../EditTransaction/EditTransaction";
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
-
+import convertDate from "../../utils/helperFunctions/convertDate";
 const TransactionListItem = ({ transaction }) => {
-  const { _id, category, comment, amount, income } = transaction;
-
-  const dateToFormate = transaction.date;
-  const parsedDate = new Date(dateToFormate); 
-  const formattedDate = `${parsedDate.getDate()}.${parsedDate.getMonth() + 1}.${parsedDate.getFullYear()}`;
-
+  const { _id, date, category, comment, amount, income } = transaction;
 
   const dispatch = useDispatch();
   const [deleteTransaction, { isLoading: isDeleting }] =
@@ -24,10 +19,16 @@ const TransactionListItem = ({ transaction }) => {
 
   return (
     <>
-      <ul className={`${styles.transaction} ${income? styles.transaction__incomeBorder : styles.transaction__expenseBorder}`}>
+      <ul
+        className={`${styles.transaction} ${
+          income
+            ? styles.transaction__incomeBorder
+            : styles.transaction__expenseBorder
+        }`}
+      >
         <li className={styles.transaction__item}>
           <h4 className={styles.transaction__header}>Date</h4>
-          <p className={styles.transaction__data}>{formattedDate}</p>
+          <p className={styles.transaction__data}>{convertDate(date)}</p>
         </li>
         <li className={styles.transaction__item}>
           <h4 className={styles.transaction__header}>Type</h4>
@@ -45,7 +46,13 @@ const TransactionListItem = ({ transaction }) => {
         </li>
         <li className={styles.transaction__item}>
           <h4 className={styles.transaction__header}>Sum</h4>
-          <p className={`${styles.transaction__data} ${income? styles.transaction__income : styles.transaction__expense}`}>{amount.toFixed(2)}</p>
+          <p
+            className={`${styles.transaction__data} ${
+              income ? styles.transaction__income : styles.transaction__expense
+            }`}
+          >
+            {amount.toFixed(2)}
+          </p>
         </li>
         <li className={styles.transaction__item__last}>
           {/* TODO: add some spinner */}
