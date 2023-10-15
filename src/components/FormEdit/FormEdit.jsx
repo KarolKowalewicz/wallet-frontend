@@ -99,11 +99,10 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
                 placeholder="Select category"
                 components={{ DropdownIndicator }}
               />
+              <div className={styles.separatorLong}></div>
               <ErrorMessage name="category" />
             </div>
           )}
-
-          <div className={styles.separatorLong}></div>
 
           <div className={styles.amountCalendarWrap}>
             <div>
@@ -165,10 +164,9 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
               placeholder="Comment"
               autoComplete="off"
             />
+            <div className={styles.separatorLong}></div>
             <ErrorMessage name="comment" />
           </div>
-
-          <div className={styles.separatorLong}></div>
 
           <BtnSaveTrans
             disabled={isSubmitting}
