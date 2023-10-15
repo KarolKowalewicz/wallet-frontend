@@ -9,6 +9,9 @@ import FormExpenseValidation from "../../utils/validations/FormExpenseValidation
 import FormIncomeValidation from "../../utils/validations/FormIncomeValidation";
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
+import Header from "../Header/Header";
+import { ReactComponent as BtnClose } from "./../../img/btn_close.svg";
+
 const AddTransaction = () => {
   const dispatch = useDispatch();
   const { modals } = useSelector((state) => state.modal);
@@ -22,7 +25,18 @@ const AddTransaction = () => {
   if (!modals["addTransaction"]) return null;
   return (
     <div className={styles.overlay}>
-      <div className={styles.content}>
+      <div className={`${styles.content} ${isIncome ? styles.incomeSizeContent : ""}`}>
+
+      <div className={styles.headerIsHidden}>
+        <Header />
+      </div>
+
+      <div className={styles.btnCloseWrap}>
+          <button className={styles.btnCloseFunc} onClick={() => dispatch(closeModal("addTransaction"))}>
+            <BtnClose />
+          </button>
+      </div>
+
         <div className={styles.headerWrap}>
           <p className={styles.headerWrap__title}>Add transaction</p>
         </div>
