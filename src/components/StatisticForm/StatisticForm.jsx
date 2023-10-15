@@ -6,10 +6,14 @@ import * as Yup from "yup";
 import { SubmitListener } from "../../utils/formik/SubmitListener";
 import { colors } from "../../utils/chart/chartColors";
 
+
 import { getDeviceConfig } from "./inputDateStyles";
 import { customSelectStyles } from "./inputDateStyles";
 
 import SelectArrow from "../SelectArrow/SelectArrow";
+
+
+import { nanoid } from "@reduxjs/toolkit";
 
 const today = new Date();
 const month = today.getMonth() + 1;
@@ -123,8 +127,10 @@ const StatisticForm = ({ data, isLoading, getTransactionPeriod }) => {
         <div className={styles.statistic__table}>
           <ul className={styles.statistic__list}>
             {data?.transactions.data.length > 0 ? (
-              data?.transactions.data.map((item, i) => (
-                <li className={styles.statistic__item}>
+
+              data?.transactions.data.map(({ x: category, y: amount }, i) => (
+                <li key={nanoid()} className={styles.statistic__item}>
+
                   <div
                     className={styles.statistic__itemColor}
                     style={{ backgroundColor: `${colors[i]}` }}

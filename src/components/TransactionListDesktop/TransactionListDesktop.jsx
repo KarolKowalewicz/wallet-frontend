@@ -34,7 +34,7 @@ const TransactionListDesktop = ({ transactions, isLoading }) => {
         <tbody className={styles.transtable__body}>
           {transactions?.data.map((transaction) => (
             <TransactionListDesktopItem
-              key={transaction.id}
+              key={transaction._id}
               transaction={transaction}
             />
           ))}
