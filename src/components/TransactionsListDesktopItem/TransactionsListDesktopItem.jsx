@@ -26,7 +26,7 @@ const TransactionsListDesktopItem = ({ transaction }) => {
         </td>
         <td className={styles.transtable__rowcell}>{category}</td>
         <td className={styles.transtable__rowcell__com}>{comment}</td>
-        <td className={styles.transtable__rowcell__sum}>{amount}</td>
+        <td className={styles.transtable__rowcell__sum}>{amount.toFixed(2)}</td>
         <td className={styles.transtable__rowcell}>
           <button className={styles.btn__edit}>
             <Pencil
