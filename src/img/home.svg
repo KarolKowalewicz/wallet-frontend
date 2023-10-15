@@ -1,5 +1,3 @@
-<!-- home.svg -->
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <title>Exclude</title>
-  <path d="M5.053 0c-2.791 0-5.053 2.262-5.053 5.053v21.895c0 2.79 2.262 5.053 5.053 5.053h21.895c2.79 0 5.053-2.262 5.053-5.053v-21.895c0-2.791-2.262-5.053-5.053-5.053h-21.895zM13.418 17.987v6.902h-5.754v-9.203h-3.453l11.509-10.353 11.509 10.353h-3.453v9.203h-5.754v-6.902h-4.604"  fill="{fillColor}"></path>
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2 0C0.895431 0 0 0.89543 0 2V16C0 17.1046 0.89543 18 2 18H16C17.1046 18 18 17.1046 18 16V2C18 0.895431 17.1046 0 16 0H2ZM7.8 10.1176V14H4.8V8.82353H3L9 3L15 8.82353H13.2V14H10.2V10.1176H7.8Z" fill="{fillColor}" />
 </svg>

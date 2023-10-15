@@ -9,10 +9,6 @@ const labelStyle = {
 };
 
 const Diagram = ({ data, isLoading }) => {
-  const dataDiagram = data?.transactions?.data.map((item) => {
-    return { x: item.category, y: item.amount };
-  });
-
   if (isLoading) return <Loader />;
 
   return (
@@ -26,7 +22,7 @@ const Diagram = ({ data, isLoading }) => {
           height={300}
           innerRadius={140}
           labelRadius={10}
-          data={dataDiagram}
+          data={data?.transactions.data}
           colorScale={colors}
         />
 

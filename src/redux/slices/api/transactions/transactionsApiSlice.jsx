@@ -9,7 +9,31 @@ const transactionsApiSlice = apiSlice.injectEndpoints({
     }),
     getPeriodTransactions: builder.query({
       query: ({ period }) => `/api/transactions/statistics/${period}`,
+      transformResponse: (response) => {
+        const transactions = response.transactions.data.reduce(
+          (acc, transaction) => {
+            const category = transaction.category || "Income";
+            const amount = transaction.amount;
+            if (!acc[category]) {
+              acc[category] = 0;
+            }
+            acc[category] += amount;
+            return acc;
+          },
+          {}
+        );
 
+        return {
+          transactions: {
+            count: response.transactions.count,
+            data: Object.keys(transactions).map((key) => ({
+              x: key,
+              y: transactions[key],
+            })),
+          },
+          statistics: response.statistics,
+        };
+      },
       providesTags: ["Transaction"],
     }),
     deleteTransaction: builder.mutation({

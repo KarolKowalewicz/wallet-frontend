@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import Media from "react-media";
 import styles from "./StatisticsPage.module.scss";
 import Balance from "../../components/Balance/Balance";
-import StatisticForm from "../../components/StatisticForm/StatisticForm";
 import NavBar from "../../components/NavBar/NavBar";
 import Exchange from "../../components/Exchange/Exchange";
 import Diagram from "../../components/Diagram/Diagram";
+import StatisticForm from "../../components/StatisticForm/StatisticForm";
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 
 const StatisticsPage = () => {
