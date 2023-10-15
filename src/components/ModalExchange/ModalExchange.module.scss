@@ -1,0 +1,14 @@
+@import './../../../stylesheet/vars.scss';
+@import './../../../stylesheet/fonts.scss';
+
+.exchange {
+  background-color: rgba(224, 224, 224, 0.4);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__nav {
+    margin-top: 12px;
+  }
+}

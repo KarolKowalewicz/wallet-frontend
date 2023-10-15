@@ -1,0 +1,48 @@
+@import "./../../../stylesheet/vars.scss";
+@import "./../../../stylesheet/fonts.scss";
+
+.balanceClass {
+
+  border-radius: 30px;
+
+  background-color: $font-color-light;
+  display: flex;
+  align-items: center;
+
+  height: 80px;
+  width: 280px;
+
+  @include tablet {
+    width: 336px;
+  }
+  @include desktop {
+    width: 395px;
+  }
+
+  &__layout {
+    margin-left: 32px;
+
+    @include tablet {
+      margin-left: 40px;
+    }
+
+    &__description {
+      margin: 0 auto;
+      text-transform: uppercase;
+
+      color: $color-balance-description;
+
+      font-family: $font-family-circe;
+      font-size: 12px;
+    }
+    &__content {
+      margin: 12px 0 0 0;
+
+      color: $font-color-dark;
+
+      font-family: $font-family-poppins;
+      font-size: 30px;
+    }
+  }
+}
+

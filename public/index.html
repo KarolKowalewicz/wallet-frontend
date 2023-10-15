@@ -25,6 +25,25 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Wallet</title>
+    <!-- styles for popup calendar -->
+    <style>
+      body .rdtPicker {
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.7) !important;
+        box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.1) !important;
+        backdrop-filter: blur(25px) !important;
+      }
+
+      .rdtPicker td.rdtActive {
+        background-color: #24cca7 !important;
+        border-radius: 25% !important;
+      }
+
+      .rdtPicker td.rdtDay:hover {
+        background-color: #eee;
+        border-radius: 25%;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

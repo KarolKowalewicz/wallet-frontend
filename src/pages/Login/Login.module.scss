@@ -1,0 +1,107 @@
+@import "./../../../public/modern-normalize.scss";
+@import "../../../stylesheet/vars.scss";
+
+.loginPage {
+  background-color: $background-ccent;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+
+  &__title {
+    display: none;
+
+    @include tablet {
+      font-family: "Poppins", sans-serif;
+      font-size: 30px;
+      font-weight: 400;
+      line-height: normal;
+      position: fixed;
+      display: flex;
+      z-index: 2;
+      right: 167px;
+      top: 170px;
+    }
+
+    @include desktop {
+      top: auto;
+      left: 200px;
+      bottom: 77px;
+    }
+  }
+
+  &__ellipse {
+    display: none;
+
+    @include tablet {
+      display: block;
+      position: fixed;
+      width: 370px;
+      height: 380px;
+      top: 0px;
+      right: 0px;
+    }
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__lowerEllipse {
+    display: none;
+
+    @include tablet {
+      display: block;
+      position: fixed;
+      width: 500px;
+      height: 325px;
+      z-index: 0;
+      bottom: 0px;
+      left: 0px;
+    }
+
+    @include desktop {
+      width: 35%;
+      height: 350px;
+    }
+  }
+
+  &__frame {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      width: 260px;
+      height: 250px;
+      position: absolute;
+      left: 114px;
+      top: 60px;
+    }
+
+    @include desktop {
+        top: 150px;
+        left: 76px;
+      width: 435px;
+      height: 419px;
+      z-index: 1;
+    }
+  }
+
+  .backdrop {
+    @include desktop {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .login {
+    @include tablet {
+      margin-top: 20px;
+    }
+    @include desktop {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 0;
+    }
+  }
+}

@@ -2,8 +2,12 @@
 
 # dependencies
 /node_modules
+/notatki
 /.pnp
 .pnp.js
+__ModalAddTrans
+nots-navBars
+
 
 # testing
 /coverage

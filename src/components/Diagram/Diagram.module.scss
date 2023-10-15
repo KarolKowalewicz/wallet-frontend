@@ -1,0 +1,27 @@
+@import "./../../../public/modern-normalize.scss";
+@import "../../../stylesheet/vars.scss";
+
+.diagram {
+  margin-bottom: 30px;
+
+  @include tablet{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    width: 336px;
+  }
+
+  @include desktop{
+    width: 330px;
+  }
+
+  &__text {
+    text-align: center;
+    font-family: font-family-circe;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}

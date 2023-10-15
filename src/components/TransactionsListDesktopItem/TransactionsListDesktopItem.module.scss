@@ -1,0 +1,66 @@
+@import "../../../stylesheet/vars.scss";
+
+.transtable {
+  &__row {
+    background-color: transparent;
+  }
+  &__row:not(:last-child) {
+    border-bottom: 1px solid #dcdcdf;
+  }
+  &__rowcell {
+    padding-top: 16px;
+    padding-bottom: 14px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  &__rowcell:first-child {
+    padding-left: 20px;
+  }
+  &__rowcell__type {
+    text-align: center;
+  }
+  &__rowcell__com {
+    text-align: left;
+  }
+
+  &__rowcell__sum {
+    text-align: right;
+  }
+  &__rowcell:last-child {
+    text-align: right;
+    min-width: 89px;
+  }
+}
+
+.btn {
+  &__delete {
+    width: 67px;
+    padding: 4px 12px;
+    font-family: Circe;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background:$color-brand-secondary;
+    color: $background-light;
+    &:hover { 
+      background-color: $color-brand-primary;
+      color: $background-light;
+      border-color: $color-brand-primary;
+    }
+  }
+
+  &__edit {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    padding-right: 7px;
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+  &__edit__icon {
+    width: 14px;
+    height: 14px;
+  }
+}

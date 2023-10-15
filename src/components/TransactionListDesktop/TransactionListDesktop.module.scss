@@ -1,0 +1,48 @@
+@import "../../../stylesheet/vars.scss";
+
+.transtable {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%; //need to check
+  max-width: 100%; //need to check
+
+  &__headtable {
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding-right: 20px;
+  }
+  &__headcell {
+    padding-top: 16px;
+    padding-bottom: 15px;
+    border: none;
+    text-align: left;
+  }
+  &__headcell:first-child {
+    padding-left: 20px;
+    border-top-left-radius: 30px 30px;
+    border-bottom-left-radius: 30px 30px;
+  }
+  &__headcell__type {
+    text-align: center;
+    padding-right: 46px;
+    padding-left: 48px;
+  }
+  &__headcell__com {
+    text-align: left;
+    padding-left: 68px;
+  }
+
+  &__headcell__sum {
+    text-align: right;
+  }
+  &__headcell:last-child {
+    border-top-right-radius: 30px 30px;
+    border-bottom-right-radius: 30px 30px;
+    text-align: right;
+    min-width: 89px;
+  }
+  &__body {
+    overflow: scroll; //need
+  }
+}

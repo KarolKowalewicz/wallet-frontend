@@ -1,0 +1,103 @@
+@import "../../../stylesheet/vars.scss";
+
+.transaction {
+  border-radius: 10px;
+  background: $background-light;
+  width: 280px;
+  height: 282px;
+  list-style: none;
+  border-left: solid 5px;
+  margin: 8px 0px 0px 0px;
+  padding: 0px;
+  font-family: "Circe";
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $background-gray;
+    padding: 12px 15px 8px 20px;
+    margin: 0px;
+    line-height: normal;
+    
+  }
+
+  &__item__last {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: none;
+    padding: 12px 15px 12px 20px;
+    margin: 0px;
+  }
+
+  &__header {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  &__data {
+    text-align: right;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  &__expense {
+    color:$color-brand-accent;
+  }
+  &__income {
+    color:$color-brand-secondary;
+  }
+  
+  &__incomeBorder{
+    border-color: $color-brand-secondary;
+  }
+  &__expenseBorder {
+    border-color: $color-brand-accent;
+  }
+}
+
+.btn {
+  &__delete {
+    width: 67px;
+    padding: 4px 12px;
+    font-family: Circe;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background:$color-brand-secondary;
+    color: $background-light;
+    &:hover { 
+      background-color: $color-brand-primary;
+      color: $background-light;
+      border-color: $color-brand-primary;
+    }
+  }
+
+  &__edit {
+    width: 54px;
+    height: 26px;
+    border-radius: 18px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+  &__edit__icon {
+    width: 14px;
+    height: 14px;
+  }
+}

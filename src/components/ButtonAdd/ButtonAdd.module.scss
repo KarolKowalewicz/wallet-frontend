@@ -1,0 +1,23 @@
+@import "../../../stylesheet/vars.scss";
+
+.buttonAdd {
+  cursor: pointer;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+  transition: transform 0.5s;
+  @include tablet {
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
+  }
+  @include desktop {
+    bottom: 40px;
+    right: 40px;
+  }
+}
+.buttonAdd:hover {
+  transform: scale(1.2);
+}

@@ -1,0 +1,81 @@
+@import "./../../../public/modern-normalize.scss";
+@import "../../../stylesheet/vars.scss";
+@import "//stylesheet/fonts.scss";
+
+.logoutModalContainer {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoutModal {
+  min-width: 320px;
+  width: 100vw;
+  min-height: 300px;
+  background: #fff;
+  height: 100vh;
+  padding: 40px 80px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.header {
+  font-size: 24px;
+}
+.button {
+  //   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 300px;
+  height: 50px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 20px;
+  background: $color-brand-secondary;
+  cursor: pointer;
+  &__close {
+    border: 1px solid $color-brand-primary;
+    border-radius: 20px;
+    background: $background-light;
+  }
+  &__label {
+    color: $font-color-light;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    text-wrap: nowrap;
+    @font-face {
+      font-family: "circe-regular";
+      src: url("../../assets/fonts/circe-regular.otf");
+    }
+    &__close {
+      color: $color-brand-primary;
+    }
+  }
+}
+button:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+@include tablet {
+  .logoutModal {
+    width: 540px;
+    height: 100px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+}
