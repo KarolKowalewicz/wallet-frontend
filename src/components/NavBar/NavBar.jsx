@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styles from "./NavBar.module.scss";
+import { ReactComponent as IconHome } from "../../img/icon-home.svg";
+import { ReactComponent as IconStatistics } from "../../img/icon-statistics.svg";
+import { ReactComponent as IconExchange } from "../../img/icon-exchange.svg";
 
 function NavBar() {
   const [activeIcon, setActiveIcon] = useState("home");
@@ -21,53 +24,52 @@ function NavBar() {
     <nav>
       <div>
         <ul className={styles["navbar-container"]}>
+          
           <li>
-            <NavLink exact="true" to="/">
-              <img
-                src={
-                  activeIcon === "home"
-                    ? require("./../../img/home_dark.png")
-                    : require("./../../img/home_light.png")
-                }
-                className={`${styles.navbaricon} ${
-                  activeIcon === "home" ? styles.activeIcon : ""
+            <NavLink exact to="/" activeClassName={styles.active}>
+              <IconHome
+                fill={activeIcon === "home" ? "#4A56E2" : "#6E78E8"}
+                className={`${styles.nav__svg} ${
+                  activeIcon === "home" ? styles.active : ""
                 }`}
-                alt="Home"
               />
-              <span className={styles.text}>Home</span>
+              <span
+                className={`${styles.text} ${
+                  activeIcon === "home" ? styles.active : ""
+                }`}
+              >
+                Home
+              </span>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/statistic">
-              <img
-                src={
-                  activeIcon === "statistics"
-                    ? require("./../../img/statistics_dark.png")
-                    : require("./../../img/statistics_light.png")
-                }
-                className={`${styles.navbaricon} ${
-                  activeIcon === "statistics" ? styles.activeIcon : ""
+            <NavLink to="/statistic" activeClassName={styles.active}>
+              <IconStatistics
+                fill={activeIcon === "statistics" ? "#4A56E2" : "#6E78E8"}
+                className={`${styles.nav__svg} ${
+                  activeIcon === "statistics" ? styles.active : ""
                 }`}
-                alt="Statistics"
               />
-              <span className={styles.text}>Statistics</span>
+              <span
+                className={`${styles.text} ${
+                  activeIcon === "statistics" ? styles.active : ""
+                }`}
+              >
+                Statistics
+              </span>
             </NavLink>
           </li>
           <li className={styles.mobileOnly}>
-            <NavLink to="/exchange">
-              <img
-                src={
-                  activeIcon === "exchange"
-                    ? require("./../../img/dollar_dark.png")
-                    : require("./../../img/dollar_light.png")
-                }
-                className={`${styles.navbaricon} ${
-                  activeIcon === "exchange" ? styles.activeIcon : ""
+            <NavLink to="/exchange" activeClassName={styles.active}>
+              <IconExchange
+                fill={activeIcon === "exchange" ? "#4A56E2" : "#6E78E8"}
+                className={`${styles.nav__svg} ${
+                  activeIcon === "exchange" ? styles.active : ""
                 }`}
-                alt="Current Exchange"
               />
             </NavLink>
           </li>
+          
         </ul>
       </div>
     </nav>
@@ -75,3 +77,5 @@ function NavBar() {
 }
 
 export default NavBar;
+
+
