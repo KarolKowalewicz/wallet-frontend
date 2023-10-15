@@ -18,7 +18,7 @@ const StatisticsPage = () => {
     const month = today.getMonth() + 1;
     const year = today.getFullYear();
     getTransactionPeriod({ period: `${year}-${month}` });
-  }, []);
+  }, [getTransactionPeriod]);
 
   return (
     <div className={styles.container}>
