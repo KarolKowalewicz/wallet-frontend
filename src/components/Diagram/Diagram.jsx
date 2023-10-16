@@ -34,7 +34,7 @@ const Diagram = ({ data, isLoading }) => {
           textAnchor="middle"
           dominantBaseline="middle"
         >
-          &euro; {data?.statistics.balance}
+          &euro; {data?.statistics.balance.toFixed(2)}
         </text>
       </svg>
     </div>
