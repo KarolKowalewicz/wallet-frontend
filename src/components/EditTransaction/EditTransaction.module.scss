@@ -115,10 +115,11 @@
   line-height: normal;
   letter-spacing: 1.8px;
   text-transform: uppercase;
-  @font-face {
-    font-family: "circe-regular";
-    src: url("../../assets/fonts/circe-regular.otf");
-  }
+  font-family: 'circe-regular';
+  // @font-face {
+  //   font-family: "circe-regular";
+  //   src: url("../../assets/fonts/circe-regular.otf");
+  // }
 }
 
 // TABLET
