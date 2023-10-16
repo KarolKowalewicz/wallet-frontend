@@ -67,25 +67,33 @@ const FormEdit = ({
         income
           ? {
               amount: transaction.amount || "",
-              income: income,
+              income,
               date: transaction.date
                 ? moment(transaction.date).format("YYYY-MM-DD")
                 : moment().format("YYYY-MM-DD"),
               comment: transaction.comment || "",
             }
           : {
-              category: transaction.category || "",
               amount: transaction.amount || "",
-              income: income,
+              income,
               date: transaction.date
                 ? moment(transaction.date).format("YYYY-MM-DD")
                 : moment().format("YYYY-MM-DD"),
               comment: transaction.comment || "",
+              category: transaction.category || "",
             }
       }
+      enableReinitialize={true}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         query(_id ? { _id, body: values } : values);
+
+        if (_id) {
+          toast.success("Transaction updated successfully!");
+        } else {
+          toast.success("Transaction added successfully!");
+        }
+
         setSubmitting(false);
         resetForm();
 
@@ -117,6 +125,10 @@ const FormEdit = ({
               <ErrorMessage name="category" />
             </div>
           )}
+
+          {/* <button type="button" onClick={() => console.log(values)}>
+            console
+          </button> */}
 
           <div className={styles.amountCalendarWrap}>
             <div>

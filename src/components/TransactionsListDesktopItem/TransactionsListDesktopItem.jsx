@@ -6,6 +6,7 @@ import { openModal } from "../../redux/slices/modal/modalSlice";
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
 import EditTransaction from "../EditTransaction/EditTransaction";
 import convertDate from "../../utils/helperFunctions/convertDate";
+import { ToastContainer, toast } from "react-toastify";
 
 const TransactionsListDesktopItem = ({ transaction }) => {
   const { _id, date, category, comment, amount, income } = transaction;
@@ -14,7 +15,31 @@ const TransactionsListDesktopItem = ({ transaction }) => {
     transactionsApiSlice.useDeleteTransactionMutation();
 
   const handleDelete = async () => {
-    await deleteTransaction(_id);
+    try {
+      await deleteTransaction(_id);
+
+      toast.success(`Transaction has been deleted.`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      toast.error(`An error occured when deleting transcation.`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
 
   return (
@@ -39,6 +64,7 @@ const TransactionsListDesktopItem = ({ transaction }) => {
               onClick={() => dispatch(openModal(`${_id}edit`))}
             />
           </button>
+          <ToastContainer />
           <button className={styles.btn__delete} onClick={handleDelete}>
             {/* TODO: add some spinner */}
             {isDeleting ? "Deleting..." : "Delete"}
