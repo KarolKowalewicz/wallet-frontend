@@ -34,6 +34,7 @@ const Calendar = forwardRef(({ value, onChange }, ref) => {
       timeFormat={false}
       open={open}
       inputProps={{ className: styles.dateInput }}
+      dateFormat="YYYY-MM-DD"
     />
   );
 });

@@ -51,7 +51,7 @@ const AddTransaction = () => {
         <div className={styles.sliderContent}>
           <p
             className={styles.incomeLabel}
-            style={{ color: isIncome ? "#24CCA7" : "#FF6596" }}
+            style={{ color: isIncome ? "#24CCA7" : "#E0E0E0" }}
             onClick={() => setIsIncome(true)}
           >
             Income

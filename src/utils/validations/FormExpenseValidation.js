@@ -11,11 +11,11 @@ const FormExpenseValidation = Yup.object().shape({
   date: Yup.string()
     .required("Date is required")
     .test("is-valid-date", "Date is not valid", (value) => {
-      const date = moment(value, "DD.MM.YYYY", true);
+      const date = moment(value, "YYYY-MM-DD", true);
       return date.isValid();
     })
     .test("is-not-future-date", "Date cannot be in the future", (value) => {
-      const date = moment(value, "DD.MM.YYYY", true);
+      const date = moment(value, "YYYY-MM-DD", true);
       return date.isSameOrBefore(moment());
     }),
   comment: Yup.string(),
