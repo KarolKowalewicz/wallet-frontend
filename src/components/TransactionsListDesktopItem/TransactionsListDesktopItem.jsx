@@ -18,7 +18,7 @@ const TransactionsListDesktopItem = ({ transaction }) => {
     try {
       await deleteTransaction(_id);
 
-      toast.success(`Transaction with id ${_id} has been deleted.`, {
+      toast.success(`Transaction has been deleted.`, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -29,7 +29,7 @@ const TransactionsListDesktopItem = ({ transaction }) => {
         theme: "light",
       });
     } catch (error) {
-      toast.error(`An error occured when deleting transcation with id ${_id}`, {
+      toast.error(`An error occured when deleting transcation.`, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
