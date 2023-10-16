@@ -9,6 +9,8 @@ import ModalExchange from "./components/ModalExchange/ModalExchange";
 import Loader from "./components/Lodaer/Loader";
 import Media from "react-media";
 
+import { ToastContainer } from "react-toastify";
+
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const Diagram = lazy(() => import("./path/to/diagram/component"));
 // const Login = lazy(() => import("./pages/Login/Login"));
@@ -26,42 +28,45 @@ function App() {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
+    <div>
+      <ToastContainer />
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route
+            index
+            element={isUserLoggedIn ? <HomePage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/statistic"
+            element={
+              isUserLoggedIn ? <StatisticsPage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/exchange"
+            element={
+              !isUserLoggedIn ? (
+                <Navigate to="/login" />
+              ) : (
+                <Media queries={{ medium: { maxWidth: 768 } }}>
+                  {(matches) =>
+                    matches.medium ? <ModalExchange /> : <Navigate to="/" />
+                  }
+                </Media>
+              )
+            }
+          />
+        </Route>
         <Route
-          index
-          element={isUserLoggedIn ? <HomePage /> : <Navigate to="/login" />}
+          path="/login"
+          element={!isUserLoggedIn ? <Login /> : <Navigate to="/" />}
         />
         <Route
-          path="/statistic"
-          element={
-            isUserLoggedIn ? <StatisticsPage /> : <Navigate to="/login" />
-          }
+          path="/register"
+          element={!isUserLoggedIn ? <Register /> : <Navigate to="/" />}
         />
-        <Route
-          path="/exchange"
-          element={
-            !isUserLoggedIn ? (
-              <Navigate to="/login" />
-            ) : (
-              <Media queries={{ medium: { maxWidth: 768 } }}>
-                {(matches) =>
-                  matches.medium ? <ModalExchange /> : <Navigate to="/" />
-                }
-              </Media>
-            )
-          }
-        />
-      </Route>
-      <Route
-        path="/login"
-        element={!isUserLoggedIn ? <Login /> : <Navigate to="/" />}
-      />
-      <Route
-        path="/register"
-        element={!isUserLoggedIn ? <Register /> : <Navigate to="/" />}
-      />
-    </Routes>
+      </Routes>
+    </div>
   );
 }
 

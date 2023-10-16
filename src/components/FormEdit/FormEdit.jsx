@@ -87,6 +87,13 @@ const FormEdit = ({
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         query(_id ? { _id, body: values } : values);
+
+        if (_id) {
+          toast.success("Transaction updated successfully!");
+        } else {
+          toast.success("Transaction added successfully!");
+        }
+
         setSubmitting(false);
         resetForm();
 
