@@ -126,6 +126,7 @@ const FormEdit = ({
                 type="number"
                 placeholder="0.00"
                 autoComplete="off"
+                step="any"
               />
               <ErrorMessage name="amount" />
               <div className={styles.separatorShort}></div>
@@ -170,6 +171,7 @@ const FormEdit = ({
               name="comment"
               placeholder="Comment"
               autoComplete="off"
+              step="any"
             />
             <div className={styles.separatorLong}></div>
             <ErrorMessage name="comment" />

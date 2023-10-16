@@ -13,6 +13,16 @@
     display: flex;
     flex-direction: column;
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"]::-moz-inner-spin-button,
+input[type="number"]::-moz-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
 .input {
     display: flex;
     justify-content: start;
