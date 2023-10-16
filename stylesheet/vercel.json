@@ -1,0 +1,28 @@
+// {
+//   "version": 2,
+//   "builds": [
+//     {
+//       "src": "path/do/twojego/projektu",
+//       "use": "@vercel/static-build",
+//       "config": {
+//         "distDir": "path/do/twojego/projektu"
+//       }
+//     }
+//   ],
+//   "routes": [
+//     {
+//       "src": "/(.*)",
+//       "dest": "/path/do/twojego/projektu/index.jsx"
+//     }
+//   ]
+// }
+
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.jsx",
+      "permanent": false
+    }
+  ]
+}
