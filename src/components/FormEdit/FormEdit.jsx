@@ -26,9 +26,14 @@ const DropdownIndicator = (props) => {
   return <SelectArrow {...props} isMenuOpen={props.selectProps.menuIsOpen} />;
 };
 
-const FormEdit = ({ validationSchema, query, income, _id }) => {
+const FormEdit = ({
+  validationSchema,
+  query,
+  income,
+  _id,
+  transaction = {},
+}) => {
   const dispatch = useDispatch();
-  const closeModall = () => dispatch(closeModal("addTransaction"));
 
   // set styles for diffrent devices on input category *BEGIN*
   const [device, setDevice] = useState(getDeviceConfig(window.innerWidth));
@@ -61,17 +66,21 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
       initialValues={
         income
           ? {
-              amount: "",
+              amount: transaction.amount || "",
               income: income,
-              date: moment().format("YYYY-MM-DD"),
-              comment: "",
+              date: transaction.date
+                ? moment(transaction.date).format("YYYY-MM-DD")
+                : moment().format("YYYY-MM-DD"),
+              comment: transaction.comment || "",
             }
           : {
-              category: "",
-              amount: "",
+              category: transaction.category || "",
+              amount: transaction.amount || "",
               income: income,
-              date: moment().format("YYYY-MM-DD"),
-              comment: "",
+              date: transaction.date
+                ? moment(transaction.date).format("YYYY-MM-DD")
+                : moment().format("YYYY-MM-DD"),
+              comment: transaction.comment || "",
             }
       }
       validationSchema={validationSchema}
@@ -79,7 +88,12 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
         query(_id ? { _id, body: values } : values);
         setSubmitting(false);
         resetForm();
-        closeModall();
+
+        if (_id) {
+          dispatch(closeModal(`${_id}edit`));
+        } else {
+          dispatch(closeModal("addTransaction"));
+        }
       }}
     >
       {({ isSubmitting, setFieldValue, values }) => (
@@ -99,11 +113,10 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
                 placeholder="Select category"
                 components={{ DropdownIndicator }}
               />
+              <div className={styles.separatorLong}></div>
               <ErrorMessage name="category" />
             </div>
           )}
-
-          <div className={styles.separatorLong}></div>
 
           <div className={styles.amountCalendarWrap}>
             <div>
@@ -113,6 +126,7 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
                 type="number"
                 placeholder="0.00"
                 autoComplete="off"
+                step="any"
               />
               <ErrorMessage name="amount" />
               <div className={styles.separatorShort}></div>
@@ -124,21 +138,14 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
                   ref={calendarRef}
                   value={values.date}
                   name="date"
-                  // onChange={(date) =>
-                  //   setFieldValue("date", date.format("YYYY-MM-DD HH:mm:ss"))
-                  // }
                   onChange={(dateOrString) => {
                     let formattedDate;
                     if (typeof dateOrString === "string") {
-                      const parsedDate = moment(
-                        dateOrString,
-                        "YYYY-MM-DD",
-                        true
-                      );
+                      const parsedDate = moment(dateOrString, "YYYY-MM-DD");
                       if (parsedDate.isValid()) {
                         formattedDate = parsedDate.format("YYYY-MM-DD");
                       } else {
-                        formattedDate = dateOrString;
+                        formattedDate = moment().format("YYYY-MM-DD");
                       }
                     } else {
                       formattedDate = dateOrString.format("YYYY-MM-DD");
@@ -164,11 +171,11 @@ const FormEdit = ({ validationSchema, query, income, _id }) => {
               name="comment"
               placeholder="Comment"
               autoComplete="off"
+              step="any"
             />
+            <div className={styles.separatorLong}></div>
             <ErrorMessage name="comment" />
           </div>
-
-          <div className={styles.separatorLong}></div>
 
           <BtnSaveTrans
             disabled={isSubmitting}

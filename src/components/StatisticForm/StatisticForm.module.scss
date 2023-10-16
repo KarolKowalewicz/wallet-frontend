@@ -23,6 +23,7 @@
 
     @include desktop {
       gap: 36px;
+      padding-top: 75px;
     }
   }
 
@@ -72,6 +73,7 @@
     justify-content: space-between;
     width: 280px;
     padding: 12px;
+    padding-inline: 20px;
     border-radius: 30px;
     background-color: #fff;
     color: #000;
@@ -99,16 +101,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
   }
 
   &__item {
+    
     width: 280px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 16px 16px 16px;
     border-bottom: 1px solid #dcdcdf;
+    padding-bottom: 16px;
+    padding-top: 14px;
+    padding-inline: 20px;
 
     @include tablet {
       width: 336px;
@@ -119,43 +123,82 @@
     }
   }
 
+  &__categoryBox{
+    font-family: Circe;
+    font-weight: 400;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    
+  }
+
   &__itemColor {
     width: 24px;
     height: 24px;
     border-radius: 2px;
   }
 
-  &__itemText {
+  &__text {
+    font-family: Circe;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 18px;
   }
 
-  &__itemSum {
+  &__expensesSum {
+    font-family: Circe;
     font-size: 16px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 18px;
+    color: $color-brand-accent;
+  }
+  &__incomeSum {
+    font-family: Circe;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    color: $color-brand-secondary;
+  }
+
+  &__resultsBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 280px;
+
+
+    @include tablet {
+      width: 336px;
+    }
+    @include desktop {
+      width: 395px;
+    }
   }
 
   &__results {
+    font-family: Circe;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 250px;
+    width: 280px;
     font-size: 16px;
+    padding-inline: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     margin-bottom: 15px;
 
     @include tablet {
-      width: 300px;
+      width: 336px;
     }
 
     @include desktop {
-      width: 370px;
+      width: 395px;
     }
   }
 }

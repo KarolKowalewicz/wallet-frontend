@@ -5,6 +5,8 @@ import FormEdit from "../FormEdit/FormEdit";
 import FormExpenseValidation from "../../utils/validations/FormExpenseValidation";
 import FormIncomeValidation from "../../utils/validations/FormIncomeValidation";
 import transactionsApiSlice from "../../redux/slices/api/transactions/transactionsApiSlice";
+import Header from "../Header/Header";
+import { ReactComponent as BtnClose } from "./../../img/btn_close.svg";
 
 const EditTransaction = ({ transaction }) => {
   const { income, _id } = transaction;
@@ -13,18 +15,37 @@ const EditTransaction = ({ transaction }) => {
   const [updateTransaction] =
     transactionsApiSlice.useUpdateTransactionMutation();
 
+  const isIncome = income;
+
   if (!modals[`${_id}edit`]) return null;
   return (
     <div className={styles.overlay}>
-      <div className={styles.content}>
+      <div
+        className={`${styles.content} ${
+          isIncome ? styles.incomeSizeContent : ""
+        }`}
+      >
+        <div className={styles.headerIsHidden}>
+          <Header />
+        </div>
+
+        <div className={styles.btnCloseWrap}>
+          <button
+            className={styles.btnCloseFunc}
+            onClick={() => dispatch(closeModal(`${_id}edit`))}
+          >
+            <BtnClose />
+          </button>
+        </div>
+
         <div className={styles.headerWrap}>
           <p className={styles.headerWrap__title}>Edit transaction</p>
         </div>
 
         <div className={styles.typeOfTransHead}>
-          <p style={{ color: income && "#24cca7" }}>income</p>
-          <p className={styles.slashLabel}>/</p>
-          <p style={{ color: !income && "#ff6596" }}>expense</p>
+          <p style={{ color: income && "#24cca7" }}>Income</p>
+          <p className={styles.typeOfTransHead__slashLabel}>/</p>
+          <p style={{ color: !income && "#ff6596" }}>Expense</p>
         </div>
 
         <FormEdit
@@ -34,6 +55,7 @@ const EditTransaction = ({ transaction }) => {
           query={updateTransaction}
           income={income}
           _id={_id}
+          transaction={transaction}
         />
 
         <div className={styles.actBtnsWrap}>

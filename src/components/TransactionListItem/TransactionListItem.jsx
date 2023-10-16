@@ -8,7 +8,6 @@ import transactionsApiSlice from "../../redux/slices/api/transactions/transactio
 import convertDate from "../../utils/helperFunctions/convertDate";
 const TransactionListItem = ({ transaction }) => {
   const { _id, date, category, comment, amount, income } = transaction;
-
   const dispatch = useDispatch();
   const [deleteTransaction, { isLoading: isDeleting }] =
     transactionsApiSlice.useDeleteTransactionMutation();
@@ -45,7 +44,12 @@ const TransactionListItem = ({ transaction }) => {
           <p className={styles.transaction__data}>{comment}</p>
         </li>
         <li className={styles.transaction__item}>
-          <h4 className={styles.transaction__header}>Sum</h4>
+          <h4
+            className={styles.transaction__header}
+            style={{ color: income ? "#24CCA7" : "#E0E0E0" }}
+          >
+            Sum
+          </h4>
           <p
             className={`${styles.transaction__data} ${
               income ? styles.transaction__income : styles.transaction__expense

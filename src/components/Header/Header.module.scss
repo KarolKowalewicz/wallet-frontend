@@ -1,7 +1,5 @@
-@import './../../../stylesheet/vars.scss';
-@import './../../../stylesheet/fonts.scss';
-
-
+@import "./../../../stylesheet/vars.scss";
+@import "./../../../stylesheet/fonts.scss";
 
 .header {
   background-color: $background-light;
@@ -11,43 +9,38 @@
   justify-content: space-between;
   height: 60px;
 
- 
-
-    @include tablet {
-        height: 80px;
-    }
-
+  @include tablet {
+    height: 80px;
+  }
 
   &__logo {
     display: flex;
     align-items: center;
 
-        gap: 10px;
-        @include tablet {
-            gap: 20px;
-        }
-        
-        &__svg {
-            height: 30px;
-            @include tablet {
-                height: 40px;
-            }
-        }
-        &__txt {
-            font-size: 22px;
-            font-family: $font-family-poppins;
-            color: $font-color-dark;
-            @include tablet {
-                font-size: 30px;
-            }
-        }
+    gap: 10px;
+    @include tablet {
+      gap: 20px;
     }
+
+    &__svg {
+      height: 30px;
+      @include tablet {
+        height: 40px;
+      }
+    }
+    &__txt {
+      font-size: 22px;
+      font-family: $font-family-poppins;
+      color: $font-color-dark;
+      @include tablet {
+        font-size: 30px;
+      }
+    }
+  }
 
   &__nav {
     height: 30px;
     display: flex;
-    
-
 
     &__name {
       font-family: $font-family-circe;
@@ -55,33 +48,29 @@
       font-size: 18px;
       display: flex;
       align-items: center;
-    @include tablet {
+      @include tablet {
         margin-right: 15px;
-    }
+      }
     }
 
     &__exit {
       display: flex;
       align-items: center;
       border: none;
-      
 
       background-color: transparent;
 
       @include tablet {
         border-left: 1px solid $color-logout-button;
-
       }
-
 
       &__icon {
         cursor: pointer;
         height: 18px;
 
         @include tablet {
-            margin: 0 10px;
+          margin: 0 10px;
         }
-
       }
       &__txt {
         font-family: $font-family-circe;
@@ -92,9 +81,8 @@
         display: none;
 
         @include tablet {
-            display: block;
+          display: block;
         }
-
       }
     }
   }

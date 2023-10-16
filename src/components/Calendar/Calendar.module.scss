@@ -1,13 +1,47 @@
 @import "./../../../public/modern-normalize.scss";
 @import "../../../stylesheet/vars.scss";
+@import '../../../stylesheet/fonts.scss';
 
 // styles for popup calendar in index.html
 
+// MOBILE
 .dateInput {
+    margin-left: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 218px;
+    color: #000;
+    font-family: Circe;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     border: none;
 
     &:focus {
         outline: none;
         box-shadow: none;
+    }
+}
+
+// TABLET
+@include tablet {
+    .dateInput {
+        margin-left: 20px;
+        display: flex;
+        justify-content: space-between;
+        width: 124px;
+        color: #000;
+        font-family: Circe;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        border: none;
+    
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
     }
 }

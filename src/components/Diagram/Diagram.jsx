@@ -13,6 +13,7 @@ const Diagram = ({ data, isLoading }) => {
 
   return (
     <div className={styles.diagram}>
+      <h3 className={styles.diagram__title}>Statistics</h3>
       <svg width={300} height={300}>
         <circle cx={140} cy={140} r={120} fill="white" />
         <VictoryPie
@@ -33,7 +34,7 @@ const Diagram = ({ data, isLoading }) => {
           textAnchor="middle"
           dominantBaseline="middle"
         >
-          &euro; {data?.statistics.balance}
+          &euro; {data?.statistics.balance.toFixed(2)}
         </text>
       </svg>
     </div>
