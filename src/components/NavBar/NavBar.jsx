@@ -24,7 +24,7 @@ function NavBar() {
     <nav>
       <ul className={styles.navbarContainer}>
         <li>
-          <NavLink exact to="/" activeClassName={styles.active}>
+          <NavLink exact="true" to="/" activeclassname={styles.active}>
             <IconHome
               fill={activeIcon === "home" ? "#4A56E2" : "#6E78E8"}
               className={`${styles.nav__svg} ${
@@ -41,7 +41,7 @@ function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/statistic" activeClassName={styles.active}>
+          <NavLink to="/statistic" activeclassname={styles.active}>
             <IconStatistics
               fill={activeIcon === "statistics" ? "#4A56E2" : "#6E78E8"}
               className={`${styles.nav__svg} ${
@@ -58,7 +58,7 @@ function NavBar() {
           </NavLink>
         </li>
         <li className={styles.mobileOnly}>
-          <NavLink to="/exchange" activeClassName={styles.active}>
+          <NavLink to="/exchange" activeclassname={styles.active}>
             <IconExchange
               fill={activeIcon === "exchange" ? "#4A56E2" : "#6E78E8"}
               className={`${styles.nav__svg} ${
