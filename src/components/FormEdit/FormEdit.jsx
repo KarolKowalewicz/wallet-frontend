@@ -126,9 +126,9 @@ const FormEdit = ({
             </div>
           )}
 
-          <button type="button" onClick={() => console.log(values)}>
+          {/* <button type="button" onClick={() => console.log(values)}>
             console
-          </button>
+          </button> */}
 
           <div className={styles.amountCalendarWrap}>
             <div>
