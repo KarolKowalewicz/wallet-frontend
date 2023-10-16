@@ -25,17 +25,23 @@ const AddTransaction = () => {
   if (!modals["addTransaction"]) return null;
   return (
     <div className={styles.overlay}>
-      <div className={`${styles.content} ${isIncome ? styles.incomeSizeContent : ""}`}>
+      <div
+        className={`${styles.content} ${
+          isIncome ? styles.incomeSizeContent : ""
+        }`}
+      >
+        <div className={styles.headerIsHidden}>
+          <Header />
+        </div>
 
-      <div className={styles.headerIsHidden}>
-        <Header />
-      </div>
-
-      <div className={styles.btnCloseWrap}>
-          <button className={styles.btnCloseFunc} onClick={() => dispatch(closeModal("addTransaction"))}>
+        <div className={styles.btnCloseWrap}>
+          <button
+            className={styles.btnCloseFunc}
+            onClick={() => dispatch(closeModal("addTransaction"))}
+          >
             <BtnClose />
           </button>
-      </div>
+        </div>
 
         <div className={styles.headerWrap}>
           <p className={styles.headerWrap__title}>Add transaction</p>
@@ -45,7 +51,7 @@ const AddTransaction = () => {
         <div className={styles.sliderContent}>
           <p
             className={styles.incomeLabel}
-            style={{ color: isIncome ? "#24CCA7" : "#E0E0E0" }}
+            style={{ color: isIncome ? "#24CCA7" : "#FF6596" }}
             onClick={() => setIsIncome(true)}
           >
             Income

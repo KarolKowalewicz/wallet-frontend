@@ -32,7 +32,7 @@ const EditTransaction = ({ transaction }) => {
         <div className={styles.btnCloseWrap}>
           <button
             className={styles.btnCloseFunc}
-            onClick={() => dispatch(closeModal("addTransaction"))}
+            onClick={() => dispatch(closeModal(`${_id}edit`))}
           >
             <BtnClose />
           </button>
@@ -55,6 +55,7 @@ const EditTransaction = ({ transaction }) => {
           query={updateTransaction}
           income={income}
           _id={_id}
+          transaction={transaction}
         />
 
         <div className={styles.actBtnsWrap}>

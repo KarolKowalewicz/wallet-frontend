@@ -8,9 +8,16 @@ const FormExpenseValidation = Yup.object().shape({
     .positive("Amount must be positive")
     .max(9999999, "Amount too large")
     .required("Amount is required"),
-  date: Yup.date()
-    .max(moment(), "Date cannot be in the future")
-    .required("Date is required"),
+  date: Yup.string()
+    .required("Date is required")
+    .test("is-valid-date", "Date is not valid", (value) => {
+      const date = moment(value, "DD.MM.YYYY", true);
+      return date.isValid();
+    })
+    .test("is-not-future-date", "Date cannot be in the future", (value) => {
+      const date = moment(value, "DD.MM.YYYY", true);
+      return date.isSameOrBefore(moment());
+    }),
   comment: Yup.string(),
 });
 
