@@ -69,8 +69,8 @@ const FormEdit = ({
               amount: transaction.amount || "",
               income: income,
               date: transaction.date
-                ? moment(transaction.date).format("DD.MM.YYYY")
-                : moment().format("DD.MM.YYYY"),
+                ? moment(transaction.date).format("YYYY-MM-DD")
+                : moment().format("YYYY-MM-DD"),
               comment: transaction.comment || "",
             }
           : {
@@ -78,8 +78,8 @@ const FormEdit = ({
               amount: transaction.amount || "",
               income: income,
               date: transaction.date
-                ? moment(transaction.date).format("DD.MM.YYYY")
-                : moment().format("DD.MM.YYYY"),
+                ? moment(transaction.date).format("YYYY-MM-DD")
+                : moment().format("YYYY-MM-DD"),
               comment: transaction.comment || "",
             }
       }
@@ -140,14 +140,14 @@ const FormEdit = ({
                   onChange={(dateOrString) => {
                     let formattedDate;
                     if (typeof dateOrString === "string") {
-                      const parsedDate = moment(dateOrString, "DD.MM.YYYY");
+                      const parsedDate = moment(dateOrString, "YYYY-MM-DD");
                       if (parsedDate.isValid()) {
-                        formattedDate = parsedDate.format("DD.MM.YYYY");
+                        formattedDate = parsedDate.format("YYYY-MM-DD");
                       } else {
-                        formattedDate = moment().format("DD.MM.YYYY");
+                        formattedDate = moment().format("YYYY-MM-DD");
                       }
                     } else {
-                      formattedDate = dateOrString.format("DD.MM.YYYY");
+                      formattedDate = dateOrString.format("YYYY-MM-DD");
                     }
                     setFieldValue("date", formattedDate);
                   }}
