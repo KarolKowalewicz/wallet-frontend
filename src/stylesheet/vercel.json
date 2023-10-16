@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.jsx",
+      "permanent": false
+    }
+  ]
+}
