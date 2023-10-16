@@ -58,10 +58,11 @@
     letter-spacing: 1.8px;
     text-transform: uppercase;
     text-wrap: nowrap;
-    @font-face {
-      font-family: "circe-regular";
-      src: url("../../assets/fonts/circe-regular.otf");
-    }
+    font-family: 'circe-regular';
+    // @font-face {
+    //   font-family: "circe-regular";
+    //   src: url("../../assets/fonts/circe-regular.otf");
+    // }
     &__close {
       color: $color-brand-primary;
     }
